@@ -20,7 +20,11 @@ public class Main {
                 case 2:
                     break;
                 default:
-                    System.out.println("Number " + answer + " is not a valid option");
+                    if (answer == 0) {
+                        System.out.println("Thanks for using the program!");
+                    } else {
+                        System.out.println("Number " + answer + " is not a valid option");
+                    }
                     break;
 
             }
