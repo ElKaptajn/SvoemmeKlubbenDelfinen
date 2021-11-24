@@ -12,7 +12,7 @@ public class Member {
     boolean restance;
 
     public Member(int ageType, String teamType, boolean status, String fName, String lName,
-                  int age, String email, String address, boolean restance){
+                  int age, String email, String address, boolean restance) {
         this.ageType = ageType;
         this.teamType = teamType;
         this.status = status;
