@@ -8,6 +8,7 @@ public class Main {
 	    Scanner scan = new Scanner(System.in);
 
         System.out.println("""
+                *** Head menu ***
                 Enter 0 to exit program
                 Enter 1 to ---
                 Enter 2 to ---""");
