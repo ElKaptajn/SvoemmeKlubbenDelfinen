@@ -1,7 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.util.Scanner;
+import java.util.*;
 
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
@@ -24,7 +23,35 @@ public class MemberHandler {
 
         }
     }
-    public void createMember(){
 
+    public void createMember() {
+
+    }
+    public ArrayList<Member> addMember(Scanner input) {
+        System.out.println("Enter firstname: ");
+        String fName = input.next();
+        System.out.println("Enter lastname: ");
+        String lName = input.next();
+        System.out.println("Enter age: ");
+        int age = input.nextInt();
+        System.out.println("Enter email: ");
+        String email = input.next();
+        System.out.println("Enter address: ");
+        String address = input.next();
+        int ageType = 0;
+        String teamType = "None";
+        if (age < 18) {
+            ageType = 1;
+            teamType = "Junior";
+        } else if (age > 18) {
+            ageType = 2;
+            teamType = "Senior";
+        }
+        boolean status = true;
+        boolean restance = false;
+
+        Member member = new Member(ageType, teamType, status, fName, lName, age, email, address, restance);
+        members.add(member);
+        return members;
     }
 }
