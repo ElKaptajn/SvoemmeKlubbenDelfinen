@@ -43,14 +43,15 @@ public class MemberHandler {
         if (age < 18) {
             ageType = 1;
             teamType = "Junior";
-        } else if (age > 18) {
+        } else if (age > 18 && age < 60) {
             ageType = 2;
             teamType = "Senior";
         }
+        String activityType = "Motionist";
         boolean status = true;
         boolean restance = false;
 
-        Member member = new Member(ageType, teamType, status, fName, lName, age, email, address, restance);
+        Member member = new Member(ageType, activityType, teamType, status, fName, lName, age, email, address, restance);
         members.add(member);
         return members;
     }
