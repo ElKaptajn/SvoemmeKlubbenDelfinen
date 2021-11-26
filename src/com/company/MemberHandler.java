@@ -27,6 +27,7 @@ public class MemberHandler {
     public void createMember() {
 
     }
+
     public ArrayList<Member> addMember(Scanner input) {
         System.out.println("Enter firstname: ");
         String fName = input.next();
@@ -40,14 +41,22 @@ public class MemberHandler {
         String address = input.next();
         int ageType = 0;
         String teamType = "None";
-        if (age < 18) {
+        String activityType = "";
+        System.out.println("Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
+        int activityTypeChoice = input.nextInt();
+        if (activityTypeChoice == 1){
+            activityType = "Motionist";
+        } else if (activityTypeChoice == 2){
+            activityType = "Competition Swimmer";
+        }
+        if ((age < 18) && (activityType.equals("Competition Swimmer"))) {
             ageType = 1;
             teamType = "Junior";
-        } else if (age > 18 && age < 60) {
+        } else if (age > 18 && age < 60 && (activityType.equals("Competition Swimmer"))) {
             ageType = 2;
             teamType = "Senior";
         }
-        String activityType = "Motionist";
+
         boolean status = true;
         boolean restance = false;
 
