@@ -28,6 +28,7 @@ public class Member {
     public String toString() {
         return ("Status: " + status +
                 "\nActivity form: " + activityType +
+                "\nTeam: " + teamType +
                 "\nFirstname: " + fName +
                 "\nLastname: " + lName +
                 "\nAge: " + age +
