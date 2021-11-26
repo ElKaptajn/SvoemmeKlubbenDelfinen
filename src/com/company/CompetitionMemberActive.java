@@ -5,9 +5,9 @@ public class CompetitionMemberActive extends CompetitionMember {
     String placement;
     String eventResult;
 
-    public CompetitionMemberActive(int ageType, String teamType, boolean status, String fName, String lName, int age,
+    public CompetitionMemberActive(String activityType, String teamType, boolean status, String fName, String lName, int age,
                                    String email, String address, boolean restance, String disciplinType, String trainingResult, String date, String event, String placement, String eventResult) {
-        super(ageType, teamType, status, fName, lName, age, email, address, restance, disciplinType, trainingResult, date);
+        super(activityType, teamType, status, fName, lName, age, email, address, restance, disciplinType, trainingResult, date);
         this.event = event;
         this.placement = placement;
         this.eventResult = eventResult;

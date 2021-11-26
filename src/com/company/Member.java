@@ -1,7 +1,6 @@
 package com.company;
 
 public class Member {
-    int ageType;
     String activityType;
     String teamType;
     boolean status;
@@ -12,9 +11,8 @@ public class Member {
     String address;
     boolean restance;
 
-    public Member(int ageType, String activityType, String teamType, boolean status, String fName, String lName,
+    public Member(String activityType, String teamType, boolean status, String fName, String lName,
                   int age, String email, String address, boolean restance) {
-        this.ageType = ageType;
         this.activityType = activityType;
         this.teamType = teamType;
         this.status = status;
