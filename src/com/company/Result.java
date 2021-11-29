@@ -24,13 +24,16 @@ public class Result  {
                     break;
                 case 1:
                     System.out.println("TOP 5 MENU");
+                    //Tag fra fil eller ARRAY?
                     break;
                 case 2:
                     System.out.println("ADD RESULT");
                     competitionMember.createCompetitionMember(input);
+                    //Skal vi lave forskellige metoder til at lave de forskellige typer af members? eller kan vi samle dem på en smart måde?
                     break;
                 case 3:
                     System.out.println("EDIT RESULT");
+                    //Tilføj: Kan kun edit hvis det nye resultat er lavere end det der står det i forvejen
                     break;
                 default:
                     System.out.println("Number " + answer + " is not a valid option");
