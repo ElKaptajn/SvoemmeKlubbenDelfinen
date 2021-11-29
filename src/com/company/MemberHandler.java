@@ -3,6 +3,11 @@ package com.company;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author Thomas
+ * @author Philip
+ */
+
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
@@ -79,7 +84,7 @@ public class MemberHandler {
     public ArrayList<Member> deleteMember(Scanner input) throws IOException {
         if (members.size() >= 1) {
             for (int i = 0; i < members.size(); i++) {
-                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).restance);
+                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).arrears);
             }
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
@@ -187,5 +192,13 @@ public class MemberHandler {
             System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
 
         }
+    }
+
+    public ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(ArrayList<Member> members) {
+        this.members = members;
     }
 }

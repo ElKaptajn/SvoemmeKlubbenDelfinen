@@ -11,11 +11,11 @@ public class Member {
     int age;
     String email;
     String address;
-    boolean restance;
-    //restanceType {junior, senior, pensioner, passiv}
+    boolean arrears;
+    //arrearsType {junior, senior, pensioner, passiv}
 
     public Member(String activityType, String teamType, boolean status, String fName, String lName,
-                  int age, String email, String address, boolean restance) {
+                  int age, String email, String address, boolean arrears) {
         this.activityType = activityType;
         this.teamType = teamType;
         this.status = status;
@@ -24,19 +24,19 @@ public class Member {
         this.age = age;
         this.email = email;
         this.address = address;
-        this.restance = restance;
+        this.arrears = arrears;
     }
 
     @Override
     public String toString() {
         String myStatus;
-        String myRestance;
+        String myArrears;
         if (status){
             myStatus = "Active";
         }else{myStatus = "Passiv";}
-        if (restance){
-            myRestance = "Yes";
-        }else{myRestance = "No";}
+        if (arrears){
+            myArrears = "Yes";
+        }else{myArrears = "No";}
         return ("Status: " + myStatus +
                 "\nActivity form: " + activityType +
                 "\nTeam: " + teamType +
@@ -45,6 +45,6 @@ public class Member {
                 "\nAge: " + age +
                 "\nE-mail: " + email +
                 "\nAddress: " + address +
-                "\nRestance? " + myRestance);
+                "\nRestance? " + myArrears);
     }
 }
