@@ -80,9 +80,93 @@ public class MemberHandler {
             members.remove(removeChoice - 1);
             //FileProcessor.writeToCarFile(cars);
         } else {
-            System.out.println("There is no members!");
+            System.out.println("There is no members!\n");
         }
         return members;
     }
 
+    public void editMember(Scanner input) throws IOException {
+        System.out.println("Enter number for which member you want to change info about: ");
+        int picked = input.nextInt();
+
+        String[] strArrayMember = new String[9];
+
+        String[] sArr = new String[members.size()];
+        Arrays.fill(sArr, "");
+
+        String s = String.valueOf(members.get(picked - 1));
+        String[] strArr = s.split("\n");
+        for (int j = 0; j < 9; j++) {
+            sArr[picked - 1] += strArr[j] + "\n";
+            strArrayMember = sArr[picked - 1].split("\n");
+        }
+        for (int i = 0; i < strArrayMember.length; i++) {
+            System.out.println("Nr. " + (i + 1) + ": " + strArrayMember[i]);
+            String newLastMember = strArrayMember[i].substring(strArrayMember[i].indexOf(": ") + 2);
+            strArrayMember[i] = newLastMember;
+        }
+        System.out.println("Enter number for which info you want to change: ");
+        int pickInfoF = input.nextInt();
+        input.nextLine();
+        switch (pickInfoF) {
+            case 1:
+                System.out.println("Enter new activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
+                int activityTypeChoice = input.nextInt();
+                while (activityTypeChoice > 2) {
+                    System.out.println("Invalid number: " + activityTypeChoice);
+                    activityTypeChoice = input.nextInt();
+                }
+                if (activityTypeChoice == 1) {
+                    strArrayMember[0] = "Motionist";
+                } else if (activityTypeChoice == 2) {
+                    strArrayMember[0] = "Competition Swimmer";
+                }
+                break;
+            case 2: //Todo updater automatisk udfra age?
+                System.out.println("Enter new team type: ");
+                strArrayMember[1] = input.next();
+                break;
+            case 3:
+                System.out.println("Enter new status, '1' for active and '2' for passive: ");
+                int statusChoice = input.nextInt();
+                boolean status;
+                status = statusChoice != 1;
+                strArrayMember[2] = String.valueOf(status);
+                break;
+            case 4:
+                System.out.println("Enter new registration: ");
+                strArrayMember[3] = input.nextLine();
+                break;
+            case 5:
+                System.out.println("Enter new odometer: ");
+                strArrayMember[4] = String.valueOf(input.nextInt());
+                break;
+            case 6:
+                System.out.println("Enter new manual gear: ");
+                strArrayMember[5] = input.nextLine();
+                break;
+            case 7:
+                System.out.println("Enter new air condition: ");
+                strArrayMember[6] = input.nextLine();
+                break;
+            case 8:
+                System.out.println("Enter new cruise control: ");
+                strArrayMember[7] = input.nextLine();
+                break;
+            case 9:
+                System.out.println("Enter new seats (Min. 7): ");
+                int seat = input.nextInt();
+                strArrayMember[8] = String.valueOf(seat);
+                while (seat < 7) {
+                    System.out.println("Invalid number of seats" + "\nEnter how many seats (Min. 7): ");
+                    seat = input.nextInt();
+                    strArrayMember[8] = String.valueOf(seat);
+                }
+                break;
+        }
+        Car familyCar = new Family("Family", strArrayFamily[0], strArrayFamily[1], strArrayFamily[2], strArrayFamily[3], Integer.parseInt(strArrayFamily[4]),
+                strArrayFamily[5], strArrayFamily[6], strArrayFamily[7], Integer.parseInt(strArrayFamily[8]));
+        cars.set(picked - 1, familyCar);
+        break;
+    }
 }
