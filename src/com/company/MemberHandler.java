@@ -77,7 +77,7 @@ public class MemberHandler {
     }
 
     public ArrayList<Member> deleteMember(Scanner input) throws IOException {
-        if (members.size() > 1) {
+        if (members.size() >= 1) {
             for (int i = 0; i < members.size(); i++) {
                 System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).restance);
             }
@@ -92,6 +92,8 @@ public class MemberHandler {
     }
 
     public void editMember(Scanner input) throws IOException {
+        showEditMember();
+
         System.out.println("Enter number for which member you want to change info about: ");
         int picked = input.nextInt();
 
@@ -169,7 +171,7 @@ public class MemberHandler {
         }
         if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[0].equals("Competition Swimmer"))) {
             strArrayMember[1] = "Junior";
-        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))){
+        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))) {
             strArrayMember[1] = "Senior";
         } else {
             strArrayMember[1] = "None";
@@ -177,5 +179,12 @@ public class MemberHandler {
 
         Member member = new Member(strArrayMember[0], strArrayMember[1], Boolean.parseBoolean(strArrayMember[2]), strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
         members.set(picked - 1, member);
+    }
+
+    public void showEditMember() {
+        for (Member s : members) {
+            System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
+
+        }
     }
 }
