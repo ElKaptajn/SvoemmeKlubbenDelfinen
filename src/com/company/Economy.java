@@ -42,4 +42,12 @@ public class Economy {
     public static void arrears(){
 
     }
+
+    public static void income(){
+
+    }
+
+    public static void membersInArrears(){
+
+    }
 }
