@@ -37,6 +37,5 @@ public class Economy {
                 System.out.println("Number" + answer + "is not a valid option.");
                 break;
         }
-        System.out.println("HEJ MED DIG");
     }
 }
