@@ -37,7 +37,7 @@ public class MemberHandler {
         System.out.println("Enter email: ");
         String email = input.next();
         System.out.println("Enter address: ");
-        String address = input.next();
+        String address = input.nextLine();
         String teamType = "None";
         String activityType = "";
         System.out.println("Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
