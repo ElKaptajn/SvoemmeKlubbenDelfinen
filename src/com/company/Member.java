@@ -29,7 +29,13 @@ public class Member {
 
     @Override
     public String toString() {
-        return ("Status: " + status +
+        String myStatus;
+        if (status){
+            myStatus = "Active";
+        }else{
+            myStatus = "Passiv";
+        }
+        return ("Status: " + myStatus +
                 "\nActivity form: " + activityType +
                 "\nTeam: " + teamType +
                 "\nFirstname: " + fName +
