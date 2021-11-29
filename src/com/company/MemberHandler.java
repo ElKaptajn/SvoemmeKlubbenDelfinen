@@ -131,9 +131,9 @@ public class MemberHandler {
                     strArrayMember[0] = "Competition Swimmer";
                 }
                 break;
-            case 3: // Todo updater automatisk udfra age?
-                System.out.println("Enter new team type: ");
-                strArrayMember[1] = input.next();
+            case 3: // Team Todo updater automatisk udfra age?
+                //System.out.println("Enter new team type: ");
+                //strArrayMember[1] = input.next();
                 break;
             case 4: // Firstname
                 System.out.println("Enter new first name: ");
@@ -163,6 +163,14 @@ public class MemberHandler {
                 strArrayMember[8] = String.valueOf(restance);
                 break;
         }
+        if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[0].equals("Competition Swimmer"))) {
+            strArrayMember[1] = "Junior";
+        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))){
+            strArrayMember[1] = "Senior";
+        } else {
+            strArrayMember[1] = "None";
+        }
+
         Member member = new Member(strArrayMember[0], strArrayMember[1], Boolean.parseBoolean(strArrayMember[2]), strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
         members.set(picked - 1, member);
     }
