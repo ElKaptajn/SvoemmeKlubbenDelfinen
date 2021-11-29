@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.EnumSet;
+
 public class Member {
     String activityType;
     String teamType;
@@ -9,10 +11,11 @@ public class Member {
     int age;
     String email;
     String address;
-    boolean restance;
+    boolean arrears;
+    //arrearsType {junior, senior, pensioner, passiv}
 
     public Member(String activityType, String teamType, boolean status, String fName, String lName,
-                  int age, String email, String address, boolean restance) {
+                  int age, String email, String address, boolean arrears) {
         this.activityType = activityType;
         this.teamType = teamType;
         this.status = status;
@@ -21,12 +24,20 @@ public class Member {
         this.age = age;
         this.email = email;
         this.address = address;
-        this.restance = restance;
+        this.arrears = arrears;
     }
 
     @Override
     public String toString() {
-        return ("Status: " + status +
+        String myStatus;
+        String myArrears;
+        if (status){
+            myStatus = "Active";
+        }else{myStatus = "Passiv";}
+        if (arrears){
+            myArrears = "Yes";
+        }else{myArrears = "No";}
+        return ("Status: " + myStatus +
                 "\nActivity form: " + activityType +
                 "\nTeam: " + teamType +
                 "\nFirstname: " + fName +
@@ -34,6 +45,6 @@ public class Member {
                 "\nAge: " + age +
                 "\nE-mail: " + email +
                 "\nAddress: " + address +
-                "\nRestance? " + restance);
+                "\nArrears? " + myArrears);
     }
 }

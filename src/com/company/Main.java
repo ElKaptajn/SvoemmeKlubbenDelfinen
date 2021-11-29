@@ -1,23 +1,35 @@
 package com.company;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
-    public static void main(String[] args) {
-	    Scanner scan = new Scanner(System.in);
+    public static void main(String[] args) throws IOException {
+        Scanner input = new Scanner(System.in);
+        MemberHandler memberHandler = new MemberHandler();
+        Economy economy = new Economy();
+        updateMemberArrayList(memberHandler.getMembers());
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
                     *** Head menu ***
-                    Enter 0 to exit program
-                    Enter 1 to ---
-                    Enter 2 to ---""");
-            answer = scan.nextInt();
+                    Enter 0 for exit program
+                    Enter 1 for Member Menu
+                    Enter 2 for ---
+                    Enter 3 for Economy Menu""");
+            answer = input.nextInt();
             switch (answer) {
                 case 1:
+                    memberHandler.memberHandlerMenu(input);
+                    writeToMemberFile(memberHandler.getMembers());
                     break;
                 case 2:
+                    break;
+                case 3:
+                    Economy.economyMenu(input);
                     break;
                 default:
                     if (answer == 0) {
@@ -29,5 +41,36 @@ public class Main {
 
             }
         }
+    }
+
+    public static void writeToMemberFile(ArrayList<Member> members) throws IOException {
+        FileWriter writeFile = new FileWriter(new File("Files/MemberList"), false);
+        BufferedWriter bWrite = new BufferedWriter(writeFile);
+
+        String membersOut = "";
+        String[] sArr = new String[members.size()];
+        Arrays.fill(sArr, "");
+
+        for (int i = 0; i < members.size(); i++) {
+            String s = String.valueOf(members.get(i));
+            String[] strArr = s.split("\n");
+            for (int j = 0; j < 9; j++) {
+                String newLastMember = strArr[j].substring(strArr[j].indexOf(": ") + 2);
+                sArr[i] += newLastMember + ", ";
+            }
+            membersOut += sArr[i] + "\n";
+        }
+        bWrite.write(membersOut);
+        bWrite.close();
+    }
+    public static void updateMemberArrayList(ArrayList<Member> members) throws FileNotFoundException {
+        Scanner readMember = new Scanner(new File("Files/MemberList"));
+        while (readMember.hasNextLine()) {
+            String[] memberInfo = readMember.nextLine().split(", ");
+                Member member = new Member(memberInfo[0], memberInfo[1], Boolean.parseBoolean(memberInfo[2]), memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), memberInfo[6], memberInfo[7], Boolean.parseBoolean(memberInfo[8]));
+                members.add(member);
+
+        }
+        readMember.close();
     }
 }
