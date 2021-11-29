@@ -179,7 +179,7 @@ public class MemberHandler {
 
     public void showEditMember() {
         for (Member s : members) {
-            System.out.printf("Nr. %-2d: %s %s \n", members.indexOf(s) + 1, s.fName, s.email);
+            System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
 
         }
     }
