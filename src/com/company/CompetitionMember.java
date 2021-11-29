@@ -19,5 +19,4 @@ public class CompetitionMember extends Member {
     public String toString() {
         return (super.toString() + "\ndisciplinType: " + disciplinType + "\ntrainingResult: " + trainingResult + "\ndate: " + date);
     }
-
 }
