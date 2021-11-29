@@ -39,6 +39,7 @@ public class MemberHandler {
         int age = input.nextInt();
         System.out.println("Enter email: ");
         String email = input.next();
+        input.nextLine();
         System.out.println("Enter address: ");
         String address = input.nextLine();
         String teamType = "None";
@@ -110,7 +111,14 @@ public class MemberHandler {
         int pickInfoF = input.nextInt();
         input.nextLine();
         switch (pickInfoF) {
-            case 1:
+            case 1: // Status
+                System.out.println("Enter new status, '1' for active and '2' for passive: ");
+                int statusChoice = input.nextInt();
+                boolean status;
+                status = statusChoice != 1;
+                strArrayMember[2] = String.valueOf(status);
+                break;
+            case 2: // Activity form
                 System.out.println("Enter new activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
                 int activityTypeChoice = input.nextInt();
                 while (activityTypeChoice > 2) {
@@ -123,38 +131,31 @@ public class MemberHandler {
                     strArrayMember[0] = "Competition Swimmer";
                 }
                 break;
-            case 2: //Todo updater automatisk udfra age?
+            case 3: // Todo updater automatisk udfra age?
                 System.out.println("Enter new team type: ");
                 strArrayMember[1] = input.next();
                 break;
-            case 3:
-                System.out.println("Enter new status, '1' for active and '2' for passive: ");
-                int statusChoice = input.nextInt();
-                boolean status;
-                status = statusChoice != 1;
-                strArrayMember[2] = String.valueOf(status);
-                break;
-            case 4:
+            case 4: // Firstname
                 System.out.println("Enter new first name: ");
                 strArrayMember[3] = input.next();
                 break;
-            case 5:
+            case 5: // Lastname
                 System.out.println("Enter new last name: ");
                 strArrayMember[4] = input.next();
                 break;
-            case 6:
+            case 6: // Age
                 System.out.println("Enter new age: ");
                 strArrayMember[5] = String.valueOf(input.nextInt());
                 break;
-            case 7:
+            case 7: // E-mail
                 System.out.println("Enter new email: ");
                 strArrayMember[6] = input.next();
                 break;
-            case 8:
+            case 8: // Adresse
                 System.out.println("Enter new address: ");
                 strArrayMember[7] = input.nextLine();
                 break;
-            case 9:
+            case 9: // Restance
                 System.out.println("Enter new restance, '1' for true and '2' for false: ");
                 int restanceChoice = input.nextInt();
                 boolean restance;
