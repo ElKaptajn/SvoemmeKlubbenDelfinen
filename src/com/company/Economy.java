@@ -38,4 +38,8 @@ public class Economy {
                 break;
         }
     }
+
+    public static void arrears(){
+
+    }
 }
