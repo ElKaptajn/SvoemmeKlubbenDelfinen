@@ -7,6 +7,10 @@ public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
     public void memberHandlerMenu(Scanner input) throws IOException {
+        Member member = new Member("Competition Swimmer", "Senior", true, "Peter", "Larsen", 32, "Mail@hotmail.com", "Guldbergsgade 38", false);
+        members.add(member);
+        Member member1 = new Member("Competition Swimmer", "Junior", true, "Henrik", "Pede", 17, "Mail2@hotmail.com", "Guldbergsgade 39", false);
+        members.add(member1);
         System.out.println("""
                 *** Member menu ***
                 Enter 0 to exit program
@@ -73,9 +77,9 @@ public class MemberHandler {
     }
 
     public ArrayList<Member> deleteMember(Scanner input) throws IOException {
-        if (members.size() > 1) {
+        if (members.size() >= 1) {
             for (int i = 0; i < members.size(); i++) {
-                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).arrears);
+                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).restance);
             }
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
@@ -88,6 +92,8 @@ public class MemberHandler {
     }
 
     public void editMember(Scanner input) throws IOException {
+        showEditMember();
+
         System.out.println("Enter number for which member you want to change info about: ");
         int picked = input.nextInt();
 
@@ -131,9 +137,9 @@ public class MemberHandler {
                     strArrayMember[0] = "Competition Swimmer";
                 }
                 break;
-            case 3: // Todo updater automatisk udfra age?
-                System.out.println("Enter new team type: ");
-                strArrayMember[1] = input.next();
+            case 3: // Team Todo updater automatisk udfra age?
+                //System.out.println("Enter new team type: ");
+                //strArrayMember[1] = input.next();
                 break;
             case 4: // Firstname
                 System.out.println("Enter new first name: ");
@@ -163,7 +169,22 @@ public class MemberHandler {
                 strArrayMember[8] = String.valueOf(arrears);
                 break;
         }
+        if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[0].equals("Competition Swimmer"))) {
+            strArrayMember[1] = "Junior";
+        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))) {
+            strArrayMember[1] = "Senior";
+        } else {
+            strArrayMember[1] = "None";
+        }
+
         Member member = new Member(strArrayMember[0], strArrayMember[1], Boolean.parseBoolean(strArrayMember[2]), strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
         members.set(picked - 1, member);
+    }
+
+    public void showEditMember() {
+        for (Member s : members) {
+            System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
+
+        }
     }
 }
