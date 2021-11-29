@@ -27,6 +27,9 @@ public class Member {
         this.arrears = arrears;
     }
 
+    public Member() {
+    }
+
     @Override
     public String toString() {
         String myStatus;

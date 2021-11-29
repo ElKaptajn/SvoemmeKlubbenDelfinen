@@ -11,6 +11,7 @@ import java.util.*;
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
+
     public void memberHandlerMenu(Scanner input) throws IOException {
 //        Member member = new Member("Competition Swimmer", "Senior", true, "Peter", "Larsen", 32, "Mail@hotmail.com", "Guldbergsgade 38", false);
 //        members.add(member);

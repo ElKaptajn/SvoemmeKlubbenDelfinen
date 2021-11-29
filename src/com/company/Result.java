@@ -3,9 +3,12 @@ package com.company;
 import java.io.*;
 import java.util.*;
 
-public class Result {
+public class Result  {
 
     public static void resultMenu (Scanner input) {
+
+        CompetitionMember competitionMember = new CompetitionMember();
+
         int answer = -1;
         while(answer != 0){
             System.out.println("""
@@ -24,6 +27,7 @@ public class Result {
                     break;
                 case 2:
                     System.out.println("ADD RESULT");
+                    competitionMember.createCompetitionMember(input);
                     break;
                 case 3:
                     System.out.println("EDIT RESULT");
