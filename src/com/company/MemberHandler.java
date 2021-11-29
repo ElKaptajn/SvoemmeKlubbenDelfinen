@@ -66,9 +66,9 @@ public class MemberHandler {
         }
 
         boolean status = true;
-        boolean restance = false;
+        boolean arrears = false;
 
-        Member member = new Member(activityType, teamType, status, fName, lName, age, email, address, restance);
+        Member member = new Member(activityType, teamType, status, fName, lName, age, email, address, arrears);
         members.add(member);
 
         System.out.println(members);
@@ -157,16 +157,16 @@ public class MemberHandler {
                 System.out.println("Enter new email: ");
                 strArrayMember[6] = input.next();
                 break;
-            case 8: // Adresse
+            case 8: // Address
                 System.out.println("Enter new address: ");
                 strArrayMember[7] = input.nextLine();
                 break;
-            case 9: // Restance
-                System.out.println("Enter new restance, '1' for true and '2' for false: ");
-                int restanceChoice = input.nextInt();
-                boolean restance;
-                restance = restanceChoice != 1;
-                strArrayMember[8] = String.valueOf(restance);
+            case 9: // Arrears
+                System.out.println("Enter new arrears, '1' for true and '2' for false: ");
+                int arrearsChoice = input.nextInt();
+                boolean arrears;
+                arrears = arrearsChoice != 1;
+                strArrayMember[8] = String.valueOf(arrears);
                 break;
         }
         System.out.println(strArrayMember[5]);
