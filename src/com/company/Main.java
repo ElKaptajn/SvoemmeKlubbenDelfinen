@@ -11,7 +11,7 @@ public class Main {
             System.out.println("""
                     *** Head menu ***
                     Enter 0 to exit program
-                    Enter 1 to ---
+                    Enter 1 to Member Menu
                     Enter 2 to ---""");
             answer = scan.nextInt();
             switch (answer) {
