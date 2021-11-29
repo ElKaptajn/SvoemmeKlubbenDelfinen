@@ -1,5 +1,7 @@
 package com.company;
 
+import java.util.EnumSet;
+
 public class Member {
     String activityType;
     String teamType;
@@ -10,6 +12,7 @@ public class Member {
     String email;
     String address;
     boolean restance;
+    //restanceType {junior, senior, pensioner, passiv}
 
     public Member(String activityType, String teamType, boolean status, String fName, String lName,
                   int age, String email, String address, boolean restance) {
