@@ -39,7 +39,7 @@ public class MemberHandler {
         System.out.println("Enter email: ");
         String email = input.next();
         System.out.println("Enter address: ");
-        String address = input.next();
+        String address = input.nextLine();
         String teamType = "None";
         String activityType = "";
         System.out.println("Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
@@ -81,5 +81,19 @@ public class MemberHandler {
         return members;
     }
 
+    public ArrayList<Member> deleteMemberTEST(Scanner input) throws IOException {
+        if (members.size() < 1) {
+            for (int i = 0; i < members.size(); i++) {
+                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).restance);
+            }
+            System.out.println("Enter corresponding number for removing: ");
+            int removeChoice = input.nextInt();
+            members.remove(removeChoice - 1);
+            //FileProcessor.writeToCarFile(cars);
+        } else {
+            System.out.println("There is no members!");
+        }
+        return members;
+    }
 
 }
