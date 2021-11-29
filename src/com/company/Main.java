@@ -18,7 +18,7 @@ public class Main {
                     *** Head menu ***
                     Enter 0 for exit program
                     Enter 1 for Member Menu
-                    Enter 2 for ---
+                    Enter 2 for Result Menu
                     Enter 3 for Economy Menu""");
             answer = input.nextInt();
             switch (answer) {
@@ -27,6 +27,7 @@ public class Main {
                     writeToMemberFile(memberHandler.getMembers());
                     break;
                 case 2:
+                    Result.resultMenu(input);
                     break;
                 case 3:
                     Economy.economyMenu(input);
