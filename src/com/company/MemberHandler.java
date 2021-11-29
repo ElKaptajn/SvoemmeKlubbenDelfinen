@@ -22,6 +22,7 @@ public class MemberHandler {
                 deleteMember(input);
                 break;
             case 3:
+                editMember(input);
                 break;
             default:
                 System.out.println("Number " + answer + " is not a valid option");
@@ -134,39 +135,34 @@ public class MemberHandler {
                 strArrayMember[2] = String.valueOf(status);
                 break;
             case 4:
-                System.out.println("Enter new registration: ");
-                strArrayMember[3] = input.nextLine();
+                System.out.println("Enter new first name: ");
+                strArrayMember[3] = input.next();
                 break;
             case 5:
-                System.out.println("Enter new odometer: ");
-                strArrayMember[4] = String.valueOf(input.nextInt());
+                System.out.println("Enter new last name: ");
+                strArrayMember[4] = input.next();
                 break;
             case 6:
-                System.out.println("Enter new manual gear: ");
-                strArrayMember[5] = input.nextLine();
+                System.out.println("Enter new age: ");
+                strArrayMember[5] = String.valueOf(input.nextInt());
                 break;
             case 7:
-                System.out.println("Enter new air condition: ");
-                strArrayMember[6] = input.nextLine();
+                System.out.println("Enter new email: ");
+                strArrayMember[6] = input.next();
                 break;
             case 8:
-                System.out.println("Enter new cruise control: ");
+                System.out.println("Enter new address: ");
                 strArrayMember[7] = input.nextLine();
                 break;
             case 9:
-                System.out.println("Enter new seats (Min. 7): ");
-                int seat = input.nextInt();
-                strArrayMember[8] = String.valueOf(seat);
-                while (seat < 7) {
-                    System.out.println("Invalid number of seats" + "\nEnter how many seats (Min. 7): ");
-                    seat = input.nextInt();
-                    strArrayMember[8] = String.valueOf(seat);
-                }
+                System.out.println("Enter new restance, '1' for true and '2' for false: ");
+                int restanceChoice = input.nextInt();
+                boolean restance;
+                restance = restanceChoice != 1;
+                strArrayMember[8] = String.valueOf(restance);
                 break;
         }
-        Car familyCar = new Family("Family", strArrayFamily[0], strArrayFamily[1], strArrayFamily[2], strArrayFamily[3], Integer.parseInt(strArrayFamily[4]),
-                strArrayFamily[5], strArrayFamily[6], strArrayFamily[7], Integer.parseInt(strArrayFamily[8]));
-        cars.set(picked - 1, familyCar);
-        break;
+        Member member = new Member(strArrayMember[0], strArrayMember[1], Boolean.parseBoolean(strArrayMember[2]), strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
+        members.set(picked - 1, member);
     }
 }
