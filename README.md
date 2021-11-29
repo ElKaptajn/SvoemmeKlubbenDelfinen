@@ -1,4 +1,4 @@
-# Dolphine Svim
+# Dolphine Swim
 *Gruppenummer 2.*
 
 *Lavet af*
