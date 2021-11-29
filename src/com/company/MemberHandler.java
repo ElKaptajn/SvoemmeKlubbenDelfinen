@@ -3,6 +3,11 @@ package com.company;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author Thomas
+ * @author Philip
+ */
+
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
