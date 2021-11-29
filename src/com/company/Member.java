@@ -30,11 +30,13 @@ public class Member {
     @Override
     public String toString() {
         String myStatus;
+        String myRestance;
         if (status){
             myStatus = "Active";
-        }else{
-            myStatus = "Passiv";
-        }
+        }else{myStatus = "Passiv";}
+        if (restance){
+            myRestance = "Yes";
+        }else{myRestance = "No";}
         return ("Status: " + myStatus +
                 "\nActivity form: " + activityType +
                 "\nTeam: " + teamType +
@@ -43,6 +45,6 @@ public class Member {
                 "\nAge: " + age +
                 "\nE-mail: " + email +
                 "\nAddress: " + address +
-                "\nRestance? " + restance);
+                "\nRestance? " + myRestance);
     }
 }
