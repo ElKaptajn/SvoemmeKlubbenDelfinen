@@ -73,7 +73,7 @@ public class MemberHandler {
     }
 
     public ArrayList<Member> deleteMember(Scanner input) throws IOException {
-        if (members.size() > 1) {
+        if (members.size() >= 1) {
             for (int i = 0; i < members.size(); i++) {
                 System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).restance);
             }
