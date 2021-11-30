@@ -3,10 +3,20 @@ package com.company;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @author Thomas
+ * @author Philip
+ */
+
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
+
     public void memberHandlerMenu(Scanner input) throws IOException {
+        /*Member member = new Member("Competition Swimmer", "Senior", true, "Peter", "Larsen", 32, "Mail@hotmail.com", "Guldbergsgade 38", false);
+        members.add(member);
+        Member member1 = new Member("Competition Swimmer", "Junior", true, "Henrik", "Pede", 17, "Mail2@hotmail.com", "Guldbergsgade 39", false);
+        members.add(member1);*/
         System.out.println("""
                 *** Member menu ***
                 Enter 0 to exit program
@@ -62,9 +72,9 @@ public class MemberHandler {
         }
 
         boolean status = true;
-        boolean restance = false;
+        boolean arrears = false;
 
-        Member member = new Member(activityType, teamType, status, fName, lName, age, email, address, restance);
+        Member member = new Member(activityType, teamType, status, fName, lName, age, email, address, arrears);
         members.add(member);
 
         System.out.println(members);
@@ -73,9 +83,9 @@ public class MemberHandler {
     }
 
     public ArrayList<Member> deleteMember(Scanner input) throws IOException {
-        if (members.size() > 1) {
+        if (members.size() >= 1) {
             for (int i = 0; i < members.size(); i++) {
-                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).restance);
+                System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).arrears);
             }
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
@@ -88,6 +98,8 @@ public class MemberHandler {
     }
 
     public void editMember(Scanner input) throws IOException {
+        showEditMember();
+
         System.out.println("Enter number for which member you want to change info about: ");
         int picked = input.nextInt();
 
@@ -151,27 +163,43 @@ public class MemberHandler {
                 System.out.println("Enter new email: ");
                 strArrayMember[6] = input.next();
                 break;
-            case 8: // Adresse
+            case 8: // Address
                 System.out.println("Enter new address: ");
                 strArrayMember[7] = input.nextLine();
                 break;
-            case 9: // Restance
-                System.out.println("Enter new restance, '1' for true and '2' for false: ");
-                int restanceChoice = input.nextInt();
-                boolean restance;
-                restance = restanceChoice != 1;
-                strArrayMember[8] = String.valueOf(restance);
+            case 9: // Arrears
+                System.out.println("Enter new arrears, '1' for true and '2' for false: ");
+                int arrearsChoice = input.nextInt();
+                boolean arrears;
+                arrears = arrearsChoice != 1;
+                strArrayMember[8] = String.valueOf(arrears);
                 break;
+            default:
+
         }
         if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[0].equals("Competition Swimmer"))) {
             strArrayMember[1] = "Junior";
-        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))){
+        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))) {
             strArrayMember[1] = "Senior";
-        } else {
+        } else if (strArrayMember[0].equals("Motionist")) {
             strArrayMember[1] = "None";
         }
 
         Member member = new Member(strArrayMember[0], strArrayMember[1], Boolean.parseBoolean(strArrayMember[2]), strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
         members.set(picked - 1, member);
+    }
+
+    public void showEditMember() {
+        for (Member s : members) {
+            System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
+        }
+    }
+
+    public ArrayList<Member> getMembers() {
+        return members;
+    }
+
+    public void setMembers(ArrayList<Member> members) {
+        this.members = members;
     }
 }

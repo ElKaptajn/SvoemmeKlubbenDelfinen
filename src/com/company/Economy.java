@@ -3,20 +3,6 @@ import java.util.Scanner;
 import java.io.IOException;
 
 public class Economy {
-    String fName;
-    String lName;
-    int arrears;
-
-    public Economy() {
-
-    }
-
-    public Economy (String lName, String fName, int arrears){
-        this.fName = fName;
-        this.lName = lName;
-        this.arrears = arrears;
-    }
-
     public static void economyMenu(Scanner input) {
         System.out.println("""
             
@@ -37,5 +23,17 @@ public class Economy {
                 System.out.println("Number" + answer + "is not a valid option.");
                 break;
         }
+    }
+
+    public static void arrears(){
+
+    }
+
+    public static void income(){
+
+    }
+
+    public static void membersInArrears(){
+
     }
 }
