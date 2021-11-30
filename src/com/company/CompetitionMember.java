@@ -22,6 +22,8 @@ public class CompetitionMember extends Member {
     public CompetitionMember(){
     }
                     //Til test
+    // evt. lav det så man kalder denne metode fra createmember i en if competetive statement... som tager de allerede indtastede
+    // informationer med over og lave dem om til et CompetitionMember objekt istedet for et member objekt. Husk evt. break sp den ikke hopper tilbage i metoden?
     public ArrayList<CompetitionMember> createCompetitionMember(Scanner input) {
         System.out.println("Enter firstname: ");
         String fName = input.next();
