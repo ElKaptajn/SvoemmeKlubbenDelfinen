@@ -11,7 +11,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         MemberHandler memberHandler = new MemberHandler();
         Economy economy = new Economy();
-        //updateMemberArrayList(memberHandler.getMembers());
+        updateMemberArrayList(memberHandler.getMembers());
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
@@ -70,7 +70,6 @@ public class Main {
             String[] memberInfo = readMember.nextLine().split(", ");
                 Member member = new Member(memberInfo[0], memberInfo[1], Boolean.parseBoolean(memberInfo[2]), memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), memberInfo[6], memberInfo[7], Boolean.parseBoolean(memberInfo[8]));
                 members.add(member);
-
         }
         readMember.close();
     }

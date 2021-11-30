@@ -48,6 +48,6 @@ public class Member {
                 "\nAge: " + age +
                 "\nE-mail: " + email +
                 "\nAddress: " + address +
-                "\nArrears? " + myArrears);
+                "\nArrears: " + myArrears);
     }
 }
