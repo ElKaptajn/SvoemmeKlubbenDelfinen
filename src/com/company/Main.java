@@ -11,7 +11,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         MemberHandler memberHandler = new MemberHandler();
         Economy economy = new Economy();
-        //updateMemberArrayList(memberHandler.getMembers());
+        updateMemberArrayList(memberHandler.getMembers());
         int answer = 1;
         while (answer != 0) {
             System.out.println("""

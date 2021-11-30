@@ -174,13 +174,15 @@ public class MemberHandler {
                 arrears = arrearsChoice != 1;
                 strArrayMember[8] = String.valueOf(arrears);
                 break;
+            default:
+
         }
         System.out.println(strArrayMember[5]);
         if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[0].equals("Competition Swimmer"))) {
             strArrayMember[1] = "Junior";
         } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))) {
             strArrayMember[1] = "Senior";
-        } else if (strArrayMember[0].equals("Motionist")){
+        } else if (strArrayMember[0].equals("Motionist")) {
             strArrayMember[1] = "None";
         }
 
