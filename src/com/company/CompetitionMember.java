@@ -10,9 +10,9 @@ public class CompetitionMember extends Member {
 
     ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
 
-    public CompetitionMember(String activityType, String teamType, boolean status, String fName, String lName,
+    public CompetitionMember(boolean status, String activityType, String teamType, String fName, String lName,
                              int age, String email, String address, boolean restance, String[] disciplinType, int[] trainingResult, String[] date) {
-        super(activityType, teamType, status, fName, lName,
+        super(status, activityType, teamType, fName, lName,
                 age, email, address, restance);
         this.disciplinType = disciplinType;
         this.trainingResult = trainingResult;
@@ -58,7 +58,7 @@ public class CompetitionMember extends Member {
         boolean status = true;
         boolean arrears = false;
 
-        CompetitionMember competitionMember = new CompetitionMember(activityType, teamType, status, fName, lName, age, email, address, arrears,
+        CompetitionMember competitionMember = new CompetitionMember(status, activityType, teamType, fName, lName, age, email, address, arrears,
                 disciplinType, trainingResult, date);
         competitionMembers.add(competitionMember);
 

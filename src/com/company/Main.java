@@ -64,12 +64,18 @@ public class Main {
         bWrite.write(membersOut);
         bWrite.close();
     }
+
     public static void updateMemberArrayList(ArrayList<Member> members) throws FileNotFoundException {
         Scanner readMember = new Scanner(new File("Files/MemberList"));
         while (readMember.hasNextLine()) {
             String[] memberInfo = readMember.nextLine().split(", ");
-                Member member = new Member(memberInfo[0], memberInfo[1], Boolean.parseBoolean(memberInfo[2]), memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), memberInfo[6], memberInfo[7], Boolean.parseBoolean(memberInfo[8]));
-                members.add(member);
+            if (memberInfo[0].equals("Active")){
+                memberInfo[0] = "true";
+            } else {
+                memberInfo[0] = "false";
+            }
+            Member member = new Member(Boolean.parseBoolean(memberInfo[0]), memberInfo[1], memberInfo[2], memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), memberInfo[6], memberInfo[7], Boolean.parseBoolean(memberInfo[8]));
+            members.add(member);
         }
         readMember.close();
     }

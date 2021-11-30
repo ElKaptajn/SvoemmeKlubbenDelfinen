@@ -3,9 +3,9 @@ package com.company;
 import java.util.EnumSet;
 
 public class Member {
+    boolean status;
     String activityType;
     String teamType;
-    boolean status;
     String fName;
     String lName;
     int age;
@@ -14,11 +14,11 @@ public class Member {
     boolean arrears;
     //arrearsType {junior, senior, pensioner, passiv}
 
-    public Member(String activityType, String teamType, boolean status, String fName, String lName,
+    public Member(boolean status, String activityType, String teamType, String fName, String lName,
                   int age, String email, String address, boolean arrears) {
+        this.status = status;
         this.activityType = activityType;
         this.teamType = teamType;
-        this.status = status;
         this.fName = fName;
         this.lName = lName;
         this.age = age;
@@ -36,7 +36,7 @@ public class Member {
         String myArrears;
         if (status){
             myStatus = "Active";
-        }else{myStatus = "Passiv";}
+        }else{myStatus = "Passive";}
         if (arrears){
             myArrears = "Yes";
         }else{myArrears = "No";}
