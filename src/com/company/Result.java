@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Result  {
+    //hej
 
     public void resultMenu (Scanner input, ArrayList<Member> members) {
 
