@@ -60,10 +60,18 @@ public class Economy {
 
         while(reader.hasNextLine()) {
             String[] memberInfo = reader.nextLine().split(", ");
+            if (memberInfo[0].equals("Active")){
+                memberInfo[0] = "true";
+            } else {
+                memberInfo[0] = "false";
+            }
             boolean statusT = Boolean.parseBoolean(memberInfo[0]);
             String teamTypeT = memberInfo[2];
             int ageT = Integer.parseInt(memberInfo[5]);
 
+
+            System.out.println(statusT);
+            System.out.println(teamTypeT);
             System.out.println(ageT);
         }
     }
