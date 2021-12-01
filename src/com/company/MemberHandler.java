@@ -1,6 +1,5 @@
 package com.company;
 
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -11,11 +10,7 @@ import java.util.*;
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
-    public void memberHandlerMenu(Scanner input) throws IOException {
-        /*Member member = new Member("Competition Swimmer", "Senior", true, "Peter", "Larsen", 32, "Mail@hotmail.com", "Guldbergsgade 38", false);
-        members.add(member);
-        Member member1 = new Member("Competition Swimmer", "Junior", true, "Henrik", "Pede", 17, "Mail2@hotmail.com", "Guldbergsgade 39", false);
-        members.add(member1);*/
+    public void memberHandlerMenu(Scanner input) {
         System.out.println("""
                 *** Member menu ***
                 Enter 0 to exit program
@@ -25,21 +20,11 @@ public class MemberHandler {
                 Enter 4 to show member""");
         int answer = input.nextInt();
         switch (answer) {
-            case 1:
-                createMember(input);
-                break;
-            case 2:
-                deleteMember(input);
-                break;
-            case 3:
-                editMember(input);
-                break;
-            case 4:
-                showMember(input);
-                break;
-            default:
-                System.out.println("Number " + answer + " is not a valid option");
-                break;
+            case 1 -> createMember(input);
+            case 2 -> deleteMember(input);
+            case 3 -> editMember(input);
+            case 4 -> showMember(input);
+            default -> System.out.println("Number " + answer + " is not a valid option");
         }
     }
 
@@ -84,7 +69,7 @@ public class MemberHandler {
         return members;
     }
 
-    public ArrayList<Member> deleteMember(Scanner input) throws IOException {
+    public ArrayList<Member> deleteMember(Scanner input) {
         if (members.size() >= 1) {
             for (int i = 0; i < members.size(); i++) {
                 System.out.printf("Nr. %-2d: %s %b \n", (i + 1), members.get(i).fName, members.get(i).arrears);
@@ -92,14 +77,13 @@ public class MemberHandler {
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
             members.remove(removeChoice - 1);
-            //FileProcessor.writeToCarFile(cars);
         } else {
             System.out.println("There is no members!\n");
         }
         return members;
     }
 
-    public void editMember(Scanner input) throws IOException {
+    public void editMember(Scanner input) {
         showEditMember();
 
         System.out.println("Enter number for which member you want to change info about: ");
@@ -196,16 +180,17 @@ public class MemberHandler {
         }
     }
 
-    public void showMember(Scanner input){
+    public void showMember(Scanner input) {
         showEditMember();
         System.out.println("Enter number for which member you want to see: ");
         int choice = input.nextInt();
-        System.out.println(members.get(choice-1) + "\n");
+        System.out.println(members.get(choice - 1) + "\n");
     }
 
     public ArrayList<Member> getMembers() {
         return members;
     }
+
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
