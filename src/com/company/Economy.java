@@ -83,6 +83,8 @@ public class Economy {
             } else if (statusT && ageT >= 60) {
                 kontigent = (int) (1600 - (1600 * 0.25));
             } else kontigent = 500;
+
+            System.out.println(kontigent);
         }
     }
 
