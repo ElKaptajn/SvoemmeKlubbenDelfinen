@@ -11,10 +11,6 @@ public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
     public void memberHandlerMenu(Scanner input) {
-        /*Member member = new Member("Competition Swimmer", "Senior", true, "Peter", "Larsen", 32, "Mail@hotmail.com", "Guldbergsgade 38", false);
-        members.add(member);
-        Member member1 = new Member("Competition Swimmer", "Junior", true, "Henrik", "Pede", 17, "Mail2@hotmail.com", "Guldbergsgade 39", false);
-        members.add(member1);*/
         System.out.println("""
                 *** Member menu ***
                 Enter 0 to exit program
