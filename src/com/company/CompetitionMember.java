@@ -10,6 +10,7 @@ public class CompetitionMember extends Member {
 
     ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
 
+
     public CompetitionMember(boolean status, String activityType, String teamType, String fName, String lName,
                              int age, String email, String address, boolean restance, String[] disciplinType, int[] trainingResult, String[] date) {
         super(status, activityType, teamType, fName, lName,
@@ -21,10 +22,18 @@ public class CompetitionMember extends Member {
     }
     public CompetitionMember(){
     }
-                    //Til test
-    // evt. lav det så man kalder denne metode fra createmember i en if competetive statement... som tager de allerede indtastede
-    // informationer med over og lave dem om til et CompetitionMember objekt istedet for et member objekt. Husk evt. break sp den ikke hopper tilbage i metoden?
-    public ArrayList<CompetitionMember> createCompetitionMember(Scanner input, Member member) {
+
+    public ArrayList<CompetitionMember> createCompetitionMember(Scanner input, ArrayList<Member> members) {
+
+        System.out.println(members);
+        //MemberHandler memberhandler = new MemberHandler();
+        //ArrayList<Member> arrayMemberListT = memberhandler.getMembers();
+
+        //System.out.println(arrayMemberListT);
+        System.out.println("Pick a member you want to make into a competition member");
+        int answer = input.nextInt();
+
+        System.out.println(answer);
 
         CompetitionMember competitionMember = new CompetitionMember(status, activityType, teamType, fName, lName, age, email, address, arrears,
                 disciplinType, trainingResult, date);

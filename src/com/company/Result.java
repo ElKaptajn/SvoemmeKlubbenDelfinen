@@ -4,8 +4,9 @@ import java.io.*;
 import java.util.*;
 
 public class Result  {
+    //hej
 
-    public static void resultMenu (Scanner input) {
+    public void resultMenu (Scanner input, ArrayList<Member> members) {
 
         CompetitionMember competitionMember = new CompetitionMember();
 
@@ -28,7 +29,7 @@ public class Result  {
                     break;
                 case 2:
                     System.out.println("ADD RESULT");
-                    competitionMember.createCompetitionMember(input, member);
+                    competitionMember.createCompetitionMember(input, members);
                     //Skal vi lave forskellige metoder til at lave de forskellige typer af members? eller kan vi samle dem på en smart måde?
                     break;
                 case 3:

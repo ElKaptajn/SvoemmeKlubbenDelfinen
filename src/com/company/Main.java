@@ -1,9 +1,7 @@
 package com.company;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -11,6 +9,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         MemberHandler memberHandler = new MemberHandler();
         Economy economy = new Economy();
+        Result result = new Result();
         updateMemberArrayList(memberHandler.getMembers());
         int answer = 1;
         while (answer != 0) {
@@ -27,7 +26,7 @@ public class Main {
                     writeToMemberFile(memberHandler.getMembers());
                     break;
                 case 2:
-                    Result.resultMenu(input);
+                    result.resultMenu(input, memberHandler.getMembers());
                     break;
                 case 3:
                     Economy.economyMenu(input);
@@ -43,7 +42,9 @@ public class Main {
             }
         }
     }
-
+    /**
+     * Writing member arraylist to a file
+     */
     public static void writeToMemberFile(ArrayList<Member> members) throws IOException {
         FileWriter writeFile = new FileWriter(new File("Files/MemberList"), false);
         BufferedWriter bWrite = new BufferedWriter(writeFile);
@@ -64,7 +65,9 @@ public class Main {
         bWrite.write(membersOut);
         bWrite.close();
     }
-
+    /**
+     * Updating arraylist from the file
+     */
     public static void updateMemberArrayList(ArrayList<Member> members) throws FileNotFoundException {
         Scanner readMember = new Scanner(new File("Files/MemberList"));
         while (readMember.hasNextLine()) {
