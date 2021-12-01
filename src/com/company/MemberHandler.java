@@ -18,10 +18,11 @@ public class MemberHandler {
         members.add(member1);*/
         System.out.println("""
                 *** Member menu ***
-                Enter 0 to exit program
+                Enter 0 to Exit program
                 Enter 1 to Create new member
                 Enter 2 to Delete member
-                Enter 3 to Edit member""");
+                Enter 3 to Edit member
+                Enter 4 to Show member""");
         int answer = input.nextInt();
         switch (answer) {
             case 1:
@@ -32,6 +33,9 @@ public class MemberHandler {
                 break;
             case 3:
                 editMember(input);
+                break;
+            case 4:
+                showEditMember();
                 break;
             default:
                 System.out.println("Number " + answer + " is not a valid option");
