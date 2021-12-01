@@ -1,6 +1,7 @@
 package com.company;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.IOException;
@@ -9,7 +10,7 @@ public class Economy {
 
     public static void economyMenu(Scanner input) throws IOException {
         System.out.println("""
-                            
+
                 *** Economy Menu ***
                 Enter 1 to Show arrears
                 Enter 2 to Show income
@@ -20,8 +21,7 @@ public class Economy {
             case 1:
                 break;
             case 2:
-                //income();
-                incomeTest();
+                income();
                 break;
             case 3:
                 break;
@@ -35,29 +35,10 @@ public class Economy {
 
     }
 
-    public static void income() throws IOException { //find lige ud af hvorfor det skal være IO og ikke være FileNotFound
+    public static void income() throws FileNotFoundException {
         Scanner reader = new Scanner(new File("Files/MemberList"));
 
-        while (reader.hasNextLine()) {
-            boolean statusT = Boolean.parseBoolean(reader.next());
-            reader.next();
-            reader.next();
-            String teamTypeT = reader.next();
-            reader.next();
-            reader.next();
-            int ageT = reader.nextInt();
-            reader.next();
-            reader.next();
-            reader.nextBoolean();
-
-            System.out.println(ageT);
-        }
-
-
-    }
-
-    public static void incomeTest() throws IOException { //find lige ud af hvorfor det skal være IO og ikke være FileNotFound
-        Scanner reader = new Scanner(new File("Files/MemberList"));
+        int income = 0;
 
         while (reader.hasNextLine()) {
             String[] memberInfo = reader.nextLine().split(", ");
@@ -70,24 +51,20 @@ public class Economy {
             String teamTypeT = memberInfo[2];
             int ageT = Integer.parseInt(memberInfo[5]);
 
-
-            System.out.println(statusT);
-            System.out.println(teamTypeT);
-            System.out.println(ageT);
-
-            int kontigent = 0;
+            int subscription = 0;
             if (statusT && ageT < 18) {
-                kontigent = 1000;
-            } else if (statusT && (ageT >= 18 && ageT < 60)) {
-                kontigent = 1600;
+                subscription = 1000;
+            } else if (statusT && ageT >= 18 && ageT < 60) {
+                subscription = 1600;
             } else if (statusT && ageT >= 60) {
-                kontigent = (int) (1600 - (1600 * 0.25));
-            } else kontigent = 500;
+                subscription = (int) (1600 - (1600 * 0.25));
+            } else subscription = 500;
 
-            System.out.println(kontigent);
+            income += subscription;
+
         }
+        System.out.println("\nExpected income: " + income + " DKK\n");
     }
-
 
     public static void membersInArrears() {
 
