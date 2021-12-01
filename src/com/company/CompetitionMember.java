@@ -21,7 +21,7 @@ public class CompetitionMember extends Member {
     }
     public CompetitionMember(){
     }
-
+//PUSH
                 //Mangler delete fra member arrayet og metoden skal nok splittets op i edit og create.
                 //Skal rykkes til member handler og/eller result klassen
                 //Mangler at bliver gemt i fil og hentet fra fil
