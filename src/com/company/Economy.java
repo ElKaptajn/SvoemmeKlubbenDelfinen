@@ -42,7 +42,7 @@ public class Economy {
                 reader.next();
                 reader.next();
                 String ageT = reader.next();
-            System.out.println(ageT);
+            //System.out.println(ageT);
         }
 
 
