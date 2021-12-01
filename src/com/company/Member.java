@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.EnumSet;
-
 public class Member {
     boolean status;
     String activityType;
