@@ -28,7 +28,7 @@ public class Result  {
                     break;
                 case 2:
                     System.out.println("ADD RESULT");
-                    competitionMember.createCompetitionMember(input);
+                    competitionMember.createCompetitionMember(input, member);
                     //Skal vi lave forskellige metoder til at lave de forskellige typer af members? eller kan vi samle dem på en smart måde?
                     break;
                 case 3:
@@ -49,6 +49,9 @@ public class Result  {
 
     }
     public void editResult(){
+
+    }
+    public void updateResult(){
 
     }
 

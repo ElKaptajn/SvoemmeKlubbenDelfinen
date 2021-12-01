@@ -24,39 +24,7 @@ public class CompetitionMember extends Member {
                     //Til test
     // evt. lav det så man kalder denne metode fra createmember i en if competetive statement... som tager de allerede indtastede
     // informationer med over og lave dem om til et CompetitionMember objekt istedet for et member objekt. Husk evt. break sp den ikke hopper tilbage i metoden?
-    public ArrayList<CompetitionMember> createCompetitionMember(Scanner input) {
-        System.out.println("Enter firstname: ");
-        String fName = input.next();
-        System.out.println("Enter lastname: ");
-        String lName = input.next();
-        System.out.println("Enter age: ");
-        int age = input.nextInt();
-        System.out.println("Enter email: ");
-        String email = input.next();
-        input.nextLine();
-        System.out.println("Enter address: ");
-        String address = input.nextLine();
-        String teamType = "None";
-        String activityType = "";
-        System.out.println("Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
-        int activityTypeChoice = input.nextInt();
-        while (activityTypeChoice > 2) {
-            System.out.println("Invalid number: " + activityTypeChoice);
-            activityTypeChoice = input.nextInt();
-        }
-        if (activityTypeChoice == 1) {
-            activityType = "Motionist";
-        } else if (activityTypeChoice == 2) {
-            activityType = "Competition Swimmer";
-        }
-        if ((age < 18) && (activityType.equals("Competition Swimmer"))) {
-            teamType = "Junior";
-        } else if (age > 18 && age < 60 && (activityType.equals("Competition Swimmer"))) {
-            teamType = "Senior";
-        }
-
-        boolean status = true;
-        boolean arrears = false;
+    public ArrayList<CompetitionMember> createCompetitionMember(Scanner input, Member member) {
 
         CompetitionMember competitionMember = new CompetitionMember(status, activityType, teamType, fName, lName, age, email, address, arrears,
                 disciplinType, trainingResult, date);
