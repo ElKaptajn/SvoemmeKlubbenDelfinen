@@ -1,9 +1,11 @@
 package com.company;
+import java.io.File;
 import java.util.Scanner;
 import java.io.IOException;
 
 public class Economy {
-    public static void economyMenu(Scanner input) {
+
+    public static void economyMenu(Scanner input) throws IOException {
         System.out.println("""
             
             *** Economy Menu ***
@@ -16,6 +18,7 @@ public class Economy {
             case 1:
                 break;
             case 2:
+                income();
                 break;
             case 3:
                 break;
@@ -29,7 +32,19 @@ public class Economy {
 
     }
 
-    public static void income(){
+    public static void income() throws IOException {
+        Scanner reader = new Scanner(new File ("Files/MemberList"));
+
+        while(reader.hasNextLine()) { //tilføj * efter alle members for at adskille members
+                String activityTypeT = reader.next();
+                reader.next();
+                String statusT = reader.next();
+                reader.next();
+                reader.next();
+                String ageT = reader.next();
+            System.out.println(ageT);
+        }
+
 
     }
 

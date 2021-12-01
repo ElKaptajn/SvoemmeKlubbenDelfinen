@@ -11,7 +11,6 @@ import java.util.*;
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
 
-
     public void memberHandlerMenu(Scanner input) throws IOException {
         /*Member member = new Member("Competition Swimmer", "Senior", true, "Peter", "Larsen", 32, "Mail@hotmail.com", "Guldbergsgade 38", false);
         members.add(member);
@@ -67,14 +66,14 @@ public class MemberHandler {
         }
         if ((age < 18) && (activityType.equals("Competition Swimmer"))) {
             teamType = "Junior";
-        } else if (age > 18 && age < 60 && (activityType.equals("Competition Swimmer"))) {
+        } else if (age >= 18 && age < 60 && (activityType.equals("Competition Swimmer"))) {
             teamType = "Senior";
         }
 
         boolean status = true;
         boolean arrears = false;
 
-        Member member = new Member(activityType, teamType, status, fName, lName, age, email, address, arrears);
+        Member member = new Member(status, activityType, teamType, fName, lName, age, email, address, arrears);
         members.add(member);
 
         System.out.println(members);
@@ -128,7 +127,7 @@ public class MemberHandler {
                 int statusChoice = input.nextInt();
                 boolean status;
                 status = statusChoice != 1;
-                strArrayMember[2] = String.valueOf(status);
+                strArrayMember[0] = String.valueOf(status);
                 break;
             case 2: // Activity form
                 System.out.println("Enter new activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
@@ -138,9 +137,9 @@ public class MemberHandler {
                     activityTypeChoice = input.nextInt();
                 }
                 if (activityTypeChoice == 1) {
-                    strArrayMember[0] = "Motionist";
+                    strArrayMember[1] = "Motionist";
                 } else if (activityTypeChoice == 2) {
-                    strArrayMember[0] = "Competition Swimmer";
+                    strArrayMember[1] = "Competition Swimmer";
                 }
                 break;
             case 3: // Team Todo updater automatisk udfra age?
@@ -175,17 +174,17 @@ public class MemberHandler {
                 strArrayMember[8] = String.valueOf(arrears);
                 break;
             default:
-
         }
-        if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[0].equals("Competition Swimmer"))) {
-            strArrayMember[1] = "Junior";
-        } else if ((Integer.parseInt(strArrayMember[5]) > 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[0].equals("Competition Swimmer"))) {
-            strArrayMember[1] = "Senior";
-        } else if (strArrayMember[0].equals("Motionist")) {
-            strArrayMember[1] = "None";
+        if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[1].equals("Competition Swimmer"))) {
+            strArrayMember[2] = "Junior";
+        } else if ((Integer.parseInt(strArrayMember[5]) >= 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[1].equals("Competition Swimmer"))) {
+            strArrayMember[2] = "Senior";
+        } else if (strArrayMember[1].equals("Competition Swimmer") || strArrayMember[1].equals("Motionist")) {
+            strArrayMember[2] = "None";
+            strArrayMember[1] = "Motionist";
         }
 
-        Member member = new Member(strArrayMember[0], strArrayMember[1], Boolean.parseBoolean(strArrayMember[2]), strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
+        Member member = new Member(Boolean.parseBoolean(strArrayMember[0]), strArrayMember[1], strArrayMember[2], strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
         members.set(picked - 1, member);
     }
 
@@ -198,7 +197,6 @@ public class MemberHandler {
     public ArrayList<Member> getMembers() {
         return members;
     }
-
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
