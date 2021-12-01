@@ -32,17 +32,22 @@ public class Economy {
 
     }
 
-    public static void income() throws IOException {
+    public static void income() throws IOException { //find lige ud af hvorfor det skal være IO og ikke være FileNotFound
         Scanner reader = new Scanner(new File ("Files/MemberList"));
 
-        while(reader.hasNextLine()) { //tilføj * efter alle members for at adskille members
-                String activityTypeT = reader.next();
-                reader.next();
-                String statusT = reader.next();
-                reader.next();
-                reader.next();
-                String ageT = reader.next();
-            //System.out.println(ageT);
+        while(reader.hasNextLine()) {
+            boolean statusT = Boolean.parseBoolean(reader.next());
+            reader.next();
+            reader.next();
+            String teamTypeT = reader.next();
+            reader.next();
+            reader.next();
+            int ageT = reader.nextInt();
+            reader.next();
+            reader.next();
+            reader.nextBoolean();
+
+            System.out.println(ageT);
         }
 
 
