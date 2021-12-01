@@ -75,7 +75,6 @@ public class MemberHandler {
 
         Member member = new Member(status, activityType, teamType, fName, lName, age, email, address, arrears);
         members.add(member);
-
         System.out.println(members);
 
         return members;
