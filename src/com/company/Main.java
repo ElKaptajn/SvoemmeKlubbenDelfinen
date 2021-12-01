@@ -1,9 +1,7 @@
 package com.company;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
 
@@ -44,7 +42,9 @@ public class Main {
             }
         }
     }
-
+    /**
+     * Writing member arraylist to a file
+     */
     public static void writeToMemberFile(ArrayList<Member> members) throws IOException {
         FileWriter writeFile = new FileWriter(new File("Files/MemberList"), false);
         BufferedWriter bWrite = new BufferedWriter(writeFile);
@@ -65,7 +65,9 @@ public class Main {
         bWrite.write(membersOut);
         bWrite.close();
     }
-
+    /**
+     * Updating arraylist from the file
+     */
     public static void updateMemberArrayList(ArrayList<Member> members) throws FileNotFoundException {
         Scanner readMember = new Scanner(new File("Files/MemberList"));
         while (readMember.hasNextLine()) {
