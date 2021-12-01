@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 
 public class Result  {
-    //hej
 
     public void resultMenu (Scanner input, ArrayList<Member> members) {
 
@@ -28,9 +27,7 @@ public class Result  {
                     //Tag fra fil eller ARRAY?
                     break;
                 case 2:
-                    System.out.println("ADD RESULT");
                     competitionMember.createCompetitionMember(input, members);
-                    //Skal vi lave forskellige metoder til at lave de forskellige typer af members? eller kan vi samle dem på en smart måde?
                     break;
                 case 3:
                     System.out.println("EDIT RESULT");
