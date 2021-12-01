@@ -21,7 +21,8 @@ public class MemberHandler {
                 Enter 0 to exit program
                 Enter 1 to Create new member
                 Enter 2 to Delete member
-                Enter 3 to Edit member""");
+                Enter 3 to Edit member
+                Enter 4 to show member""");
         int answer = input.nextInt();
         switch (answer) {
             case 1:
@@ -32,6 +33,9 @@ public class MemberHandler {
                 break;
             case 3:
                 editMember(input);
+                break;
+            case 4:
+                showMember(input);
                 break;
             default:
                 System.out.println("Number " + answer + " is not a valid option");
@@ -190,6 +194,13 @@ public class MemberHandler {
         for (Member s : members) {
             System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
         }
+    }
+
+    public void showMember(Scanner input){
+        showEditMember();
+        System.out.println("Enter number for which member you want to see: ");
+        int choice = input.nextInt();
+        System.out.println(members.get(choice-1) + "\n");
     }
 
     public ArrayList<Member> getMembers() {
