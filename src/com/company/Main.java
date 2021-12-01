@@ -11,6 +11,7 @@ public class Main {
         Scanner input = new Scanner(System.in);
         MemberHandler memberHandler = new MemberHandler();
         Economy economy = new Economy();
+        Result result = new Result();
         updateMemberArrayList(memberHandler.getMembers());
         int answer = 1;
         while (answer != 0) {
@@ -27,7 +28,7 @@ public class Main {
                     writeToMemberFile(memberHandler.getMembers());
                     break;
                 case 2:
-                    Result.resultMenu(input);
+                    result.resultMenu(input, memberHandler.getMembers());
                     break;
                 case 3:
                     Economy.economyMenu(input);
