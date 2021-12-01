@@ -92,7 +92,6 @@ public class MemberHandler {
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
             members.remove(removeChoice - 1);
-            //FileProcessor.writeToCarFile(cars);
         } else {
             System.out.println("There is no members!\n");
         }
