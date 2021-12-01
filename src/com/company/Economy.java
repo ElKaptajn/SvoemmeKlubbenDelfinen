@@ -74,18 +74,17 @@ public class Economy {
             System.out.println(statusT);
             System.out.println(teamTypeT);
             System.out.println(ageT);
-        }
-        int kontigent = 0;
-        if (status == active && age < 18) {
-            kontigent = 1000;
-        } else if (status == active && (age >= 18 && age < 60)) {
-            kontigent = 1600;
-        } else if (status == active && age >= 60) {
-            kontigent = (int) ( 1600 - (1600 * 0.25));
-        } else (status == passive)
-        kontigent = 500;
-    }
 
+            int kontigent = 0;
+            if (statusT && ageT < 18) {
+                kontigent = 1000;
+            } else if (statusT && (ageT >= 18 && ageT < 60)) {
+                kontigent = 1600;
+            } else if (statusT && ageT >= 60) {
+                kontigent = (int) (1600 - (1600 * 0.25));
+            } else kontigent = 500;
+        }
+    }
 
 
     public static void membersInArrears() {
