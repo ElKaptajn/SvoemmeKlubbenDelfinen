@@ -75,7 +75,6 @@ public class MemberHandler {
 
         Member member = new Member(status, activityType, teamType, fName, lName, age, email, address, arrears);
         members.add(member);
-
         System.out.println(members);
 
         return members;
@@ -101,9 +100,9 @@ public class MemberHandler {
 
         System.out.println("Enter number for which member you want to change info about: ");
         int picked = input.nextInt();
+        int tempI = 1;
 
         String[] strArrayMember = new String[9];
-
         String[] sArr = new String[members.size()];
         Arrays.fill(sArr, "");
 
@@ -114,7 +113,10 @@ public class MemberHandler {
             strArrayMember = sArr[picked - 1].split("\n");
         }
         for (int i = 0; i < strArrayMember.length; i++) {
-            System.out.println("Nr. " + (i + 1) + ": " + strArrayMember[i]);
+            if (i != 2) {
+                System.out.println("Nr. " + (tempI) + ": " + strArrayMember[i]);
+                tempI++;
+            }
             String newLastMember = strArrayMember[i].substring(strArrayMember[i].indexOf(": ") + 2);
             strArrayMember[i] = newLastMember;
         }
@@ -142,31 +144,27 @@ public class MemberHandler {
                     strArrayMember[1] = "Competition Swimmer";
                 }
                 break;
-            case 3: // Team Todo updater automatisk udfra age?
-                //System.out.println("Enter new team type: ");
-                //strArrayMember[1] = input.next();
-                break;
-            case 4: // Firstname
+            case 3: // Firstname
                 System.out.println("Enter new first name: ");
                 strArrayMember[3] = input.next();
                 break;
-            case 5: // Lastname
+            case 4: // Lastname
                 System.out.println("Enter new last name: ");
                 strArrayMember[4] = input.next();
                 break;
-            case 6: // Age
+            case 5: // Age
                 System.out.println("Enter new age: ");
                 strArrayMember[5] = String.valueOf(input.nextInt());
                 break;
-            case 7: // E-mail
+            case 6: // E-mail
                 System.out.println("Enter new email: ");
                 strArrayMember[6] = input.next();
                 break;
-            case 8: // Address
+            case 7: // Address
                 System.out.println("Enter new address: ");
                 strArrayMember[7] = input.nextLine();
                 break;
-            case 9: // Arrears
+            case 8: // Arrears
                 System.out.println("Enter new arrears, '1' for true and '2' for false: ");
                 int arrearsChoice = input.nextInt();
                 boolean arrears;
