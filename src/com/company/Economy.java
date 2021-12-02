@@ -36,6 +36,7 @@ public class Economy {
     }
 
     public static void income() throws FileNotFoundException {
+
         Scanner reader = new Scanner(new File("Files/MemberList"));
 
         int income = 0;
@@ -67,6 +68,27 @@ public class Economy {
     }
 
     public static void membersInArrears() {
+        Scanner reader = new Scanner(new File("Files/MemberList"));
 
-    }
+        int count = 0;
+        while (reader.hasNextLine()) {
+            String[] memberInfo = reader.nextLine().split(", ");
+            if (memberInfo[0].equals("No")) {
+                memberInfo[0] = "false";
+            } else {
+                memberInfo[0] = "true";
+            }
+            boolean statusT = Boolean.parseBoolean(memberInfo[9]);
+
+            int arrayCount = 0;
+            if (memberInfo[9] == "True") {
+                arrayCount++;
+            }else{
+
+            }
+
+            count += arrayCount;
+
+
+        }
 }
