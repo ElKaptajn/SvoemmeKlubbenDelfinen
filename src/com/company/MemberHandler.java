@@ -9,6 +9,7 @@ import java.util.*;
 
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
+    private ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
 
     public void memberHandlerMenu(Scanner input) {
         System.out.println("""
@@ -193,5 +194,11 @@ public class MemberHandler {
 
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
+    }
+
+    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) { this.competitionMembers = competitionMembers; }
+
+    public ArrayList<CompetitionMember> getCompetitionMembers() {
+        return competitionMembers;
     }
 }
