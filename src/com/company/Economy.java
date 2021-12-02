@@ -19,11 +19,13 @@ public class Economy {
         int answer = input.nextInt();
         switch (answer) {
             case 1:
+                arrears();
                 break;
             case 2:
                 income();
                 break;
             case 3:
+                editMemberInArrears();
                 break;
             default:
                 System.out.println("Number" + answer + "is not a valid option.");
@@ -31,12 +33,27 @@ public class Economy {
         }
     }
 
-    public static void arrears() {
+    public static void arrears() throws FileNotFoundException {
+        Scanner reader = new Scanner(new File("Files/MemberList"));
 
+        int count = 0;
+
+        while (reader.hasNextLine()) {
+            String[] memberInfo = reader.nextLine().split(", ");
+
+            int arrayCount = 0;
+            if (memberInfo[8].equals("Yes")) {
+                arrayCount++;
+            } else {
+
+            }
+            count += arrayCount;
+
+        }
+        System.out.println(count);
     }
 
     public static void income() throws FileNotFoundException {
-
         Scanner reader = new Scanner(new File("Files/MemberList"));
 
         int income = 0;
@@ -67,28 +84,7 @@ public class Economy {
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
-    public static void membersInArrears() {
-        Scanner reader = new Scanner(new File("Files/MemberList"));
+    public static void editMemberInArrears() {
+    }
 
-        int count = 0;
-        while (reader.hasNextLine()) {
-            String[] memberInfo = reader.nextLine().split(", ");
-            if (memberInfo[0].equals("No")) {
-                memberInfo[0] = "false";
-            } else {
-                memberInfo[0] = "true";
-            }
-            boolean statusT = Boolean.parseBoolean(memberInfo[9]);
-
-            int arrayCount = 0;
-            if (memberInfo[9] == "True") {
-                arrayCount++;
-            }else{
-
-            }
-
-            count += arrayCount;
-
-
-        }
 }
