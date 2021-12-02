@@ -3,6 +3,7 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -25,7 +26,7 @@ public class Economy {
                 income();
                 break;
             case 3:
-                editMemberInArrears();
+                editMemberInArrears(input);
                 break;
             default:
                 System.out.println("Number" + answer + "is not a valid option.");
@@ -84,7 +85,17 @@ public class Economy {
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
-    public static void editMemberInArrears() {
+    public static void editMemberInArrears(Scanner input) {
+        String[] strArrayMember = new String[9];
+        String[] sArr = new String[members.size()];
+        Arrays.fill(sArr, "");
+
+        System.out.println("Enter new arrears, '1' for true and '2' for false: ");
+        int arrearsChoice = input.nextInt();
+        boolean arrears;
+        arrears = arrearsChoice != 1;
+        strArrayMember[8] = String.valueOf(arrears);
+        break;
     }
 
 }
