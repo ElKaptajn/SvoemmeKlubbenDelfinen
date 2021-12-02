@@ -21,6 +21,7 @@ public class CompetitionMember extends Member {
     }
     public CompetitionMember(){
     }
+                //createMember metoden kaldes
                 //Mangler delete fra member arrayet og metoden skal nok splittets op i edit og create.
                 //Skal rykkes til member handler og/eller result klassen
                 //Mangler at bliver gemt i fil og hentet fra fil
@@ -124,6 +125,7 @@ public class CompetitionMember extends Member {
         //System.out.println("\n" + competitionMember); //TIL TEST
     }
             //Tester hvilken tid der er lavest. Stringen skal være i formatet: xx:xx.
+    // gør så den kan løse minutter der starter med 0 efter fuldgt af rt andet tal --- Se på Null
     public boolean timeTester(String oldTimeString, String newTimeString){
         if(!oldTimeString.contains(":")) {
             return false;
