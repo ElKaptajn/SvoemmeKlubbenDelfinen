@@ -53,6 +53,7 @@ public class Economy {
 
         }
 //forloop kør arrayet igennem og tjek restance og print hvis det er
+        /*
         String fName = memberInfo[3];
         String lName = memberInfo[4];
         String email = memberInfo[6];
@@ -60,7 +61,7 @@ public class Economy {
         System.out.println("Amount of members in arrears: " + count);
         System.out.println("Info on the members: \n");
         System.out.println("First name: " + fName + "\nLastname: " + lName + "\nEmail: " + email);
-
+        */
 
     }
 

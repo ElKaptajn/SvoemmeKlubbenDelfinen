@@ -191,11 +191,14 @@ public class MemberHandler {
     public ArrayList<Member> getMembers() {
         return members;
     }
+
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
 
-    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) { this.competitionMembers = competitionMembers; }
+    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) {
+        this.competitionMembers = competitionMembers;
+    }
 
     public ArrayList<CompetitionMember> getCompetitionMembers() {
         return competitionMembers;
