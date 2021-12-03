@@ -57,7 +57,6 @@ public class Economy {
         Scanner reader = new Scanner(new File("Files/MemberList"));
 
         int income = 0;
-        int hej med dig
 
         while (reader.hasNextLine()) {
             String[] memberInfo = reader.nextLine().split(", ");
