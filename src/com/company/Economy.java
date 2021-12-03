@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class Economy {
 
-    public static void economyMenu(Scanner input) throws IOException {
+    public static void economyMenu(Scanner input, ArrayList<Member> members) throws IOException {
         System.out.println("""
-
+                
                 *** Economy Menu ***
                 Enter 1 to Show arrears
                 Enter 2 to Show income
@@ -20,7 +20,7 @@ public class Economy {
         int answer = input.nextInt();
         switch (answer) {
             case 1:
-                arrears();
+                arrears(members);
                 break;
             case 2:
                 income();
@@ -34,35 +34,23 @@ public class Economy {
         }
     }
 
-    public static void arrears() throws FileNotFoundException {
-        Scanner reader = new Scanner(new File("Files/MemberList"));
+    public static void arrears(ArrayList<Member> members) {
 
-        int count = 0;
+        int arrearsSum = 0;
+        int numberOfMembersInArrears = 0;
 
-        while (reader.hasNextLine()) {
-            String[] memberInfo = reader.nextLine().split(", ");
+        System.out.println("Info about members:\n");
+        for (int i = 0; i < members.size(); i++) {
+            //int individuelArrears = 0;
 
-            int arrayCount = 0;
-            if (memberInfo[8].equals("Yes")) {
-                arrayCount++;
-
-            } else {
-
+            if (members.get(i).arrears == true) { //restance true betyder member er i restance.
+                numberOfMembersInArrears++;
+                System.out.println("First name: "+members.get(i).fName +"\nLastname: "+members.get(i).lName +"\nEmail: "+members.get(i).email + "\n");
+                //vi skal have
             }
-            count += arrayCount;
 
         }
-//forloop kør arrayet igennem og tjek restance og print hvis det er
-        /*
-        String fName = memberInfo[3];
-        String lName = memberInfo[4];
-        String email = memberInfo[6];
-
-        System.out.println("Amount of members in arrears: " + count);
-        System.out.println("Info on the members: \n");
-        System.out.println("First name: " + fName + "\nLastname: " + lName + "\nEmail: " + email);
-        */
-
+        System.out.println("Total number of members in arrears: " + numberOfMembersInArrears + "\n");
     }
 
     public static void income() throws FileNotFoundException {
@@ -96,7 +84,8 @@ public class Economy {
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
-/*    public static void editMemberInArrears(Scanner input) {
+    /*
+    public static void editMemberInArrears(Scanner input) {
         private ArrayList<Member> members = new ArrayList<>();
 
         String[] strArrayMember = new String[9];
@@ -108,6 +97,6 @@ public class Economy {
         boolean arrears;
         arrears = arrearsChoice != 1;
         strArrayMember[8] = String.valueOf(arrears);
-    }*/
-
+    }
+*/
 }
