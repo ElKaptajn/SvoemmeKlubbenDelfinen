@@ -46,6 +46,7 @@ public class Economy {
             if (members.get(i).arrears == true) { //restance true betyder member er i restance.
                 numberOfMembersInArrears++;
                 System.out.println("First name: "+members.get(i).fName +"\nLastname: "+members.get(i).lName +"\nEmail: "+members.get(i).email + "\n");
+                //vi skal have
             }
 
         }
