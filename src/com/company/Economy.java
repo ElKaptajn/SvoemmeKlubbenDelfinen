@@ -70,7 +70,6 @@ public class Economy {
             String teamTypeT = memberInfo[2];
             int ageT = Integer.parseInt(memberInfo[5]);
 
-
             System.out.println(statusT);
             System.out.println(teamTypeT);
             System.out.println(ageT);
