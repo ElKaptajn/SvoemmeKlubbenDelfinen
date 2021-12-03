@@ -206,9 +206,9 @@ public class Result  {
             tempCompetitionMember += competitionMembers.get(i).email + ", ";
             tempCompetitionMember += competitionMembers.get(i).address + ", ";
             if (competitionMembers.get(i).arrears){
-                tempCompetitionMember += "No, ";
-            }else{
                 tempCompetitionMember += "Yes, ";
+            }else{
+                tempCompetitionMember += "No, ";
             }
             tempCompetitionMember += competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).disciplinType[1] + " "
                     + competitionMembers.get(i).disciplinType[2] + " " + competitionMembers.get(i).disciplinType[3] + ", ";
