@@ -3,7 +3,7 @@ package com.company;
 import java.io.*;
 import java.util.*;
 
-public class Result  {
+public class Result {
 
     public void resultMenu (Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
@@ -24,7 +24,7 @@ public class Result  {
                     System.out.println("Returning to main menu");
                     break;
                 case 1:
-                    System.out.println("TOP 5 MENU");
+                    getTopFive(competitionMembers, input);
                     break;
                 case 2:
                     break;
@@ -47,8 +47,100 @@ public class Result  {
         }
     }
 
-    public void getTopFive(){
+    public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
 
+        int pickTop5 = 1;
+        while (pickTop5 != 0) {
+            System.out.println("""
+                    *** Top 5 Menu ***
+                    Enter 0 for exit top 5 list selection
+                    Enter 1 for top 5 Crawl
+                    Enter 2 for top 5 Breaststroke
+                    Enter 3 for top 5 Butterfly
+                    Enter 4 for top 5 Backstroke""");
+            pickTop5 = input.nextInt();
+            switch (pickTop5) {
+                case 1: //Crawl
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                    }
+                    System.out.println();
+                    break;
+                case 2: //Breaststroke
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[1] + " " + competitionMembers.get(i).trainingResult[1] + " " + competitionMembers.get(i).date[1]);
+                    }
+                    System.out.println();
+                    break;
+                case 3: //Butterfly
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[2] + " " + competitionMembers.get(i).trainingResult[2] + " " + competitionMembers.get(i).date[2]);
+                    }
+                    System.out.println();
+                    break;
+                case 4: //Backstroke
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[3] + " " + competitionMembers.get(i).trainingResult[3] + " " + competitionMembers.get(i).date[3]);
+                    }
+                    System.out.println();
+                    break;
+                default:
+            }
+        }
+
+
+
+
+
+
+
+
+
+       /* String[] disTypeArray = new String[4];
+        int[] intArr = new int[4];
+        for (int i = 0; i < competitionMembers.size(); i++) {
+
+
+            if (competitionMembers.get(i).disciplinType[i].equals("Crawl") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
+                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
+                String s = String.valueOf(disTypeArray[i]);
+                String[] strArr = s.split(":");
+
+                intArr[i] = Integer.parseInt(strArr[i]);
+                Arrays.sort(intArr);
+
+            }
+            if (competitionMembers.get(i).disciplinType[i].equals("Breaststroke") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
+                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
+                String s = String.valueOf(disTypeArray[i]);
+                String[] strArr = s.split(":");
+
+                intArr[i] = Integer.parseInt(strArr[i]);
+                Arrays.sort(intArr);
+
+            }
+            if (competitionMembers.get(i).disciplinType[i].equals("Butterfly") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
+                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
+                String s = String.valueOf(disTypeArray[i]);
+                String[] strArr = s.split(":");
+
+                intArr[i] = Integer.parseInt(strArr[i]);
+                Arrays.sort(intArr);
+
+            }
+            if (competitionMembers.get(i).disciplinType[i].equals("Backstroke") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
+                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
+                String s = String.valueOf(disTypeArray[i]);
+                String[] strArr = s.split(":");
+
+                intArr[i] = Integer.parseInt(strArr[i]);
+                Arrays.sort(intArr);
+
+            }
+            System.out.println(Arrays.toString(disTypeArray));
+
+            System.out.println(Arrays.toString(intArr));
+        }*/
     }
     public void addResult(){
 
@@ -58,15 +150,14 @@ public class Result  {
     }
 
     public void makeMemberToCompetitionMember(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) {
-        ArrayList<Member> arrayMemberListT = members;
         int counter = 1;
-        for (Member m: arrayMemberListT) {
+        for (Member m: members) {
             System.out.println("Nr." + counter + "\n" + m + "\n********************************");
             counter++;
         }
         System.out.print("Pick a member from the list above, that you want to make into a competition member.\nThe members nr: ");
         int answer = input.nextInt();
-        Member changingMember = arrayMemberListT.get(answer-1);
+        Member changingMember = members.get(answer-1);
         members.remove(answer-1);
 
         CompetitionMember competitionMember = new CompetitionMember();
@@ -101,56 +192,52 @@ public class Result  {
                     timeTestAnswer = timeTester(competitionMember.trainingResult[0], stringAnswer);
                     if (!timeTestAnswer) {
                         System.out.println("the time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
-                        break;
                     } else {
                         competitionMember.trainingResult[0] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
                         stringAnswer = input.next();
                         competitionMember.date[0] = stringAnswer;
-                        break;
                     }
+                    break;
                 case 2:
                     System.out.print("New best time for Breaststroke (MUST be written in this format: xx:xx): ");
                     stringAnswer = input.next();
                     timeTestAnswer = timeTester(competitionMember.trainingResult[1], stringAnswer);
                     if (!timeTestAnswer) {
                         System.out.println("the time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[1]);
-                        break;
                     } else {
                         competitionMember.trainingResult[1] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
                         stringAnswer = input.next();
                         competitionMember.date[1] = stringAnswer;
-                        break;
                     }
+                    break;
                 case 3:
                     System.out.print("New best time for Butterfly (MUST be written in this format: xx:xx): ");
                     stringAnswer = input.next();
                     timeTestAnswer = timeTester(competitionMember.trainingResult[2], stringAnswer);
                     if (!timeTestAnswer) {
                         System.out.println("the time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[2]);
-                        break;
                     } else {
                         competitionMember.trainingResult[2] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
                         stringAnswer = input.next();
                         competitionMember.date[2] = stringAnswer;
-                        break;
                     }
+                    break;
                 case 4:
                     System.out.print("New best time for Backstroke (MUST be written in this format: xx:xx): ");
                     stringAnswer = input.next();
                     timeTestAnswer = timeTester(competitionMember.trainingResult[3], stringAnswer);
                     if (!timeTestAnswer) {
                         System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[3]);
-                        break;
                     } else {
                         competitionMember.trainingResult[3] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
                         stringAnswer = input.next();
                         competitionMember.date[3] = stringAnswer;
-                        break;
                     }
+                    break;
                 default:
                     System.out.println("The number " + answer + " is not a valid option");
             }
@@ -225,7 +312,7 @@ public class Result  {
         writer.close();
     }
 
-    public void updateCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers)throws IOException {
+    public void updateCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers) throws IOException {
         Scanner reader = new Scanner(new File("Files/CompetitionMemberList"));
 
         while (reader.hasNextLine()){
