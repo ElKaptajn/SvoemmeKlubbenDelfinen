@@ -59,7 +59,6 @@ public class MemberHandler {
         } else if (age >= 18 && age < 60 && (activityType.equals("Competition Swimmer"))) {
             teamType = "Senior";
         }
-
         boolean status = true;
         boolean arrears = false;
 
