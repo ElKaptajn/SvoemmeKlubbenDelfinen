@@ -163,7 +163,6 @@ public class MemberHandler {
                 } else {
                     strArrayMember[8] = "false";
                 }
-                //strArrayMember[8] = String.valueOf(arrears);
                 break;
             default:
         }
