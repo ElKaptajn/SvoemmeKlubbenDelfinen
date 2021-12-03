@@ -190,7 +190,6 @@ public class MemberHandler {
     public ArrayList<Member> getMembers() {
         return members;
     }
-
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
