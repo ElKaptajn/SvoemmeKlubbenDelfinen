@@ -61,9 +61,27 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                    String[] disRes = new String[competitionMembers.size()];
+                    String tempTR;
+                    for (int i = 0; i < competitionMembers.size(); i++){
+                        disRes[i] = competitionMembers.get(i).trainingResult[0];
                     }
+
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        for (int j = i + 1; j < disRes.length; j++) {
+                            if (disRes[i].compareTo(disRes[j]) > 0) {
+                                tempTR = disRes[i];
+                                disRes[i] = disRes[j];
+                                disRes[j] = tempTR;
+                            }
+                        }
+                    }
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[i] + " " + competitionMembers.get(i).date[0]);
+                    }
+                    /*for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                    }*/
                     System.out.println();
                     break;
                 case 2: //Breaststroke
@@ -87,7 +105,6 @@ public class Result {
                 default:
             }
         }
-
        /* String[] disTypeArray = new String[4];
         int[] intArr = new int[4];
         for (int i = 0; i < competitionMembers.size(); i++) {

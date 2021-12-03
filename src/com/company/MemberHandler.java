@@ -59,7 +59,6 @@ public class MemberHandler {
         } else if (age >= 18 && age < 60 && (activityType.equals("Competition Swimmer"))) {
             teamType = "Senior";
         }
-
         boolean status = true;
         boolean arrears = false;
 
@@ -117,7 +116,7 @@ public class MemberHandler {
                 System.out.println("Enter new status, '1' for active and '2' for passive: ");
                 int statusChoice = input.nextInt();
                 boolean status;
-                status = statusChoice != 1;
+                status = statusChoice != 2;
                 strArrayMember[0] = String.valueOf(status);
                 break;
             case 2: // Activity form
@@ -157,7 +156,7 @@ public class MemberHandler {
                 System.out.println("Enter new arrears, '1' for true and '2' for false: ");
                 int arrearsChoice = input.nextInt();
                 boolean arrears;
-                arrears = arrearsChoice != 1;
+                arrears = arrearsChoice != 2;
                 strArrayMember[8] = String.valueOf(arrears);
                 break;
             default:
@@ -170,8 +169,19 @@ public class MemberHandler {
             strArrayMember[2] = "None";
             strArrayMember[1] = "Motionist";
         }
+        if (strArrayMember[0].equals("Active")){
+            strArrayMember[0] = "true";
+        } else if (strArrayMember[0].equals("Passive")){
+            strArrayMember[0] = "false";
+        }
+        if (strArrayMember[8].equals("Yes")){
+            strArrayMember[8] = "true";
+        } else if (strArrayMember[8].equals("No")){
+            strArrayMember[8] = "false";
+        }
 
-        Member member = new Member(Boolean.parseBoolean(strArrayMember[0]), strArrayMember[1], strArrayMember[2], strArrayMember[3], strArrayMember[4], Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
+        Member member = new Member(Boolean.parseBoolean(strArrayMember[0]), strArrayMember[1], strArrayMember[2], strArrayMember[3], strArrayMember[4],
+                Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
         members.set(picked - 1, member);
     }
 
@@ -191,11 +201,14 @@ public class MemberHandler {
     public ArrayList<Member> getMembers() {
         return members;
     }
+
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
 
-    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) { this.competitionMembers = competitionMembers; }
+    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) {
+        this.competitionMembers = competitionMembers;
+    }
 
     public ArrayList<CompetitionMember> getCompetitionMembers() {
         return competitionMembers;
