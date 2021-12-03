@@ -117,7 +117,7 @@ public class MemberHandler {
                 System.out.println("Enter new status, '1' for active and '2' for passive: ");
                 int statusChoice = input.nextInt();
                 boolean status;
-                status = statusChoice != 1;
+                status = statusChoice != 2;
                 strArrayMember[0] = String.valueOf(status);
                 break;
             case 2: // Activity form
@@ -156,9 +156,13 @@ public class MemberHandler {
             case 8: // Arrears
                 System.out.println("Enter new arrears, '1' for true and '2' for false: ");
                 int arrearsChoice = input.nextInt();
-                boolean arrears;
-                arrears = arrearsChoice != 1;
-                strArrayMember[8] = String.valueOf(arrears);
+                //boolean arrears;
+                //arrears = arrearsChoice != 2;
+                if (arrearsChoice == 1) {
+                    strArrayMember[8] = "true";
+                } else {
+                    strArrayMember[8] = "false";
+                }
                 break;
             default:
         }
@@ -191,11 +195,14 @@ public class MemberHandler {
     public ArrayList<Member> getMembers() {
         return members;
     }
+
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
 
-    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) { this.competitionMembers = competitionMembers; }
+    public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) {
+        this.competitionMembers = competitionMembers;
+    }
 
     public ArrayList<CompetitionMember> getCompetitionMembers() {
         return competitionMembers;
