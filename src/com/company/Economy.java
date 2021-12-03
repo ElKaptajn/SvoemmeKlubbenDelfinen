@@ -9,10 +9,9 @@ import java.io.IOException;
 
 public class Economy {
 
-
     public static void economyMenu(Scanner input, ArrayList<Member> members) throws IOException {
         System.out.println("""
-
+                
                 *** Economy Menu ***
                 Enter 1 to Show arrears
                 Enter 2 to Show income
