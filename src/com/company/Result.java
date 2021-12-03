@@ -105,15 +105,6 @@ public class Result {
                 default:
             }
         }
-
-
-
-
-
-
-
-
-
        /* String[] disTypeArray = new String[4];
         int[] intArr = new int[4];
         for (int i = 0; i < competitionMembers.size(); i++) {
