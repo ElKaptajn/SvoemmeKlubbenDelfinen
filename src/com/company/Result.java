@@ -77,7 +77,7 @@ public class Result {
                         }
                     }
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[0] + " " + competitionMembers.get(i).date[0]);
+                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[i] + " " + competitionMembers.get(i).date[0]);
                     }
                     /*for (int i = 0; i < competitionMembers.size(); i++) {
                         System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
