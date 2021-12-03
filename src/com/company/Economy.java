@@ -3,6 +3,7 @@ package com.company;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -19,11 +20,13 @@ public class Economy {
         int answer = input.nextInt();
         switch (answer) {
             case 1:
+                arrears();
                 break;
             case 2:
                 income();
                 break;
             case 3:
+                //editMemberInArrears(input);
                 break;
             default:
                 System.out.println("Number" + answer + "is not a valid option.");
@@ -31,8 +34,24 @@ public class Economy {
         }
     }
 
-    public static void arrears() {
+    public static void arrears() throws FileNotFoundException {
+        Scanner reader = new Scanner(new File("Files/MemberList"));
 
+        int count = 0;
+
+        while (reader.hasNextLine()) {
+            String[] memberInfo = reader.nextLine().split(", ");
+
+            int arrayCount = 0;
+            if (memberInfo[8].equals("Yes")) {
+                arrayCount++;
+            } else {
+
+            }
+            count += arrayCount;
+
+        }
+        System.out.println(count);
     }
 
     public static void income() throws FileNotFoundException {
@@ -66,7 +85,17 @@ public class Economy {
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
-    public static void membersInArrears() {
+    /*public static void editMemberInArrears(Scanner input) {
+        String[] strArrayMember = new String[9];
+        String[] sArr = new String[members.size()];
+        Arrays.fill(sArr, "");
 
-    }
+        System.out.println("Enter new arrears, '1' for true and '2' for false: ");
+        int arrearsChoice = input.nextInt();
+        boolean arrears;
+        arrears = arrearsChoice != 1;
+        strArrayMember[8] = String.valueOf(arrears);
+        break;
+    }*/
+
 }

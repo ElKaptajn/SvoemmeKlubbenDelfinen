@@ -7,6 +7,9 @@ public class Result  {
 
     public void resultMenu (Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
 
+        updateCompetitionMemberList(competitionMembers);    //Til test, skal være et andet sted :-)
+        System.out.println(competitionMembers);             // Også til test :-D
+
         int answer = -1;
         while(answer != 0){
             System.out.println("""
@@ -52,10 +55,8 @@ public class Result  {
     public void editResult(){
 
     }
-    public void updateResult(){
 
-    }
-    //Mangler delete fra member arrayet og metoden skal nok splittets op i edit og create.
+    //Metoden skal nok splittets op i edit og create.
     //Mangler at bliver gemt i fil og hentet fra fil
     //WORK IN PROGRESS...
 
@@ -183,29 +184,78 @@ public class Result  {
             }
         }
     }
+    /**
+     * MUCHIOS GRANDOS VIGTIGUS!!!!
+     * SPØRGSMÅL: når restance er true er den så Yes eller No???
+     */
+
     public void writeToCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers) throws IOException {
         FileWriter writer = new FileWriter("Files/CompetitionMemberList");
-        for (CompetitionMember c : competitionMembers){
-            writer.write(c + System.lineSeparator());
+        String tempCompetitionMember = "";
+        for(int i = 0; i < competitionMembers.size(); i++){
+            if (competitionMembers.get(i).status){
+                tempCompetitionMember += "Active, ";
+            }else{
+                tempCompetitionMember += "Passive, ";
+            }
+            tempCompetitionMember += competitionMembers.get(i).activityType + ", ";
+            tempCompetitionMember += competitionMembers.get(i).teamType + ", ";
+            tempCompetitionMember += competitionMembers.get(i).fName + ", ";
+            tempCompetitionMember += competitionMembers.get(i).lName + ", ";
+            tempCompetitionMember += competitionMembers.get(i).age + ", ";
+            tempCompetitionMember += competitionMembers.get(i).email + ", ";
+            tempCompetitionMember += competitionMembers.get(i).address + ", ";
+            if (competitionMembers.get(i).arrears){
+                tempCompetitionMember += "No, ";
+            }else{
+                tempCompetitionMember += "Yes, ";
+            }
+            tempCompetitionMember += competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).disciplinType[1] + " "
+                    + competitionMembers.get(i).disciplinType[2] + " " + competitionMembers.get(i).disciplinType[3] + ", ";
+            tempCompetitionMember += competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).trainingResult[1] + " "
+                    + competitionMembers.get(i).trainingResult[2] + " " + competitionMembers.get(i).trainingResult[3] + ", ";
+            tempCompetitionMember += competitionMembers.get(i).date[0] + " " + competitionMembers.get(i).date[1] + " "
+                    + competitionMembers.get(i).date[2] + " " + competitionMembers.get(i).date[3];
+
+            System.out.println(tempCompetitionMember);
+            writer.write(tempCompetitionMember + "\n");
+
+            tempCompetitionMember = ""; // til at nulstille tempCompetitionMember, inden det starter på det næste member.
         }
         writer.close();
-
     }
-    public void updateCompetitionMemberList()throws IOException {
-        Scanner input = new Scanner("Files/CompetitionMemberList");
-        boolean status = false;
-        String activityType = "";
-        String teamType = "";
-        String fName = "";
-        String lName = "";
-        int age = 0;
-        String email = "";
-        String address = "";
-        boolean arrears = false;
-        String[] disciplinType = {"Front Crawl", "Breaststroke", "Butterfly", "Backstroke"};
-        String[] trainingResult = {"00:00", "00:00", "00:00", "00:00"};
-        String[] date = {null, null, null, null};
 
+    public void updateCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers)throws IOException {
+        Scanner reader = new Scanner(new File("Files/CompetitionMemberList"));
 
+        while (reader.hasNextLine()){
+            String[] splitArray = reader.nextLine().split(", ");
+            if (splitArray[0].equals("Active")){
+                splitArray[0] = "true";
+            } else {
+                splitArray[0] = "false";
+            }
+            if (splitArray[8].equals("No")){
+                splitArray[8] = "true";
+            } else {
+                splitArray[8] = "false";
+            }
+
+            String disciplinTypeStringTemp = splitArray[9];
+            String[] disciplinTypeArrayTemp = disciplinTypeStringTemp.split(" ");
+            String[] disciplinTypeArray = {disciplinTypeArrayTemp[0], disciplinTypeArrayTemp[1], disciplinTypeArrayTemp[2], disciplinTypeArrayTemp[3]};
+            String trainingResultStringTemp = splitArray[10];
+            String[] trainingResultArrayTemp = trainingResultStringTemp.split(" ");
+            String[] trainingResultArray = {trainingResultArrayTemp[0], trainingResultArrayTemp[1], trainingResultArrayTemp[2], trainingResultArrayTemp[3]};
+            String dateStringTemp = splitArray[11];
+            String[] dateArrayTemp = dateStringTemp.split(" ");
+            String[] dateArray = {dateArrayTemp[0], dateArrayTemp[1], dateArrayTemp[2], dateArrayTemp[3]};
+
+            CompetitionMember tempCompetitionMember = new CompetitionMember(Boolean.parseBoolean(splitArray[0]), splitArray[1],
+                    splitArray[2], splitArray[3], splitArray[4], Integer.parseInt(splitArray[5]), splitArray[6], splitArray[7], Boolean.parseBoolean(splitArray[8]),
+                    disciplinTypeArray, trainingResultArray, dateArray);
+
+            competitionMembers.add(tempCompetitionMember);
+        }
     }
 }
