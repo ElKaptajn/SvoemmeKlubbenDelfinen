@@ -39,18 +39,32 @@ public class Economy {
         int arrearsSum = 0;
         int numberOfMembersInArrears = 0;
 
-        System.out.println("Info about members:\n");
+        System.out.println("\nInfo about members:\n");
         for (int i = 0; i < members.size(); i++) {
-            //int individuelArrears = 0;
+            int individuelArrears = 0;
 
             if (members.get(i).arrears == true) { //restance true betyder member er i restance.
                 numberOfMembersInArrears++;
-                System.out.println("First name: "+members.get(i).fName +"\nLastname: "+members.get(i).lName +"\nEmail: "+members.get(i).email + "\n");
-                //vi skal have
+
+                int subscription = 0;
+                if (members.get(i).status && members.get(i).age < 18) {
+                    subscription = 1000;
+                } else if (members.get(i).status && members.get(i).age >= 18 && members.get(i).age < 60) {
+                    subscription = 1600;
+                } else if (members.get(i).status && members.get(i).age >= 60) {
+                    subscription = (int) (1600 - (1600 * 0.25));
+                } else subscription = 500;
+
+                arrearsSum += subscription;
+                individuelArrears = subscription;
+
+                System.out.println("First name: "+members.get(i).fName +"\nLastname: "+members.get(i).lName +
+                        "\nEmail: "+members.get(i).email + "\nArrears: " + individuelArrears + "\n");
             }
 
         }
         System.out.println("Total number of members in arrears: " + numberOfMembersInArrears + "\n");
+        System.out.println("Total amount in arrears: " + arrearsSum + "\n");
     }
 
     public static void income() throws FileNotFoundException {
