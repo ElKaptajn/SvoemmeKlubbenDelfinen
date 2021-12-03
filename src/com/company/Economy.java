@@ -58,13 +58,12 @@ public class Economy {
                 arrearsSum += subscription;
                 individuelArrears = subscription;
 
-                System.out.println("First name: "+members.get(i).fName +"\nLastname: "+members.get(i).lName +
-                        "\nEmail: "+members.get(i).email + "\nArrears: " + individuelArrears + "\n");
+                System.out.printf("Firstname: %25s\nLastname: %26s\nEmail: %29s\nArrears: %23d DKK\n\n", members.get(i).fName, members.get(i).lName, members.get(i).email, individuelArrears);
             }
 
         }
         System.out.println("Total number of members in arrears: " + numberOfMembersInArrears + "\n");
-        System.out.println("Total amount in arrears: " + arrearsSum + "\n");
+        System.out.println("Total amount in arrears: " + arrearsSum + " DKK\n");
     }
 
     public static void income() throws FileNotFoundException {
@@ -97,7 +96,7 @@ public class Economy {
         }
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
-
+hej
     /*
     public static void editMemberInArrears(Scanner input) {
         private ArrayList<Member> members = new ArrayList<>();
