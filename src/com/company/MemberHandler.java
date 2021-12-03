@@ -12,20 +12,37 @@ public class MemberHandler {
     private ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
 
     public void memberHandlerMenu(Scanner input) {
-        System.out.println("""
-                *** Member menu ***
-                Enter 0 to exit program
-                Enter 1 to Create new member
-                Enter 2 to Delete member
-                Enter 3 to Edit member
-                Enter 4 to show member""");
-        int answer = input.nextInt();
-        switch (answer) {
-            case 1 -> createMember(input);
-            case 2 -> deleteMember(input);
-            case 3 -> editMember(input);
-            case 4 -> showMember(input);
-            default -> System.out.println("Number " + answer + " is not a valid option");
+        int answer = 1;
+        while (answer != 0) {
+            System.out.println("""
+                    *** Member menu ***
+                    Enter 0 to exit program
+                    Enter 1 to Create new member
+                    Enter 2 to Delete member
+                    Enter 3 to Edit member
+                    Enter 4 to show member""");
+            answer = input.nextInt();
+            switch (answer) {
+                case 1:
+                    createMember(input);
+                    break;
+                case 2:
+                    deleteMember(input);
+                    break;
+                case 3:
+                    editMember(input);
+                    break;
+                case 4:
+                    showMember(input);
+                    break;
+                default:
+                    if (answer == 0) {
+                        break;
+                    } else {
+                        System.out.println("Number " + answer + " is not a valid option");
+                    }
+
+            }
         }
     }
 
