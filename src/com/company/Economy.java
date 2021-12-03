@@ -61,7 +61,7 @@ public class Economy {
                 System.out.println("First name: "+members.get(i).fName +"\nLastname: "+members.get(i).lName +
                         "\nEmail: "+members.get(i).email + "\nArrears: " + individuelArrears + "\n");
             }
-hek
+
         }
         System.out.println("Total number of members in arrears: " + numberOfMembersInArrears + "\n");
         System.out.println("Total amount in arrears: " + arrearsSum + "\n");
