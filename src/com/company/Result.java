@@ -62,6 +62,24 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
+                    String[] disRes = new String[competitionMembers.size()];
+                    for (int i = 0; i < competitionMembers.size(); i++){
+                        disRes[i] = competitionMembers.get(i).trainingResult[0];
+                    }
+                    /*
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        for (int j = i + 1; j < disRes.length; j++) {
+                            if (disRes[i].compareTo(afhentningstidspunkt[j]) > 0) {
+                                tempBestilling = bestillingsliste[i];
+                                bestillingsliste[i] = bestillingsliste[j];
+                                bestillingsliste[j] = tempBestilling;
+                            }
+                        }
+                        filhaandtering.writeToBestillingsliste(bestillingsliste);
+                    }
+
+                     */
+
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
                     }
