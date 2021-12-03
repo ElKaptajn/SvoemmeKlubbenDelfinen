@@ -96,7 +96,7 @@ public class Economy {
         }
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
-
+hej
     /*
     public static void editMemberInArrears(Scanner input) {
         private ArrayList<Member> members = new ArrayList<>();
