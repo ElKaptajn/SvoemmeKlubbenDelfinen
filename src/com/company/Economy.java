@@ -45,13 +45,23 @@ public class Economy {
             int arrayCount = 0;
             if (memberInfo[8].equals("Yes")) {
                 arrayCount++;
+
             } else {
 
             }
             count += arrayCount;
 
         }
-        System.out.println(count);
+//forloop kør arrayet igennem og tjek restance og print hvis det er
+        String fName = memberInfo[3];
+        String lName = memberInfo[4];
+        String email = memberInfo[6];
+
+        System.out.println("Amount of members in arrears: " + count);
+        System.out.println("Info on the members: \n");
+        System.out.println("First name: " + fName + "\nLastname: " + lName + "\nEmail: " + email);
+
+
     }
 
     public static void income() throws FileNotFoundException {
@@ -85,7 +95,9 @@ public class Economy {
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
-    /*public static void editMemberInArrears(Scanner input) {
+/*    public static void editMemberInArrears(Scanner input) {
+        private ArrayList<Member> members = new ArrayList<>();
+
         String[] strArrayMember = new String[9];
         String[] sArr = new String[members.size()];
         Arrays.fill(sArr, "");
@@ -95,7 +107,6 @@ public class Economy {
         boolean arrears;
         arrears = arrearsChoice != 1;
         strArrayMember[8] = String.valueOf(arrears);
-        break;
     }*/
 
 }
