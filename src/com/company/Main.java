@@ -26,7 +26,7 @@ public class Main {
                     writeToMemberFile(memberHandler.getMembers());
                     break;
                 case 2:
-                    result.resultMenu(input, memberHandler.getMembers());
+                    result.resultMenu(input, memberHandler.getMembers(), memberHandler.getCompetitionMembers());
                     break;
                 case 3:
                     Economy.economyMenu(input);
