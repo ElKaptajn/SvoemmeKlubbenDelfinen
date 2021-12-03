@@ -184,10 +184,6 @@ public class Result  {
             }
         }
     }
-    /**
-     * MUCHIOS GRANDOS VIGTIGUS!!!!
-     * SPØRGSMÅL: når restance er true er den så Yes eller No???
-     */
 
     public void writeToCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers) throws IOException {
         FileWriter writer = new FileWriter("Files/CompetitionMemberList");
@@ -235,7 +231,7 @@ public class Result  {
             } else {
                 splitArray[0] = "false";
             }
-            if (splitArray[8].equals("No")){
+            if (splitArray[8].equals("Yes")){
                 splitArray[8] = "true";
             } else {
                 splitArray[8] = "false";
