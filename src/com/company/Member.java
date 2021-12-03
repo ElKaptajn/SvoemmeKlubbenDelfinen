@@ -32,12 +32,12 @@ public class Member {
     public String toString() {
         String myStatus;
         String myArrears;
-        if (status){
+        if (status) {
             myStatus = "Active";
-        }else{myStatus = "Passive";}
-        if (arrears){
+        } else {myStatus = "Passive";}
+        if (arrears) {
             myArrears = "Yes";
-        }else{myArrears = "No";}
+        } else {myArrears = "No";}
         return ("Status: " + myStatus +
                 "\nActivity form: " + activityType +
                 "\nTeam: " + teamType +
