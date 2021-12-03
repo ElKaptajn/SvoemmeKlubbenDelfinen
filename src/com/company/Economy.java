@@ -50,17 +50,22 @@ public class Economy {
 
             }
             count += arrayCount;
+            if (reader.hasNext() && count <= 1){
+                String fName = memberInfo[3];
+                String lName = memberInfo[4];
+                String email = memberInfo[6];
+
+            }else{
+
+            }
 
         }
-//forloop kør arrayet igennem og tjek restance og print hvis det er
-        String fName = memberInfo[3];
-        String lName = memberInfo[4];
-        String email = memberInfo[6];
 
         System.out.println("Amount of members in arrears: " + count);
-        System.out.println("Info on the members: \n");
+        System.out.println("Info about members: ");
         System.out.println("First name: " + fName + "\nLastname: " + lName + "\nEmail: " + email);
 
+//forloop kør arrayet igennem og tjek restance og print hvis det er
 
     }
 
