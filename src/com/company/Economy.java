@@ -1,7 +1,9 @@
 package com.company;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.io.IOException;
 
@@ -9,7 +11,7 @@ public class Economy {
 
     public static void economyMenu(Scanner input) throws IOException {
         System.out.println("""
-                            
+
                 *** Economy Menu ***
                 Enter 1 to Show arrears
                 Enter 2 to Show income
@@ -18,12 +20,13 @@ public class Economy {
         int answer = input.nextInt();
         switch (answer) {
             case 1:
+                arrears();
                 break;
             case 2:
-                //income();
-                incomeTest();
+                income();
                 break;
             case 3:
+                editMemberInArrears(input);
                 break;
             default:
                 System.out.println("Number" + answer + "is not a valid option.");
@@ -31,33 +34,30 @@ public class Economy {
         }
     }
 
-    public static void arrears() {
-
-    }
-
-    public static void income() throws IOException { //find lige ud af hvorfor det skal være IO og ikke være FileNotFound
+    public static void arrears() throws FileNotFoundException {
         Scanner reader = new Scanner(new File("Files/MemberList"));
+
+        int count = 0;
 
         while (reader.hasNextLine()) {
-            boolean statusT = Boolean.parseBoolean(reader.next());
-            reader.next();
-            reader.next();
-            String teamTypeT = reader.next();
-            reader.next();
-            reader.next();
-            int ageT = reader.nextInt();
-            reader.next();
-            reader.next();
-            reader.nextBoolean();
+            String[] memberInfo = reader.nextLine().split(", ");
 
-            System.out.println(ageT);
+            int arrayCount = 0;
+            if (memberInfo[8].equals("Yes")) {
+                arrayCount++;
+            } else {
+
+            }
+            count += arrayCount;
+
         }
-
-
+        System.out.println(count);
     }
 
-    public static void incomeTest() throws IOException { //find lige ud af hvorfor det skal være IO og ikke være FileNotFound
+    public static void income() throws FileNotFoundException {
         Scanner reader = new Scanner(new File("Files/MemberList"));
+
+        int income = 0;
 
         while (reader.hasNextLine()) {
             String[] memberInfo = reader.nextLine().split(", ");
@@ -70,25 +70,32 @@ public class Economy {
             String teamTypeT = memberInfo[2];
             int ageT = Integer.parseInt(memberInfo[5]);
 
-            System.out.println(statusT);
-            System.out.println(teamTypeT);
-            System.out.println(ageT);
-
-            int kontigent = 0;
+            int subscription = 0;
             if (statusT && ageT < 18) {
-                kontigent = 1000;
-            } else if (statusT && (ageT >= 18 && ageT < 60)) {
-                kontigent = 1600;
+                subscription = 1000;
+            } else if (statusT && ageT >= 18 && ageT < 60) {
+                subscription = 1600;
             } else if (statusT && ageT >= 60) {
-                kontigent = (int) (1600 - (1600 * 0.25));
-            } else kontigent = 500;
+                subscription = (int) (1600 - (1600 * 0.25));
+            } else subscription = 500;
 
-            System.out.println(kontigent);
+            income += subscription;
+
         }
+        System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
+    public static void editMemberInArrears(Scanner input) {
+        String[] strArrayMember = new String[9];
+        String[] sArr = new String[members.size()];
+        Arrays.fill(sArr, "");
 
-    public static void membersInArrears() {
-
+        System.out.println("Enter new arrears, '1' for true and '2' for false: ");
+        int arrearsChoice = input.nextInt();
+        boolean arrears;
+        arrears = arrearsChoice != 1;
+        strArrayMember[8] = String.valueOf(arrears);
+        break;
     }
+
 }
