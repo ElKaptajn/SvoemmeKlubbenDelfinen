@@ -9,6 +9,7 @@ import java.io.IOException;
 
 public class Economy {
 
+
     public static void economyMenu(Scanner input) throws IOException {
         System.out.println("""
 
@@ -95,7 +96,7 @@ public class Economy {
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
 
-/*    public static void editMemberInArrears(Scanner input) {
+    public static void editMemberInArrears(Scanner input) {
         private ArrayList<Member> members = new ArrayList<>();
 
         String[] strArrayMember = new String[9];
@@ -107,6 +108,6 @@ public class Economy {
         boolean arrears;
         arrears = arrearsChoice != 1;
         strArrayMember[8] = String.valueOf(arrears);
-    }*/
+    }
 
 }

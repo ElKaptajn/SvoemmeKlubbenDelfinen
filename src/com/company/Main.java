@@ -11,6 +11,7 @@ public class Main {
         //Economy economy = new Economy();
         Result result = new Result();
         updateMemberArrayList(memberHandler.getMembers());
+        result.updateCompetitionMemberList(memberHandler.getCompetitionMembers());
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
@@ -29,7 +30,7 @@ public class Main {
                     result.resultMenu(input, memberHandler.getMembers(), memberHandler.getCompetitionMembers());
                     break;
                 case 3:
-                    Economy.economyMenu(input);
+                    //Economy.economyMenu(input);
                     break;
                 default:
                     if (answer == 0) {
