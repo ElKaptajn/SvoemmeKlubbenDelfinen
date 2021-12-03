@@ -62,26 +62,26 @@ public class Result {
             switch (pickTop5) {
                 case 1: //Crawl
                     String[] disRes = new String[competitionMembers.size()];
+                    String tempTR;
                     for (int i = 0; i < competitionMembers.size(); i++){
                         disRes[i] = competitionMembers.get(i).trainingResult[0];
                     }
-                    /*
+
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(afhentningstidspunkt[j]) > 0) {
-                                tempBestilling = bestillingsliste[i];
-                                bestillingsliste[i] = bestillingsliste[j];
-                                bestillingsliste[j] = tempBestilling;
+                            if (disRes[i].compareTo(disRes[j]) > 0) {
+                                tempTR = disRes[i];
+                                disRes[i] = disRes[j];
+                                disRes[j] = tempTR;
                             }
                         }
-                        filhaandtering.writeToBestillingsliste(bestillingsliste);
                     }
-
-                     */
-
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[0] + " " + competitionMembers.get(i).date[0]);
                     }
+                    /*for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                    }*/
                     System.out.println();
                     break;
                 case 2: //Breaststroke
