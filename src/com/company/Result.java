@@ -24,10 +24,9 @@ public class Result {
                     System.out.println("Returning to main menu");
                     break;
                 case 1:
-                    System.out.println("TOP 5 MENU");
+                    getTopFive(competitionMembers, input);
                     break;
                 case 2:
-                    getTopFive(competitionMembers, input);
                     break;
                 case 3:
                     System.out.println("EDIT RESULT");
