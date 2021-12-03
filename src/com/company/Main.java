@@ -30,7 +30,7 @@ public class Main {
                     result.resultMenu(input, memberHandler.getMembers(), memberHandler.getCompetitionMembers());
                     break;
                 case 3:
-                    //Economy.economyMenu(input);
+                    Economy.economyMenu(input, memberHandler.getMembers());
                     break;
                 default:
                     if (answer == 0) {
@@ -77,6 +77,11 @@ public class Main {
                 memberInfo[0] = "true";
             } else {
                 memberInfo[0] = "false";
+            }
+            if (memberInfo[8].equals("Yes")){
+                memberInfo[8] = "true";
+            } else {
+                memberInfo[8] = "false";
             }
             Member member = new Member(Boolean.parseBoolean(memberInfo[0]), memberInfo[1], memberInfo[2], memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), memberInfo[6], memberInfo[7], Boolean.parseBoolean(memberInfo[8]));
             members.add(member);
