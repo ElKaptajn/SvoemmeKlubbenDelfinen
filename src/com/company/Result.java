@@ -84,7 +84,13 @@ public class Result {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        System.out.printf("Top 5. for %s\n", competitionMembers.get(type).disciplinType[type]);
+        String topFiveText = "--------------Top 5. for" + competitionMembers.get(type).disciplinType[type]; //Set text of top five and disciplin to find the length
+        System.out.printf("--------------Top 5. for %s", competitionMembers.get(type).disciplinType[type]); //Print of text that say top five and what disciplin
+        for (int i = 1; i < (50 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
+            System.out.print("-");
+        }
+        System.out.println();
+
         for (int i = 0; i < competitionMembers.size(); i++) {
             competitionMemberArray[i] = competitionMembers.get(i);
         }
@@ -100,7 +106,9 @@ public class Result {
         }
         for (int i = 0; i < competitionMembers.size(); i++) {
             if (!competitionMembers.get(i).trainingResult[type].equals("00:00")) {
-                System.out.printf("%d) Name: %6s, Result for %s: time %5s, date %s\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).disciplinType[type], competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                //System.out.println("--------------------------------------------------");
+                System.out.printf("| %d) Name: %-6s | time %5s | date %-10s |\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                System.out.println("--------------------------------------------------");
                 tempI++;
             }
         }
