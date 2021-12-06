@@ -48,7 +48,8 @@ public class Result {
     }
 
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
-
+        String[] disRes = new String[competitionMembers.size()];
+        String tempArrListHolder;
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
@@ -61,29 +62,35 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    String[] disRes = new String[competitionMembers.size()];
-                    String temp1;
+                    /*
+                    CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
+                    CompetitionMember[] tempArray = new CompetitionMember[1];
+                    int tempI = 1;
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[0];
+                        competitionMemberArray[i] = competitionMembers.get(i);
                     }
-
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp1 = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = temp1;
+                        for (int j = i + 1; j < competitionMemberArray.length; j++) {
+                            if (competitionMemberArray[i].trainingResult[0].compareTo(competitionMemberArray[j].trainingResult[0]) > 0) {
+                                tempArray[0] = competitionMemberArray[i];
+                                competitionMemberArray[i] = competitionMemberArray[j];
+                                competitionMemberArray[j] = tempArray[0];
                             }
                         }
+                        competitionMembers.set(i, competitionMemberArray[i]);
                     }
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[i] + " " + competitionMembers.get(i).date[0]);
+                        if (!competitionMembers.get(i).trainingResult[0].equals("00:00")) {
+                            System.out.printf("%d) Name: %6s, Result for %s: time %5s, date %s\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).disciplinType[0], competitionMembers.get(i).trainingResult[0], competitionMembers.get(i).date[0]);
+                            //System.out.println(competitionMembers.get(i).fName + ", " + competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                            tempI++;
+                        }
                     }
-                    System.out.println();
+                     */
+                    topFiveSort(competitionMembers, 0);
                     break;
                 case 2: //Breaststroke
-                    disRes = new String[competitionMembers.size()];
-                    String temp2;
+                    /*
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         disRes[i] = competitionMembers.get(i).trainingResult[1];
                     }
@@ -91,9 +98,9 @@ public class Result {
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         for (int j = i + 1; j < disRes.length; j++) {
                             if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp2 = disRes[i];
+                                tempArrListHolder = disRes[i];
                                 disRes[i] = disRes[j];
-                                disRes[j] = temp2;
+                                disRes[j] = tempArrListHolder;
                             }
                         }
                     }
@@ -101,10 +108,10 @@ public class Result {
                         System.out.println(competitionMembers.get(i).disciplinType[1] + " " + disRes[i] + " " + competitionMembers.get(i).date[1]);
                     }
                     System.out.println();
+                    */
+                    topFiveSort(competitionMembers, 1);
                     break;
                 case 3: //Butterfly
-                    disRes = new String[competitionMembers.size()];
-                    String temp3;
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         disRes[i] = competitionMembers.get(i).trainingResult[2];
                     }
@@ -112,9 +119,9 @@ public class Result {
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         for (int j = i + 1; j < disRes.length; j++) {
                             if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp3 = disRes[i];
+                                tempArrListHolder = disRes[i];
                                 disRes[i] = disRes[j];
-                                disRes[j] = temp3;
+                                disRes[j] = tempArrListHolder;
                             }
                         }
                     }
@@ -124,8 +131,6 @@ public class Result {
                     System.out.println();
                     break;
                 case 4: //Backstroke
-                    disRes = new String[competitionMembers.size()];
-                    String temp4;
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         disRes[i] = competitionMembers.get(i).trainingResult[3];
                     }
@@ -133,9 +138,9 @@ public class Result {
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         for (int j = i + 1; j < disRes.length; j++) {
                             if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp4 = disRes[i];
+                                tempArrListHolder = disRes[i];
                                 disRes[i] = disRes[j];
-                                disRes[j] = temp4;
+                                disRes[j] = tempArrListHolder;
                             }
                         }
                     }
@@ -197,6 +202,31 @@ public class Result {
 
             System.out.println(Arrays.toString(intArr));
         }*/
+    }
+    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type){
+        CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
+        CompetitionMember[] tempArray = new CompetitionMember[1];
+        int tempI = 1;
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            competitionMemberArray[i] = competitionMembers.get(i);
+        }
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            for (int j = i + 1; j < competitionMemberArray.length; j++) {
+                if (competitionMemberArray[i].trainingResult[type].compareTo(competitionMemberArray[j].trainingResult[type]) > 0) {
+                    tempArray[0] = competitionMemberArray[i];
+                    competitionMemberArray[i] = competitionMemberArray[j];
+                    competitionMemberArray[j] = tempArray[0];
+                }
+            }
+            competitionMembers.set(i, competitionMemberArray[i]);
+        }
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            if (!competitionMembers.get(i).trainingResult[type].equals("00:00")) {
+                System.out.printf("%d) Name: %6s, Result for %s: time %5s, date %s\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).disciplinType[type], competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                tempI++;
+            }
+        }
+        System.out.println();
     }
 
     public void addResult() {
