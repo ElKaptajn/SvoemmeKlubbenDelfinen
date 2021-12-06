@@ -37,7 +37,9 @@ public class Result {
                     break;
                 case 5:
                     memberHandler.createMember(input);
-                    makeMemberToCompetitionMember(input, members, competitionMembers);
+                    updateCompetitionMemberList(competitionMembers);
+                    writeToCompetitionMemberList(competitionMembers);
+                    makeMemberToCompetitionMember(input, members, competitionMembers);          //VIRKER IKKE ORDENLIGT SKAL LAVES OM TIL SIN EGEN METODE
                     writeToCompetitionMemberList(competitionMembers);
                     break;
                 default:
