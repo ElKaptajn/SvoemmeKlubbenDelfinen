@@ -86,8 +86,8 @@ public class Result {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        String topFiveText = "--------------Top 5. for" + competitionMembers.get(type).disciplinType[type]; //Set text of top five and disciplin to find the length
-        System.out.printf("--------------Top 5. for %s", competitionMembers.get(type).disciplinType[type]); //Print of text that say top five and what disciplin
+        String topFiveText = "--------------Top 5. for" + competitionMembers.get(type).disciplinType[type]; //Set text of top five and disciplin to find the length.
+        System.out.printf("--------------Top 5. for %s", competitionMembers.get(type).disciplinType[type]); //Print of text that say top five and what disciplin.
         for (int i = 1; i < (50 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
             System.out.print("-");
         }
