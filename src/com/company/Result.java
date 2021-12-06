@@ -37,7 +37,9 @@ public class Result {
                     break;
                 case 5:
                     memberHandler.createMember(input);
-                    makeMemberToCompetitionMember(input, members, competitionMembers);
+                    updateCompetitionMemberList(competitionMembers);
+                    writeToCompetitionMemberList(competitionMembers);
+                    makeMemberToCompetitionMember(input, members, competitionMembers);          //VIRKER IKKE ORDENLIGT SKAL LAVES OM TIL SIN EGEN METODE
                     writeToCompetitionMemberList(competitionMembers);
                     break;
                 default:
@@ -48,7 +50,6 @@ public class Result {
     }
 
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
-
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
@@ -61,88 +62,16 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    String[] disRes = new String[competitionMembers.size()];
-                    String temp1;
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[0];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp1 = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = temp1;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[i] + " " + competitionMembers.get(i).date[0]);
-                    }
-                    System.out.println();
+                    topFiveSort(competitionMembers, 0);
                     break;
                 case 2: //Breaststroke
-                    disRes = new String[competitionMembers.size()];
-                    String temp2;
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[1];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp2 = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = temp2;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[1] + " " + disRes[i] + " " + competitionMembers.get(i).date[1]);
-                    }
-                    System.out.println();
+                    topFiveSort(competitionMembers, 1);
                     break;
                 case 3: //Butterfly
-                    disRes = new String[competitionMembers.size()];
-                    String temp3;
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[2];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp3 = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = temp3;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[2] + " " + disRes[i] + " " + competitionMembers.get(i).date[2]);
-                    }
-                    System.out.println();
+                    topFiveSort(competitionMembers, 2);
                     break;
                 case 4: //Backstroke
-                    disRes = new String[competitionMembers.size()];
-                    String temp4;
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[3];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                temp4 = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = temp4;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[3] + " " + disRes[i] + " " + competitionMembers.get(i).date[3]);
-                    }
-                    System.out.println();
+                    topFiveSort(competitionMembers, 3);
                     break;
                 default:
                     if (pickTop5 == 0) {
@@ -152,51 +81,40 @@ public class Result {
                     }
             }
         }
-       /* String[] disTypeArray = new String[4];
-        int[] intArr = new int[4];
+    }
+    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type){
+        CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
+        CompetitionMember[] tempArray = new CompetitionMember[1];
+        int tempI = 1;
+        String topFiveText = "--------------Top 5. for" + competitionMembers.get(0).disciplinType[type]; //Set text of top five and disciplin to find the length.
+        System.out.printf("--------------Top 5. for %s", competitionMembers.get(0).disciplinType[type]); //Print of text that say top five and what disciplin.
+        for (int i = 1; i < (50 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
+            System.out.print("-");
+        }
+        System.out.println();
+
         for (int i = 0; i < competitionMembers.size(); i++) {
-
-
-            if (competitionMembers.get(i).disciplinType[i].equals("Crawl") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
+            competitionMemberArray[i] = competitionMembers.get(i);
+        }
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            for (int j = i + 1; j < competitionMemberArray.length; j++) {
+                if (competitionMemberArray[i].trainingResult[type].compareTo(competitionMemberArray[j].trainingResult[type]) > 0) {
+                    tempArray[0] = competitionMemberArray[i];
+                    competitionMemberArray[i] = competitionMemberArray[j];
+                    competitionMemberArray[j] = tempArray[0];
+                }
             }
-            if (competitionMembers.get(i).disciplinType[i].equals("Breaststroke") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
+            competitionMembers.set(i, competitionMemberArray[i]);
+        }
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            if (!competitionMembers.get(i).trainingResult[type].equals("00:00")) {
+                //System.out.println("--------------------------------------------------");
+                System.out.printf("| %d) Name: %-6s | time %5s | date %-10s |\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                System.out.println("--------------------------------------------------");
+                tempI++;
             }
-            if (competitionMembers.get(i).disciplinType[i].equals("Butterfly") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
-            }
-            if (competitionMembers.get(i).disciplinType[i].equals("Backstroke") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
-            }
-            System.out.println(Arrays.toString(disTypeArray));
-
-            System.out.println(Arrays.toString(intArr));
-        }*/
+        }
+        System.out.println();
     }
 
     public void addResult() {
