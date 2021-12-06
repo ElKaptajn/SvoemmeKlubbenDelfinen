@@ -11,13 +11,14 @@ public class Result {
         int answer = -1;
         while (answer != 0) {
             System.out.println("""
-                        *** result menu ***
-                    Enter 0 to exit result menu
-                    Enter 1 to show the top five lists
-                    Enter 2 to add a new result
-                    Enter 3 to edit an existing result
-                    Enter 4 to make an existing member into a competitionMember
-                    Enter 5 to make a new competitionMember""");
+                    -------------------------- result menu --------------------------
+                    | Enter 0 to exit result menu                                   |
+                    | Enter 1 to show the top five lists                            |
+                    | Enter 2 to add a new result                                   |
+                    | Enter 3 to edit an existing result                            |
+                    | Enter 4 to make an existing member into a competitionMember   |
+                    | Enter 5 to make a new competitionMember                       |
+                    -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
                 case 0:
@@ -53,12 +54,13 @@ public class Result {
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
-                    *** Top 5 Menu ***
-                    Enter 0 for exit top 5 list selection
-                    Enter 1 for top 5 Crawl
-                    Enter 2 for top 5 Breaststroke
-                    Enter 3 for top 5 Butterfly
-                    Enter 4 for top 5 Backstroke""");
+                    -------------- Top 5 Menu ---------------
+                    | Enter 0 for exit top 5 list selection |
+                    | Enter 1 for top 5 Crawl               |
+                    | Enter 2 for top 5 Breaststroke        |
+                    | Enter 3 for top 5 Butterfly           |
+                    | Enter 4 for top 5 Backstroke          |
+                    -----------------------------------------""");
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
@@ -86,9 +88,9 @@ public class Result {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        String topFiveText = "--------------Top 5. for" + competitionMembers.get(0).disciplinType[type]; //Set text of top five and disciplin to find the length.
-        System.out.printf("--------------Top 5. for %s", competitionMembers.get(0).disciplinType[type]); //Print of text that say top five and what disciplin.
-        for (int i = 1; i < (50 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
+        String topFiveText = "-----------------Top 5. for" + competitionMembers.get(0).disciplinType[type]; //Set text of top five and disciplin to find the length.
+        System.out.printf("-----------------Top 5. for %s", competitionMembers.get(0).disciplinType[type]); //Print of text that say top five and what disciplin.
+        for (int i = 1; i < (53 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
             System.out.print("-");
         }
         System.out.println();
@@ -107,14 +109,21 @@ public class Result {
             competitionMembers.set(i, competitionMemberArray[i]);
         }
         for (int i = 0; i < competitionMembers.size(); i++) {
-            if (!competitionMembers.get(i).trainingResult[type].equals("00:00")) {
-                //System.out.println("--------------------------------------------------");
-                System.out.printf("| %d) Name: %-6s | time %5s | date %-10s |\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
-                System.out.println("--------------------------------------------------");
+            if (!competitionMembers.get(i).trainingResult[type].equals("00:00") && tempI != 6) {
+                System.out.printf("| %d%s | Name: %-6s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                System.out.println("-----------------------------------------------------");
                 tempI++;
             }
         }
         System.out.println();
+    }
+    public String topFivePlace(int placement) {
+        return switch (placement) {
+            case 1 -> "st";
+            case 2 -> "nd";
+            case 3 -> "rd";
+            default -> "th";
+        };
     }
 
     public void addResult() {
@@ -152,11 +161,12 @@ public class Result {
         int addResultAnswer = input.nextInt();
         if (addResultAnswer == 1) {
             System.out.println("""
-                    Which Swimming discipline do you want to add a new time to?
-                    Type 1 for Crawl
-                    Type 2 for Breaststroke
-                    Type 3 for Butterfly
-                    Type 4 for Backstroke""");
+                    -- Which Swimming discipline do you want to add a new time to? --
+                    | Type 1 for Crawl                                              |
+                    | Type 2 for Breaststroke                                       |
+                    | Type 3 for Butterfly                                          |
+                    | Type 4 for Backstroke                                         |
+                    -----------------------------------------------------------------""");
 
             String stringAnswer;
             boolean timeTestAnswer;

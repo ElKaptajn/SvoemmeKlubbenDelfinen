@@ -12,10 +12,11 @@ public class Economy {
     public static void economyMenu(Scanner input, ArrayList<Member> members) throws IOException {
         System.out.println("""
                 
-                *** Economy Menu ***
-                Enter 1 to Show arrears
-                Enter 2 to Show income
-                Enter 3 to Edit members in arrears""");
+                ------------ Economy Menu ------------
+                | Enter 1 to Show arrears            |
+                | Enter 2 to Show income             |
+                | Enter 3 to Edit members in arrears |
+                --------------------------------------""");
 
         int answer = input.nextInt();
         switch (answer) {
