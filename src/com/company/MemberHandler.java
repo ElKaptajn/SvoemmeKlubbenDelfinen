@@ -220,7 +220,9 @@ public class MemberHandler {
         showEditMember();
         System.out.println("Enter number for which member you want to see: ");
         int choice = input.nextInt();
-        System.out.println(members.get(choice - 1) + "\n");
+        if (choice != 0) {
+            System.out.println(members.get(choice - 1) + "\n");
+        }
     }
 
     public ArrayList<Member> getMembers() {
