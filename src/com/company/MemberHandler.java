@@ -15,13 +15,13 @@ public class MemberHandler {
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
-                    ---------- Member menu -----------
-                    | Enter 0 to exit program        |
-                    | Enter 1 to Create new member   |
-                    | Enter 2 to Delete member       |
-                    | Enter 3 to Edit member         |
-                    | Enter 4 to show member         |
-                    ----------------------------------""");
+                    ---------- Member menu ----------
+                    | Enter 0 to exit program       |
+                    | Enter 1 to Create new member  |
+                    | Enter 2 to Delete member      |
+                    | Enter 3 to Edit member        |
+                    | Enter 4 to show member        |
+                    ---------------------------------""");
             answer = input.nextInt();
             switch (answer) {
                 case 1:
