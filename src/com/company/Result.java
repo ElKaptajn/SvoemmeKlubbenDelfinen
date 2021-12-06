@@ -53,12 +53,13 @@ public class Result {
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
-                    *** Top 5 Menu ***
-                    Enter 0 for exit top 5 list selection
-                    Enter 1 for top 5 Crawl
-                    Enter 2 for top 5 Breaststroke
-                    Enter 3 for top 5 Butterfly
-                    Enter 4 for top 5 Backstroke""");
+                    -------------- Top 5 Menu ---------------
+                    | Enter 0 for exit top 5 list selection |
+                    | Enter 1 for top 5 Crawl               |
+                    | Enter 2 for top 5 Breaststroke        |
+                    | Enter 3 for top 5 Butterfly           |
+                    | Enter 4 for top 5 Backstroke          |
+                    -----------------------------------------""");
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
