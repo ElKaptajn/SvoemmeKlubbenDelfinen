@@ -112,7 +112,7 @@ public class Result {
                     topFiveSort(competitionMembers, 1);
                     break;
                 case 3: //Butterfly
-                    for (int i = 0; i < competitionMembers.size(); i++) {
+                    /*for (int i = 0; i < competitionMembers.size(); i++) {
                         disRes[i] = competitionMembers.get(i).trainingResult[2];
                     }
 
@@ -128,10 +128,11 @@ public class Result {
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         System.out.println(competitionMembers.get(i).disciplinType[2] + " " + disRes[i] + " " + competitionMembers.get(i).date[2]);
                     }
-                    System.out.println();
+                    System.out.println();*/
+                    topFiveSort(competitionMembers, 2);
                     break;
                 case 4: //Backstroke
-                    for (int i = 0; i < competitionMembers.size(); i++) {
+                    /*for (int i = 0; i < competitionMembers.size(); i++) {
                         disRes[i] = competitionMembers.get(i).trainingResult[3];
                     }
 
@@ -147,7 +148,8 @@ public class Result {
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         System.out.println(competitionMembers.get(i).disciplinType[3] + " " + disRes[i] + " " + competitionMembers.get(i).date[3]);
                     }
-                    System.out.println();
+                    System.out.println();*/
+                    topFiveSort(competitionMembers, 3);
                     break;
                 default:
                     if (pickTop5 == 0) {
