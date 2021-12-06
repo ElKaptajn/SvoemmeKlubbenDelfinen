@@ -48,8 +48,6 @@ public class Result {
     }
 
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
-        String[] disRes = new String[competitionMembers.size()];
-        String tempArrListHolder;
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
@@ -62,93 +60,15 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    /*
-                    CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
-                    CompetitionMember[] tempArray = new CompetitionMember[1];
-                    int tempI = 1;
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        competitionMemberArray[i] = competitionMembers.get(i);
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < competitionMemberArray.length; j++) {
-                            if (competitionMemberArray[i].trainingResult[0].compareTo(competitionMemberArray[j].trainingResult[0]) > 0) {
-                                tempArray[0] = competitionMemberArray[i];
-                                competitionMemberArray[i] = competitionMemberArray[j];
-                                competitionMemberArray[j] = tempArray[0];
-                            }
-                        }
-                        competitionMembers.set(i, competitionMemberArray[i]);
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        if (!competitionMembers.get(i).trainingResult[0].equals("00:00")) {
-                            System.out.printf("%d) Name: %6s, Result for %s: time %5s, date %s\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).disciplinType[0], competitionMembers.get(i).trainingResult[0], competitionMembers.get(i).date[0]);
-                            //System.out.println(competitionMembers.get(i).fName + ", " + competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
-                            tempI++;
-                        }
-                    }
-                     */
                     topFiveSort(competitionMembers, 0);
                     break;
                 case 2: //Breaststroke
-                    /*
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[1];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                tempArrListHolder = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = tempArrListHolder;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[1] + " " + disRes[i] + " " + competitionMembers.get(i).date[1]);
-                    }
-                    System.out.println();
-                    */
                     topFiveSort(competitionMembers, 1);
                     break;
                 case 3: //Butterfly
-                    /*for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[2];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                tempArrListHolder = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = tempArrListHolder;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[2] + " " + disRes[i] + " " + competitionMembers.get(i).date[2]);
-                    }
-                    System.out.println();*/
                     topFiveSort(competitionMembers, 2);
                     break;
                 case 4: //Backstroke
-                    /*for (int i = 0; i < competitionMembers.size(); i++) {
-                        disRes[i] = competitionMembers.get(i).trainingResult[3];
-                    }
-
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        for (int j = i + 1; j < disRes.length; j++) {
-                            if (disRes[i].compareTo(disRes[j]) > 0) {
-                                tempArrListHolder = disRes[i];
-                                disRes[i] = disRes[j];
-                                disRes[j] = tempArrListHolder;
-                            }
-                        }
-                    }
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[3] + " " + disRes[i] + " " + competitionMembers.get(i).date[3]);
-                    }
-                    System.out.println();*/
                     topFiveSort(competitionMembers, 3);
                     break;
                 default:
@@ -159,56 +79,12 @@ public class Result {
                     }
             }
         }
-       /* String[] disTypeArray = new String[4];
-        int[] intArr = new int[4];
-        for (int i = 0; i < competitionMembers.size(); i++) {
-
-
-            if (competitionMembers.get(i).disciplinType[i].equals("Crawl") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
-            }
-            if (competitionMembers.get(i).disciplinType[i].equals("Breaststroke") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
-            }
-            if (competitionMembers.get(i).disciplinType[i].equals("Butterfly") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
-            }
-            if (competitionMembers.get(i).disciplinType[i].equals("Backstroke") && !competitionMembers.get(i).disciplinType[i].equals("null")) {
-                disTypeArray[i] = competitionMembers.get(i).trainingResult[i];
-                String s = String.valueOf(disTypeArray[i]);
-                String[] strArr = s.split(":");
-
-                intArr[i] = Integer.parseInt(strArr[i]);
-                Arrays.sort(intArr);
-
-            }
-            System.out.println(Arrays.toString(disTypeArray));
-
-            System.out.println(Arrays.toString(intArr));
-        }*/
     }
     public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type){
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
+        System.out.printf("Top 5. for %s\n", competitionMembers.get(type).disciplinType[type]);
         for (int i = 0; i < competitionMembers.size(); i++) {
             competitionMemberArray[i] = competitionMembers.get(i);
         }
