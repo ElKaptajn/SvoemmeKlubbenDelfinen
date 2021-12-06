@@ -48,7 +48,7 @@ public class Result {
     }
 
     public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers){
-        System.out.println("-------------------------------- Competition Members -------------------------------");
+        System.out.println("------------------------------- Competition Members -------------------------------");
         for (CompetitionMember s : competitionMembers) {
             System.out.printf("|Nr. %-12d Name: %-17s E-mail: %-31s |\n", competitionMembers.indexOf(s) + 1, s.fName, s.email);
             for(int i = 0; i < s.disciplinType.length; i++) {
