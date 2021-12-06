@@ -233,30 +233,35 @@ public class MemberHandler {
         showEditMember();
         System.out.println("|                      Enter 0 to exit                      |");
         System.out.println("-------------------------------------------------------------\n");
-        System.out.print("Enter number for which member you want to see: ");
-        int choice = input.nextInt();
-        if (choice <= 0 && choice >= members.size()) {
-            String myStatus = String.valueOf(members.get(choice - 1).status);
-            String myArrears = String.valueOf(members.get(choice - 1).arrears);
-            if (myStatus.equals("true")) {
-                myStatus = "Active";
-            } else if (myStatus.equals("false")) {
-                myStatus = "Passive";
+        int choice = 1;
+        while (choice != 0) {
+            System.out.print("Enter number for which member you want to see: ");
+            choice = input.nextInt();
+            if (choice != 0 && choice <= members.size()) {
+                String myStatus = String.valueOf(members.get(choice - 1).status);
+                String myArrears = String.valueOf(members.get(choice - 1).arrears);
+                if (myStatus.equals("true")) {
+                    myStatus = "Active";
+                } else if (myStatus.equals("false")) {
+                    myStatus = "Passive";
+                }
+                if (myArrears.equals("true")) {
+                    myArrears = "Yes";
+                } else if (myArrears.equals("false")) {
+                    myArrears = "No";
+                }
+                //System.out.println(members.get(choice - 1) + "\n");
+                System.out.println("--------------------------------------");
+                System.out.printf("| Status       : %-19s |\n| Activity form: %-12s |\n| Team         : %-19s |" +
+                                "\n| First name   : %-19s |\n| Last name    : %-19s |\n| Age          : %-19d |" +
+                                "\n| E-mail       : %-19s |\n| Address      : %-19s |\n| Arrears      : %-19s |\n",
+                        myStatus, members.get(choice - 1).activityType, members.get(choice - 1).teamType,
+                        members.get(choice - 1).fName, members.get(choice - 1).lName, members.get(choice - 1).age,
+                        members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
+                System.out.println("--------------------------------------\n");
+            } else if (choice >= members.size()){
+                System.out.println("\nNumber " + choice + " is not a valid option\n");
             }
-            if (myArrears.equals("true")) {
-                myArrears = "Yes";
-            } else if (myArrears.equals("false")) {
-                myArrears = "No";
-            }
-            //System.out.println(members.get(choice - 1) + "\n");
-            System.out.println("--------------------------------------");
-            System.out.printf("| Status       : %-19s |\n| Activity form: %-12s |\n| Team         : %-19s |" +
-                            "\n| First name   : %-19s |\n| Last name    : %-19s |\n| Age          : %-19d |" +
-                            "\n| E-mail       : %-19s |\n| Address      : %-19s |\n| Arrears      : %-19s |\n",
-                    myStatus, members.get(choice - 1).activityType, members.get(choice - 1).teamType,
-                    members.get(choice - 1).fName, members.get(choice - 1).lName, members.get(choice - 1).age,
-                    members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
-            System.out.println("--------------------------------------\n");
         }
     }
 
