@@ -48,17 +48,19 @@ public class MemberHandler {
     }
 
     public ArrayList<Member> createMember(Scanner input) {
-        System.out.println("Enter firstname: ");
+        System.out.println("--------------- Create Member ---------------");
+        System.out.print("| Enter firstname: ");
         String fName = input.next();
-        System.out.println("Enter lastname: ");
+        System.out.print("| Enter lastname: ");
         String lName = input.next();
-        System.out.println("Enter age: ");
+        System.out.print("| Enter age: ");
         int age = input.nextInt();
-        System.out.println("Enter email: ");
+        System.out.print("| Enter email: ");
         String email = input.next();
         input.nextLine();
-        System.out.println("Enter address: ");
+        System.out.print("| Enter address: ");
         String address = input.nextLine();
+        System.out.println("---------------------------------------------");
         String teamType = "None";
         String activityType = "";
         System.out.println("Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
@@ -89,9 +91,11 @@ public class MemberHandler {
 
     public ArrayList<Member> deleteMember(Scanner input) {
         if (members.size() >= 1) {
+            System.out.println("-------- Delete Member --------");
             for (int i = 0; i < members.size(); i++) {
-                System.out.printf("Nr. %-2d: %s %s \n", (i + 1), members.get(i).fName, members.get(i).lName);
+                System.out.printf("| Nr. %-2d | %-7s %-10s |\n", (i + 1), members.get(i).fName, members.get(i).lName);
             }
+            System.out.println("-------------------------------");
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
             members.remove(removeChoice - 1);
@@ -102,6 +106,7 @@ public class MemberHandler {
     }
 
     public void editMember(Scanner input) {
+        System.out.println("------------------------ Edit member ------------------------");
         showEditMember();
 
         System.out.println("Enter number for which member you want to change info about: ");
@@ -205,11 +210,13 @@ public class MemberHandler {
 
     public void showEditMember() {
         for (Member s : members) {
-            System.out.printf("Nr. %-2d: name: %s, email: %s \n", members.indexOf(s) + 1, s.fName, s.email);
+            System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", members.indexOf(s) + 1, s.fName, s.email);
         }
+        System.out.println("-------------------------------------------------------------");
     }
 
     public void showMember(Scanner input) {
+        System.out.println("-------------------------- Members --------------------------");
         showEditMember();
         System.out.println("Enter number for which member you want to see: ");
         int choice = input.nextInt();
