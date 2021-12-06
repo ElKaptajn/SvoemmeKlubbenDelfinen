@@ -154,11 +154,12 @@ public class Result {
         int addResultAnswer = input.nextInt();
         if (addResultAnswer == 1) {
             System.out.println("""
-                    Which Swimming discipline do you want to add a new time to?
-                    Type 1 for Crawl
-                    Type 2 for Breaststroke
-                    Type 3 for Butterfly
-                    Type 4 for Backstroke""");
+                    -- Which Swimming discipline do you want to add a new time to? --
+                    | Type 1 for Crawl                                              |
+                    | Type 2 for Breaststroke                                       |
+                    | Type 3 for Butterfly                                          |
+                    | Type 4 for Backstroke                                         |
+                    -----------------------------------------------------------------""");
 
             String stringAnswer;
             boolean timeTestAnswer;
