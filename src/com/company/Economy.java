@@ -15,7 +15,8 @@ public class Economy {
                 ------------ Economy Menu ------------
                 | Enter 1 to Show arrears            |
                 | Enter 2 to Show income             |
-                | Enter 3 to Edit members in arrears |""");
+                | Enter 3 to Edit members in arrears |
+                --------------------------------------""");
 
         int answer = input.nextInt();
         switch (answer) {
