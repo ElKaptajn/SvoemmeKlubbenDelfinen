@@ -11,13 +11,14 @@ public class Result {
         int answer = -1;
         while (answer != 0) {
             System.out.println("""
-                        *** result menu ***
-                    Enter 0 to exit result menu
-                    Enter 1 to show the top five lists
-                    Enter 2 to add a new result
-                    Enter 3 to edit an existing result
-                    Enter 4 to make an existing member into a competitionMember
-                    Enter 5 to make a new competitionMember""");
+                    -------------------------- result menu --------------------------
+                    | Enter 0 to exit result menu                                   |
+                    | Enter 1 to show the top five lists                            |
+                    | Enter 2 to add a new result                                   |
+                    | Enter 3 to edit an existing result                            |
+                    | Enter 4 to make an existing member into a competitionMember   |
+                    | Enter 5 to make a new competitionMember                       |
+                    -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
                 case 0:
