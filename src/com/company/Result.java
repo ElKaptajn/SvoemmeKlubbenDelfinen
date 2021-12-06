@@ -88,9 +88,9 @@ public class Result {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        String topFiveText = "--------------Top 5. for" + competitionMembers.get(0).disciplinType[type]; //Set text of top five and disciplin to find the length.
-        System.out.printf("--------------Top 5. for %s", competitionMembers.get(0).disciplinType[type]); //Print of text that say top five and what disciplin.
-        for (int i = 1; i < (50 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
+        String topFiveText = "-----------------Top 5. for" + competitionMembers.get(0).disciplinType[type]; //Set text of top five and disciplin to find the length.
+        System.out.printf("-----------------Top 5. for %s", competitionMembers.get(0).disciplinType[type]); //Print of text that say top five and what disciplin.
+        for (int i = 1; i < (53 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
             System.out.print("-");
         }
         System.out.println();
@@ -109,14 +109,21 @@ public class Result {
             competitionMembers.set(i, competitionMemberArray[i]);
         }
         for (int i = 0; i < competitionMembers.size(); i++) {
-            if (!competitionMembers.get(i).trainingResult[type].equals("00:00")) {
-                //System.out.println("--------------------------------------------------");
-                System.out.printf("| %d) Name: %-6s | time %5s | date %-10s |\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
-                System.out.println("--------------------------------------------------");
+            if (!competitionMembers.get(i).trainingResult[type].equals("00:00") && tempI != 6) {
+                System.out.printf("| %d%s | Name: %-6s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                System.out.println("-----------------------------------------------------");
                 tempI++;
             }
         }
         System.out.println();
+    }
+    public String topFivePlace(int placement) {
+        return switch (placement) {
+            case 1 -> "st";
+            case 2 -> "nd";
+            case 3 -> "rd";
+            default -> "th";
+        };
     }
 
     public void addResult() {
