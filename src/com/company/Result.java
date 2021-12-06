@@ -5,21 +5,21 @@ import java.util.*;
 
 public class Result {
 
-    public void resultMenu (Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
+    public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
 
         int answer = -1;
-        while(answer != 0){
+        while (answer != 0) {
             System.out.println("""
-                    *** result menu ***
-                Enter 0 to exit result menu
-                Enter 1 to show the top five lists
-                Enter 2 to add a new result
-                Enter 3 to edit an existing result
-                Enter 4 to make an existing member into a competitionMember
-                Enter 5 to make a new competitionMember""");
+                        *** result menu ***
+                    Enter 0 to exit result menu
+                    Enter 1 to show the top five lists
+                    Enter 2 to add a new result
+                    Enter 3 to edit an existing result
+                    Enter 4 to make an existing member into a competitionMember
+                    Enter 5 to make a new competitionMember""");
             answer = input.nextInt();
-            switch(answer){
+            switch (answer) {
                 case 0:
                     System.out.println("Returning to main menu");
                     break;
@@ -48,7 +48,8 @@ public class Result {
     }
 
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
-
+        String[] disRes = new String[competitionMembers.size()];
+        String tempArrListHolder;
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
@@ -61,48 +62,99 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    String[] disRes = new String[competitionMembers.size()];
-                    String tempTR;
-                    for (int i = 0; i < competitionMembers.size(); i++){
-                        disRes[i] = competitionMembers.get(i).trainingResult[0];
+                    /*
+                    CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
+                    CompetitionMember[] tempArray = new CompetitionMember[1];
+                    int tempI = 1;
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        competitionMemberArray[i] = competitionMembers.get(i);
+                    }
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        for (int j = i + 1; j < competitionMemberArray.length; j++) {
+                            if (competitionMemberArray[i].trainingResult[0].compareTo(competitionMemberArray[j].trainingResult[0]) > 0) {
+                                tempArray[0] = competitionMemberArray[i];
+                                competitionMemberArray[i] = competitionMemberArray[j];
+                                competitionMemberArray[j] = tempArray[0];
+                            }
+                        }
+                        competitionMembers.set(i, competitionMemberArray[i]);
+                    }
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        if (!competitionMembers.get(i).trainingResult[0].equals("00:00")) {
+                            System.out.printf("%d) Name: %6s, Result for %s: time %5s, date %s\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).disciplinType[0], competitionMembers.get(i).trainingResult[0], competitionMembers.get(i).date[0]);
+                            //System.out.println(competitionMembers.get(i).fName + ", " + competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
+                            tempI++;
+                        }
+                    }
+                     */
+                    topFiveSort(competitionMembers, 0);
+                    break;
+                case 2: //Breaststroke
+                    /*
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        disRes[i] = competitionMembers.get(i).trainingResult[1];
                     }
 
                     for (int i = 0; i < competitionMembers.size(); i++) {
                         for (int j = i + 1; j < disRes.length; j++) {
                             if (disRes[i].compareTo(disRes[j]) > 0) {
-                                tempTR = disRes[i];
+                                tempArrListHolder = disRes[i];
                                 disRes[i] = disRes[j];
-                                disRes[j] = tempTR;
+                                disRes[j] = tempArrListHolder;
                             }
                         }
                     }
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + disRes[i] + " " + competitionMembers.get(i).date[0]);
-                    }
-                    /*for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).trainingResult[0] + " " + competitionMembers.get(i).date[0]);
-                    }*/
-                    System.out.println();
-                    break;
-                case 2: //Breaststroke
-                    for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[1] + " " + competitionMembers.get(i).trainingResult[1] + " " + competitionMembers.get(i).date[1]);
+                        System.out.println(competitionMembers.get(i).disciplinType[1] + " " + disRes[i] + " " + competitionMembers.get(i).date[1]);
                     }
                     System.out.println();
+                    */
+                    topFiveSort(competitionMembers, 1);
                     break;
                 case 3: //Butterfly
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[2] + " " + competitionMembers.get(i).trainingResult[2] + " " + competitionMembers.get(i).date[2]);
+                        disRes[i] = competitionMembers.get(i).trainingResult[2];
+                    }
+
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        for (int j = i + 1; j < disRes.length; j++) {
+                            if (disRes[i].compareTo(disRes[j]) > 0) {
+                                tempArrListHolder = disRes[i];
+                                disRes[i] = disRes[j];
+                                disRes[j] = tempArrListHolder;
+                            }
+                        }
+                    }
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[2] + " " + disRes[i] + " " + competitionMembers.get(i).date[2]);
                     }
                     System.out.println();
                     break;
                 case 4: //Backstroke
                     for (int i = 0; i < competitionMembers.size(); i++) {
-                        System.out.println(competitionMembers.get(i).disciplinType[3] + " " + competitionMembers.get(i).trainingResult[3] + " " + competitionMembers.get(i).date[3]);
+                        disRes[i] = competitionMembers.get(i).trainingResult[3];
+                    }
+
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        for (int j = i + 1; j < disRes.length; j++) {
+                            if (disRes[i].compareTo(disRes[j]) > 0) {
+                                tempArrListHolder = disRes[i];
+                                disRes[i] = disRes[j];
+                                disRes[j] = tempArrListHolder;
+                            }
+                        }
+                    }
+                    for (int i = 0; i < competitionMembers.size(); i++) {
+                        System.out.println(competitionMembers.get(i).disciplinType[3] + " " + disRes[i] + " " + competitionMembers.get(i).date[3]);
                     }
                     System.out.println();
                     break;
                 default:
+                    if (pickTop5 == 0) {
+                        break;
+                    } else {
+                        System.out.println("Number " + pickTop5 + " is not a valid option");
+                    }
             }
         }
        /* String[] disTypeArray = new String[4];
@@ -151,23 +203,50 @@ public class Result {
             System.out.println(Arrays.toString(intArr));
         }*/
     }
-    public void addResult(){
+    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type){
+        CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
+        CompetitionMember[] tempArray = new CompetitionMember[1];
+        int tempI = 1;
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            competitionMemberArray[i] = competitionMembers.get(i);
+        }
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            for (int j = i + 1; j < competitionMemberArray.length; j++) {
+                if (competitionMemberArray[i].trainingResult[type].compareTo(competitionMemberArray[j].trainingResult[type]) > 0) {
+                    tempArray[0] = competitionMemberArray[i];
+                    competitionMemberArray[i] = competitionMemberArray[j];
+                    competitionMemberArray[j] = tempArray[0];
+                }
+            }
+            competitionMembers.set(i, competitionMemberArray[i]);
+        }
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            if (!competitionMembers.get(i).trainingResult[type].equals("00:00")) {
+                System.out.printf("%d) Name: %6s, Result for %s: time %5s, date %s\n", tempI, competitionMembers.get(i).fName, competitionMembers.get(i).disciplinType[type], competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                tempI++;
+            }
+        }
+        System.out.println();
+    }
+
+    public void addResult() {
 
     }
-    public void editResult(){
+
+    public void editResult() {
 
     }
 
     public void makeMemberToCompetitionMember(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) {
         int counter = 1;
-        for (Member m: members) {
+        for (Member m : members) {
             System.out.println("Nr." + counter + "\n" + m + "\n********************************");
             counter++;
         }
         System.out.print("Pick a member from the list above, that you want to make into a competition member.\nThe members nr: ");
         int answer = input.nextInt();
-        Member changingMember = members.get(answer-1);
-        members.remove(answer-1);
+        Member changingMember = members.get(answer - 1);
+        members.remove(answer - 1);
 
         CompetitionMember competitionMember = new CompetitionMember();
 
@@ -183,7 +262,7 @@ public class Result {
 
         System.out.println("Do you want to add a result for the new competition member?\nType 1 for yes or 2 for no");
         int addResultAnswer = input.nextInt();
-        if(addResultAnswer == 1) {
+        if (addResultAnswer == 1) {
             System.out.println("""
                     Which Swimming discipline do you want to add a new time to?
                     Type 1 for Crawl
@@ -251,18 +330,18 @@ public class Result {
                     System.out.println("The number " + answer + " is not a valid option");
             }
             competitionMembers.add(competitionMember);
-        }else if (addResultAnswer == 2){
+        } else if (addResultAnswer == 2) {
             competitionMembers.add(competitionMember);
-        }else {
+        } else {
             System.out.println("Wrong input, please try again...");
         }
     }
 
     //Tester hvilken tid der er lavest. Stringen skal være i formatet: xx:xx.
-    public boolean timeTester(String oldTimeString, String newTimeString){
-        if(oldTimeString == "00:00") {
+    public boolean timeTester(String oldTimeString, String newTimeString) {
+        if (oldTimeString == "00:00") {
             return true;
-        }else {
+        } else {
             String oldTimeMinString = oldTimeString.substring(0, oldTimeString.indexOf(":"));
             String oldTimeSecString = oldTimeString.substring(oldTimeString.indexOf(":") + 1);
             int oldTimeMin = Integer.parseInt(oldTimeMinString);
@@ -273,13 +352,13 @@ public class Result {
             int newTimeMin = Integer.parseInt(newTimeMinString);
             int newTimeSec = Integer.parseInt(newTimeSecString);
 
-            if(newTimeMin <= oldTimeMin){
-                if(newTimeSec < oldTimeSec){
+            if (newTimeMin <= oldTimeMin) {
+                if (newTimeSec < oldTimeSec) {
                     return true;
-                }else {
+                } else {
                     return false;
                 }
-            }else {
+            } else {
                 return false;
             }
         }
@@ -288,10 +367,10 @@ public class Result {
     public void writeToCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers) throws IOException {
         FileWriter writer = new FileWriter("Files/CompetitionMemberList");
         String tempCompetitionMember = "";
-        for(int i = 0; i < competitionMembers.size(); i++){
-            if (competitionMembers.get(i).status){
+        for (int i = 0; i < competitionMembers.size(); i++) {
+            if (competitionMembers.get(i).status) {
                 tempCompetitionMember += "Active, ";
-            }else{
+            } else {
                 tempCompetitionMember += "Passive, ";
             }
             tempCompetitionMember += competitionMembers.get(i).activityType + ", ";
@@ -301,9 +380,9 @@ public class Result {
             tempCompetitionMember += competitionMembers.get(i).age + ", ";
             tempCompetitionMember += competitionMembers.get(i).email + ", ";
             tempCompetitionMember += competitionMembers.get(i).address + ", ";
-            if (competitionMembers.get(i).arrears){
+            if (competitionMembers.get(i).arrears) {
                 tempCompetitionMember += "Yes, ";
-            }else{
+            } else {
                 tempCompetitionMember += "No, ";
             }
             tempCompetitionMember += competitionMembers.get(i).disciplinType[0] + " " + competitionMembers.get(i).disciplinType[1] + " "
@@ -324,14 +403,14 @@ public class Result {
     public void updateCompetitionMemberList(ArrayList<CompetitionMember> competitionMembers) throws IOException {
         Scanner reader = new Scanner(new File("Files/CompetitionMemberList"));
 
-        while (reader.hasNextLine()){
+        while (reader.hasNextLine()) {
             String[] splitArray = reader.nextLine().split(", ");
-            if (splitArray[0].equals("Active")){
+            if (splitArray[0].equals("Active")) {
                 splitArray[0] = "true";
             } else {
                 splitArray[0] = "false";
             }
-            if (splitArray[8].equals("Yes")){
+            if (splitArray[8].equals("Yes")) {
                 splitArray[8] = "true";
             } else {
                 splitArray[8] = "false";
