@@ -42,7 +42,6 @@ public class MemberHandler {
                     } else {
                         System.out.println("Number " + answer + " is not a valid option");
                     }
-
             }
         }
     }
@@ -60,11 +59,11 @@ public class MemberHandler {
         input.nextLine();
         System.out.print("| Enter address: ");
         String address = input.nextLine();
-        System.out.println("---------------------------------------------");
         String teamType = "None";
         String activityType = "";
-        System.out.println("Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
+        System.out.print("| Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer: ");
         int activityTypeChoice = input.nextInt();
+        System.out.println("---------------------------------------------");
         while (activityTypeChoice > 2) {
             System.out.println("Invalid number: " + activityTypeChoice);
             activityTypeChoice = input.nextInt();
@@ -84,7 +83,6 @@ public class MemberHandler {
 
         Member member = new Member(status, activityType, teamType, fName, lName, age, email, address, arrears);
         members.add(member);
-        System.out.println(members);
 
         return members;
     }
@@ -250,11 +248,18 @@ public class MemberHandler {
                 } else if (myArrears.equals("false")) {
                     myArrears = "No";
                 }
-                //System.out.println(members.get(choice - 1) + "\n");
                 System.out.println("--------------------------------------");
-                System.out.printf("| Status       : %-19s |\n| Activity form: %-12s |\n| Team         : %-19s |" +
-                                "\n| First name   : %-19s |\n| Last name    : %-19s |\n| Age          : %-19d |" +
-                                "\n| E-mail       : %-19s |\n| Address      : %-19s |\n| Arrears      : %-19s |\n",
+                System.out.printf("""
+                                | Status       : %-19s |
+                                | Activity form: %-12s |
+                                | Team         : %-19s |
+                                | First name   : %-19s |
+                                | Last name    : %-19s |
+                                | Age          : %-19d |
+                                | E-mail       : %-19s |
+                                | Address      : %-19s |
+                                | Arrears      : %-19s |
+                                """,
                         myStatus, members.get(choice - 1).activityType, members.get(choice - 1).teamType,
                         members.get(choice - 1).fName, members.get(choice - 1).lName, members.get(choice - 1).age,
                         members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
@@ -268,7 +273,6 @@ public class MemberHandler {
     public ArrayList<Member> getMembers() {
         return members;
     }
-
     public void setMembers(ArrayList<Member> members) {
         this.members = members;
     }
@@ -276,7 +280,6 @@ public class MemberHandler {
     public void setCompetitionMembers(ArrayList<CompetitionMember> CompetitionMember) {
         this.competitionMembers = competitionMembers;
     }
-
     public ArrayList<CompetitionMember> getCompetitionMembers() {
         return competitionMembers;
     }

@@ -53,7 +53,7 @@ public class Economy {
                 } else if (members.get(i).status && members.get(i).age >= 18 && members.get(i).age < 60) {
                     subscription = 1600;
                 } else if (members.get(i).status && members.get(i).age >= 60) {
-                    subscription = (int) (1600 - (1600 * 0.25));
+                    subscription = (int) (1600 - (1600 * 0.25)); //1600 * 0,75
                 } else subscription = 500;
 
                 arrearsSum += subscription;
