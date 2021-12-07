@@ -17,7 +17,7 @@ public class Result {
                     | Enter 2 to add a new result                                   |
                     | Enter 3 to edit an existing result                            |
                     | Enter 4 to make an existing member into a competitionMember   |
-                    | Enter 5 to make a new competitionMember                       |
+                    | Enter 5 to show all results                                   |
                     -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
@@ -28,6 +28,7 @@ public class Result {
                     getTopFive(competitionMembers, input);
                     break;
                 case 2:
+                    System.out.println("ADD RESULT");
                     break;
                 case 3:
                     System.out.println("EDIT RESULT");
@@ -37,17 +38,25 @@ public class Result {
                     writeToCompetitionMemberList(competitionMembers);
                     break;
                 case 5:
-                    memberHandler.createMember(input);
-                    updateCompetitionMemberList(competitionMembers);
-                    writeToCompetitionMemberList(competitionMembers);
-                    makeMemberToCompetitionMember(input, members, competitionMembers);          //VIRKER IKKE ORDENLIGT SKAL LAVES OM TIL SIN EGEN METODE
-                    writeToCompetitionMemberList(competitionMembers);
+                    showCompetitionMembers(competitionMembers);
                     break;
                 default:
                     System.out.println("Number " + answer + " is not a valid option");
                     break;
             }
         }
+    }
+
+    public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers){
+        System.out.println("------------------------------- Competition Members -------------------------------");
+        for (CompetitionMember s : competitionMembers) {
+            System.out.printf("|Nr. %-12d Name: %-17s E-mail: %-31s |\n", competitionMembers.indexOf(s) + 1, s.fName, s.email);
+            for(int i = 0; i < s.disciplinType.length; i++) {
+                System.out.printf("|%-16s Best time: %-12s Date: %-33s |\n", s.disciplinType[i],s.trainingResult[i], s.date[i]);
+            }
+            System.out.println("|---------------------------------------------------------------------------------|");
+        }
+        System.out.println();
     }
 
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
