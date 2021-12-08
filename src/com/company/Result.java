@@ -86,8 +86,6 @@ public class Result {
 
     }
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input, String teamT) {
-
-
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
