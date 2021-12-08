@@ -36,6 +36,7 @@ public class Result {
                 case 4:
                     makeMemberToCompetitionMember(input, members, competitionMembers);
                     writeToCompetitionMemberList(competitionMembers);
+                    //memberHandler.writeToMemberFile();
                     break;
                 case 5:
                     showCompetitionMembers(competitionMembers);
