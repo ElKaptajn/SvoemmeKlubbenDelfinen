@@ -25,7 +25,7 @@ public class Result {
                     System.out.println("Returning to main menu");
                     break;
                 case 1:
-                    getTopFive(competitionMembers, input);
+                    topFiveTeamType(competitionMembers, input);
                     break;
                 case 2:
                     System.out.println("ADD RESULT");
@@ -58,8 +58,36 @@ public class Result {
         }
         System.out.println();
     }
+    public void topFiveTeamType(ArrayList<CompetitionMember> competitionMembers, Scanner input){
+        int pickTeamType = 1;
+        while (pickTeamType != 0) {
+            System.out.println("""
+                    -------------- Top 5 Menu ---------------
+                    | Enter 0 for exit Team Type selection  |
+                    | Enter 1 for Senior top 5 list         |
+                    | Enter 2 for Junior top 5 list         |
+                    -----------------------------------------""");
+            pickTeamType = input.nextInt();
+            switch (pickTeamType) {
+                case 1: //Senior
+                    getTopFive(competitionMembers, input, "Senior");
+                    break;
+                case 2: //Junior
+                    getTopFive(competitionMembers, input, "Junior");
+                    break;
+                default:
+                    if (pickTeamType == 0) {
+                        break;
+                    } else {
+                        System.out.println("Number " + pickTeamType + " is not a valid option");
+                    }
+            }
+        }
 
-    public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
+    }
+    public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input, String teamT) {
+
+
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
@@ -73,16 +101,16 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    topFiveSort(competitionMembers, 0);
+                    topFiveSort(competitionMembers, 0, teamT);
                     break;
                 case 2: //Breaststroke
-                    topFiveSort(competitionMembers, 1);
+                    topFiveSort(competitionMembers, 1, teamT);
                     break;
                 case 3: //Butterfly
-                    topFiveSort(competitionMembers, 2);
+                    topFiveSort(competitionMembers, 2, teamT);
                     break;
                 case 4: //Backstroke
-                    topFiveSort(competitionMembers, 3);
+                    topFiveSort(competitionMembers, 3, teamT);
                     break;
                 default:
                     if (pickTop5 == 0) {
@@ -93,12 +121,12 @@ public class Result {
             }
         }
     }
-    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type){
+    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type, String teamT){
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        String topFiveText = "-----------------Top 5. for" + competitionMembers.get(0).disciplinType[type]; //Set text of top five and disciplin to find the length.
-        System.out.printf("-----------------Top 5. for %s", competitionMembers.get(0).disciplinType[type]); //Print of text that say top five and what disciplin.
+        String topFiveText = "-------------Top 5. for" + competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"; //Set text of top five and disciplin to find the length.
+        System.out.printf("-------------Top 5. for %s", competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"); //Print of text that say top five and what disciplin.
         for (int i = 1; i < (53 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
             System.out.print("-");
         }
@@ -119,9 +147,11 @@ public class Result {
         }
         for (int i = 0; i < competitionMembers.size(); i++) {
             if (!competitionMembers.get(i).trainingResult[type].equals("00:00") && tempI != 6) {
-                System.out.printf("| %d%s | Name: %-6s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
-                System.out.println("-----------------------------------------------------");
-                tempI++;
+                if (competitionMembers.get(i).teamType.equals(teamT)) {
+                    System.out.printf("| %d%s | Name: %-6s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                    System.out.println("-----------------------------------------------------");
+                    tempI++;
+                }
             }
         }
         System.out.println();
