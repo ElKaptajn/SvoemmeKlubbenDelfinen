@@ -35,7 +35,7 @@ public class Result {
                 case 4:
                     makeMemberToCompetitionMember(input, members, competitionMembers);
                     writeToCompetitionMemberList(competitionMembers);
-                    //memberHandler.writeToMemberFile();
+                    memberHandler.writeToMemberFile(members);
                     break;
                 case 5:
                     showCompetitionMembers(competitionMembers);
@@ -176,15 +176,14 @@ public class Result {
     }
 
     public void makeMemberToCompetitionMember(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) {
-        int count = 1;
         System.out.println("------------------Competition Swimmer List-------------------");
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).activityType.equals("Competition Swimmer")) {
-                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", count, members.get(i).fName, members.get(i).email);
-                count++;
+                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", i+1, members.get(i).fName, members.get(i).email);
             }
         }
         System.out.println("-------------------------------------------------------------");
+
        /* int counter = 1;
         for (Member m : members) {
             System.out.println("Nr." + counter + "\n" + m + "\n********************************");

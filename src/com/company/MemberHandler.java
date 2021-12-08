@@ -47,7 +47,7 @@ public class MemberHandler {
                         System.out.println("Number " + answer + " is not a valid option");
                     }
             }
-            writeToMemberFile();
+            writeToMemberFile(members);
         }
     }
 
@@ -274,10 +274,12 @@ public class MemberHandler {
             }
         }
     }
+
     /**
      * Writing member arraylist to a file
      */
-    public void writeToMemberFile() throws IOException {
+    public void writeToMemberFile(ArrayList<Member> members) throws IOException {
+        sortMemberActivity();
         FileWriter writeFile = new FileWriter(new File("Files/MemberList"), false);
         BufferedWriter bWrite = new BufferedWriter(writeFile);
 
@@ -296,6 +298,24 @@ public class MemberHandler {
         }
         bWrite.write(membersOut);
         bWrite.close();
+    }
+
+    public void sortMemberActivity(){
+        Member[] memberArray = new Member[members.size()];
+        Member[] tempArray = new Member[1];
+        for (int i = 0; i < members.size(); i++) {
+            memberArray[i] = members.get(i);
+        }
+        for (int i = 0; i < members.size(); i++) {
+            for (int j = i + 1; j < memberArray.length; j++) {
+                if (memberArray[i].activityType.compareTo(memberArray[j].activityType) > 0) {
+                    tempArray[0] = memberArray[i];
+                    memberArray[i] = memberArray[j];
+                    memberArray[j] = tempArray[0];
+                }
+            }
+            members.set(i, memberArray[i]);
+        }
     }
 
     public ArrayList<Member> getMembers() {
