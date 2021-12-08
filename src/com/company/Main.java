@@ -14,12 +14,12 @@ public class Main {
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
-                    --------- Head menu --------
-                    | Enter 0 for exit program |
-                    | Enter 1 for Member Menu  |
-                    | Enter 2 for Result Menu  |
-                    | Enter 3 for Economy Menu |
-                    ----------------------------""");
+                    ┌──────── Head menu ────────┐
+                    │ Enter 0 for exit program  │
+                    │ Enter 1 for Member Menu   │
+                    │ Enter 2 for Result Menu   │
+                    │ Enter 3 for Economy Menu  │
+                    └───────────────────────────┘""");
             answer = input.nextInt();
             switch (answer) {
                 case 1:
