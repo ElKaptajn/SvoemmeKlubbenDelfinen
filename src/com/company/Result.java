@@ -22,8 +22,8 @@ public class Result {
                     | Enter 2 to add a new result                                   |
                     | Enter 3 to edit an existing result                            |
                     | Enter 4 to make an existing member into a competition Member  |
-                    | Enter 5 to show all results                                   |
-                    | Enter 6 to show all competition members                       |
+                    | Enter 5 to show all competition members                       |
+                    | Enter 6 to show all results                                   |
                     -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
