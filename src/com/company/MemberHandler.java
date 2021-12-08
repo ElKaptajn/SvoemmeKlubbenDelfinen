@@ -37,7 +37,7 @@ public class MemberHandler {
                     editMember(input);
                     break;
                 case 4:
-                    showMember(input);
+                    showSpecificMember(input);
                     break;
                 default:
                     if (answer == 0) {
@@ -113,7 +113,7 @@ public class MemberHandler {
 
     public void editMember(Scanner input) {
         System.out.println("------------------------ Edit member ------------------------");
-        showEditMember();
+        showMembers();
         System.out.println("|                      Enter 0 to exit                      |");
         System.out.println("-------------------------------------------------------------\n");
 
@@ -223,16 +223,16 @@ public class MemberHandler {
         }
     }
 
-    public void showEditMember() {
+    public void showMembers() {
         for (Member s : members) {
             System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", members.indexOf(s) + 1, s.fName, s.email);
         }
         System.out.println("|-----------------------------------------------------------|");
     }
 
-    public void showMember(Scanner input) {
+    public void showSpecificMember(Scanner input) {
         System.out.println("-------------------------- Members --------------------------");
-        showEditMember();
+        showMembers();
         System.out.println("|                      Enter 0 to exit                      |");
         System.out.println("-------------------------------------------------------------\n");
         int choice = 1;
@@ -252,22 +252,27 @@ public class MemberHandler {
                 } else if (myArrears.equals("false")) {
                     myArrears = "No";
                 }
-                System.out.println("--------------------------------------");
-                System.out.printf("""
-                                | Status       : %-19s |
-                                | Activity form: %-12s |
-                                | Team         : %-19s |
-                                | First name   : %-19s |
-                                | Last name    : %-19s |
-                                | Age          : %-19d |
-                                | E-mail       : %-19s |
-                                | Address      : %-19s |
-                                | Arrears      : %-19s |
+                System.out.println("---------------------------------------------------------------------------------------");
+                System.out.printf("""                                                                                         
+                                | SWIMMING CLUB DOLPHIN                    |                    ,-.                   |
+                                | MEMBERSHIP CARD                          |                   /  (                   |
+                                |                                          |             _.--'!   '--._               |
+                                | Status        : %-24s |            ,'              ''.           |
+                                | Activity form : %-24s |           |!                   \\         |
+                                | Team          : %-24s |         _.'  O      ___       ! \\        |
+                                | First name    : %-24s |        (_.-^, __..-'  ''''--.   )        |
+                                | Last name     : %-24s |            /,'             _.' /         |
+                                | Age           : %-24d |                        .-''    |         |
+                                | E-mail        : %-24s |                       (..--^.  '\\        |
+                                | Address       : %-24s |                             | /          |
+                                | Arrears       : %-24s |                             '            |                                                              
                                 """,
                         myStatus, members.get(choice - 1).activityType, members.get(choice - 1).teamType,
                         members.get(choice - 1).fName, members.get(choice - 1).lName, members.get(choice - 1).age,
                         members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
-                System.out.println("--------------------------------------\n");
+                System.out.println("---------------------------------------------------------------------------------------");
+                System.out.println("|                      Enter 0 to exit                                                |");
+                System.out.println("---------------------------------------------------------------------------------------\n");
             } else if (choice >= members.size()){
                 System.out.println("\nNumber " + choice + " is not a valid option\n");
             }
