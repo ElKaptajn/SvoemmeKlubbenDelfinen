@@ -10,7 +10,6 @@ import java.util.*;
  * @author Thomas
  * @author Philip
  */
-
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
     private ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
