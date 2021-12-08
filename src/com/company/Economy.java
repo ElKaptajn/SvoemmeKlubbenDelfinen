@@ -14,11 +14,11 @@ public class Economy {
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
-                    ------------ Economy Menu ------------
-                    | Enter 0 to exit Economy menu       |
-                    | Enter 1 to Show arrears            |
-                    | Enter 2 to Show income             |
-                    --------------------------------------""");
+                    ┌─────────── Economy Menu ───────────┐
+                    │ Enter 0 to exit Economy menu       │
+                    │ Enter 1 to Show arrears            │
+                    │ Enter 2 to Show income             │
+                    └────────────────────────────────────┘""");
 
             answer = input.nextInt();
             switch (answer) {
