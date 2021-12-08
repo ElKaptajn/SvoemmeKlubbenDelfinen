@@ -7,7 +7,6 @@ public class Result {
 
     public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
-
         int answer = -1;
         while (answer != 0) {
             System.out.println("""
@@ -36,6 +35,7 @@ public class Result {
                 case 4:
                     makeMemberToCompetitionMember(input, members, competitionMembers);
                     writeToCompetitionMemberList(competitionMembers);
+                    //memberHandler.writeToMemberFile();
                     break;
                 case 5:
                     showCompetitionMembers(competitionMembers);
@@ -47,18 +47,19 @@ public class Result {
         }
     }
 
-    public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers){
+    public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers) {
         System.out.println("------------------------------- Competition Members -------------------------------");
         for (CompetitionMember s : competitionMembers) {
             System.out.printf("|Nr. %-12d Name: %-17s E-mail: %-31s |\n", competitionMembers.indexOf(s) + 1, s.fName, s.email);
-            for(int i = 0; i < s.disciplinType.length; i++) {
-                System.out.printf("|%-16s Best time: %-12s Date: %-33s |\n", s.disciplinType[i],s.trainingResult[i], s.date[i]);
+            for (int i = 0; i < s.disciplinType.length; i++) {
+                System.out.printf("|%-16s Best time: %-12s Date: %-33s |\n", s.disciplinType[i], s.trainingResult[i], s.date[i]);
             }
             System.out.println("|---------------------------------------------------------------------------------|");
         }
         System.out.println();
     }
-    public void topFiveTeamType(ArrayList<CompetitionMember> competitionMembers, Scanner input){
+
+    public void topFiveTeamType(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
         int pickTeamType = 1;
         while (pickTeamType != 0) {
             System.out.println("""
@@ -85,6 +86,7 @@ public class Result {
         }
 
     }
+
     public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input, String teamT) {
         int pickTop5 = 1;
         while (pickTop5 != 0) {
@@ -119,7 +121,8 @@ public class Result {
             }
         }
     }
-    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type, String teamT){
+
+    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type, String teamT) {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
@@ -154,6 +157,7 @@ public class Result {
         }
         System.out.println();
     }
+
     public String topFivePlace(int placement) {
         return switch (placement) {
             case 1 -> "st";
@@ -172,11 +176,20 @@ public class Result {
     }
 
     public void makeMemberToCompetitionMember(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) {
-        int counter = 1;
+        int count = 1;
+        System.out.println("------------------Competition Swimmer List-------------------");
+        for (int i = 0; i < members.size(); i++) {
+            if (members.get(i).activityType.equals("Competition Swimmer")) {
+                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", count, members.get(i).fName, members.get(i).email);
+                count++;
+            }
+        }
+        System.out.println("-------------------------------------------------------------");
+       /* int counter = 1;
         for (Member m : members) {
             System.out.println("Nr." + counter + "\n" + m + "\n********************************");
             counter++;
-        }
+        } */
         System.out.print("Pick a member from the list above, that you want to make into a competition member.\nThe members nr: ");
         int answer = input.nextInt();
         Member changingMember = members.get(answer - 1);

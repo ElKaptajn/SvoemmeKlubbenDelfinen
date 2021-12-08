@@ -1,5 +1,9 @@
 package com.company;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.*;
 
 /**
@@ -11,7 +15,7 @@ public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
     private ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
 
-    public void memberHandlerMenu(Scanner input) {
+    public void memberHandlerMenu(Scanner input) throws IOException {
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
@@ -43,6 +47,7 @@ public class MemberHandler {
                         System.out.println("Number " + answer + " is not a valid option");
                     }
             }
+            writeToMemberFile();
         }
     }
 
@@ -268,6 +273,29 @@ public class MemberHandler {
                 System.out.println("\nNumber " + choice + " is not a valid option\n");
             }
         }
+    }
+    /**
+     * Writing member arraylist to a file
+     */
+    public void writeToMemberFile() throws IOException {
+        FileWriter writeFile = new FileWriter(new File("Files/MemberList"), false);
+        BufferedWriter bWrite = new BufferedWriter(writeFile);
+
+        String membersOut = "";
+        String[] sArr = new String[members.size()];
+        Arrays.fill(sArr, "");
+
+        for (int i = 0; i < members.size(); i++) {
+            String s = String.valueOf(members.get(i));
+            String[] strArr = s.split("\n");
+            for (int j = 0; j < 9; j++) {
+                String newLastMember = strArr[j].substring(strArr[j].indexOf(": ") + 2);
+                sArr[i] += newLastMember + ", ";
+            }
+            membersOut += sArr[i] + "\n";
+        }
+        bWrite.write(membersOut);
+        bWrite.close();
     }
 
     public ArrayList<Member> getMembers() {
