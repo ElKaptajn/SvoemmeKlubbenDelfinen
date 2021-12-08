@@ -1,11 +1,12 @@
 package com.company;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.io.IOException;
+import java.io.*;
+import java.util.*;
+
+/**
+ * @author Josefine
+ * @author Tonje
+ */
 
 public class Economy {
 

@@ -8,7 +8,6 @@ public class Main {
     public static void main(String[] args) throws IOException {
         Scanner input = new Scanner(System.in);
         MemberHandler memberHandler = new MemberHandler();
-        //Economy economy = new Economy();
         Result result = new Result();
         updateMemberArrayList(memberHandler.getMembers());
         result.updateCompetitionMemberList(memberHandler.getCompetitionMembers());

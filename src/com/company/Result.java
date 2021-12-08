@@ -3,6 +3,12 @@ package com.company;
 import java.io.*;
 import java.util.*;
 
+/**
+ * @author Xenius
+ * @author Thomas
+ * @author Philip
+ */
+
 public class Result {
 
     public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
