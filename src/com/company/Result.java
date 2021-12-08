@@ -7,7 +7,6 @@ public class Result {
 
     public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
-
         int answer = -1;
         while (answer != 0) {
             System.out.println("""
