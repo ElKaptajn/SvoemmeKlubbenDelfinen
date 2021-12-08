@@ -15,7 +15,6 @@ public class Economy {
                 ------------ Economy Menu ------------
                 | Enter 1 to Show arrears            |
                 | Enter 2 to Show income             |
-                | Enter 3 to Edit members in arrears |
                 --------------------------------------""");
 
         int answer = input.nextInt();
@@ -25,9 +24,6 @@ public class Economy {
                 break;
             case 2:
                 income();
-                break;
-            case 3:
-                //editMemberInArrears(input);
                 break;
             default:
                 System.out.println("Number" + answer + "is not a valid option.");
@@ -97,7 +93,7 @@ public class Economy {
         }
         System.out.println("\nExpected income: " + income + " DKK\n");
     }
-hej
+
     /*
     public static void editMemberInArrears(Scanner input) {
         private ArrayList<Member> members = new ArrayList<>();
