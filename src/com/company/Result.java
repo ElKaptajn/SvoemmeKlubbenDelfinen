@@ -250,7 +250,6 @@ public class Result {
             }
         }
         System.out.println("└───────────────────────────────────────────────────────────┘");
-
        /* int counter = 1;
         for (Member m : members) {
             System.out.println("Nr." + counter + "\n" + m + "\n********************************");
