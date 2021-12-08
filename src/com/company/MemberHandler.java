@@ -10,7 +10,6 @@ import java.util.*;
  * @author Thomas
  * @author Philip
  */
-
 public class MemberHandler {
     private ArrayList<Member> members = new ArrayList<>();
     private ArrayList<CompetitionMember> competitionMembers = new ArrayList<>();
@@ -20,7 +19,7 @@ public class MemberHandler {
         while (answer != 0) {
             System.out.println("""
                     ---------- Member menu ----------
-                    | Enter 0 to exit program       |
+                    | Enter 0 to exit Member menu   |
                     | Enter 1 to Create new member  |
                     | Enter 2 to Delete member      |
                     | Enter 3 to Edit member        |

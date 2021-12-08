@@ -11,26 +11,33 @@ import java.util.*;
 public class Economy {
 
     public static void economyMenu(Scanner input, ArrayList<Member> members) throws IOException {
-        System.out.println("""
-                
-                ------------ Economy Menu ------------
-                | Enter 1 to Show arrears            |
-                | Enter 2 to Show income             |
-                --------------------------------------""");
+        int answer = 1;
+        while (answer != 0) {
+            System.out.println("""
+                    ------------ Economy Menu ------------
+                    | Enter 0 to exit Economy menu       |
+                    | Enter 1 to Show arrears            |
+                    | Enter 2 to Show income             |
+                    --------------------------------------""");
 
-        int answer = input.nextInt();
-        switch (answer) {
-            case 1:
-                arrears(members);
-                break;
-            case 2:
-                income();
-                break;
-            default:
-                System.out.println("Number" + answer + "is not a valid option.");
-                break;
+            answer = input.nextInt();
+            switch (answer) {
+                case 1:
+                    arrears(members);
+                    break;
+                case 2:
+                    income();
+                    break;
+                default:
+                    if (answer == 0) {
+                        break;
+                    } else {
+                        System.out.println("Number " + answer + " is not a valid option");
+                    }
+            }
         }
     }
+
 
     public static void arrears(ArrayList<Member> members) {
 

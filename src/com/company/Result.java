@@ -13,7 +13,7 @@ public class Result {
 
     public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
-        int answer = -1;
+        int answer = 1;
         while (answer != 0) {
             System.out.println("""
                     -------------------------- result menu --------------------------
@@ -21,14 +21,11 @@ public class Result {
                     | Enter 1 to show the top five lists                            |
                     | Enter 2 to add a new result                                   |
                     | Enter 3 to edit an existing result                            |
-                    | Enter 4 to make an existing member into a competitionMember   |
+                    | Enter 4 to make an existing member into a competition Member  |
                     | Enter 5 to show all results                                   |
                     -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
-                case 0:
-                    System.out.println("Returning to main menu");
-                    break;
                 case 1:
                     topFiveTeamType(competitionMembers, input);
                     break;
@@ -47,11 +44,15 @@ public class Result {
                     showCompetitionMembers(competitionMembers);
                     break;
                 default:
-                    System.out.println("Number " + answer + " is not a valid option");
-                    break;
+                    if (answer == 0) {
+                        break;
+                    } else {
+                        System.out.println("Number " + answer + " is not a valid option");
+                    }
             }
         }
     }
+
 
     public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers) {
         System.out.println("------------------------------- Competition Members -------------------------------");
@@ -132,9 +133,9 @@ public class Result {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        String topFiveText = "-------------Top 5. for" + competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"; //Set text of top five and disciplin to find the length.
-        System.out.printf("-------------Top 5. for %s", competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"); //Print of text that say top five and what disciplin.
-        for (int i = 1; i < (53 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
+        String topFiveText = "-----------Top 5. for" + competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"; //Set text of top five and disciplin to find the length.
+        System.out.printf("-----------Top 5. for %s", competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"); //Print of text that say top five and what disciplin.
+        for (int i = 1; i < (55 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
             System.out.print("-");
         }
         System.out.println();
@@ -155,8 +156,8 @@ public class Result {
         for (int i = 0; i < competitionMembers.size(); i++) {
             if (!competitionMembers.get(i).trainingResult[type].equals("00:00") && tempI != 6) {
                 if (competitionMembers.get(i).teamType.equals(teamT) && competitionMembers.get(i).status) {
-                    System.out.printf("| %d%s | Name: %-6s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
-                    System.out.println("-----------------------------------------------------");
+                    System.out.printf("| %d%s | Name: %-8s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
+                    System.out.println("-------------------------------------------------------");
                     tempI++;
                 }
             }
@@ -185,7 +186,7 @@ public class Result {
         System.out.println("------------------Competition Swimmer List-------------------");
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).activityType.equals("Competition Swimmer")) {
-                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", i+1, members.get(i).fName, members.get(i).email);
+                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", i + 1, members.get(i).fName, members.get(i).email);
             }
         }
         System.out.println("-------------------------------------------------------------");
