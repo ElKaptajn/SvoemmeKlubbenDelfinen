@@ -13,7 +13,7 @@ public class Result {
 
     public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
-        int answer = -1;
+        int answer = 1;
         while (answer != 0) {
             System.out.println("""
                     -------------------------- result menu --------------------------
@@ -21,14 +21,11 @@ public class Result {
                     | Enter 1 to show the top five lists                            |
                     | Enter 2 to add a new result                                   |
                     | Enter 3 to edit an existing result                            |
-                    | Enter 4 to make an existing member into a competitionMember   |
+                    | Enter 4 to make an existing member into a competition Member  |
                     | Enter 5 to show all results                                   |
                     -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
-                case 0:
-                    System.out.println("Returning to main menu");
-                    break;
                 case 1:
                     topFiveTeamType(competitionMembers, input);
                     break;
@@ -47,11 +44,15 @@ public class Result {
                     showCompetitionMembers(competitionMembers);
                     break;
                 default:
-                    System.out.println("Number " + answer + " is not a valid option");
-                    break;
+                    if (answer == 0) {
+                        break;
+                    } else {
+                        System.out.println("Number " + answer + " is not a valid option");
+                    }
             }
         }
     }
+
 
     public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers) {
         System.out.println("------------------------------- Competition Members -------------------------------");
@@ -185,7 +186,7 @@ public class Result {
         System.out.println("------------------Competition Swimmer List-------------------");
         for (int i = 0; i < members.size(); i++) {
             if (members.get(i).activityType.equals("Competition Swimmer")) {
-                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", i+1, members.get(i).fName, members.get(i).email);
+                System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", i + 1, members.get(i).fName, members.get(i).email);
             }
         }
         System.out.println("-------------------------------------------------------------");
