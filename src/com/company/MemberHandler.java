@@ -18,13 +18,13 @@ public class MemberHandler {
         int answer = 1;
         while (answer != 0) {
             System.out.println("""
-                    ---------- Member menu ----------
-                    | Enter 0 to exit Member menu   |
-                    | Enter 1 to Create new member  |
-                    | Enter 2 to Delete member      |
-                    | Enter 3 to Edit member        |
-                    | Enter 4 to show member        |
-                    ---------------------------------""");
+                    ┌───────── Member menu ─────────┐
+                    │ Enter 0 to exit Member menu   │
+                    │ Enter 1 to Create new member  │
+                    │ Enter 2 to Delete member      │
+                    │ Enter 3 to Edit member        │
+                    │ Enter 4 to show member        │
+                    └───────────────────────────────┘""");
             answer = input.nextInt();
             switch (answer) {
                 case 1:
@@ -51,23 +51,23 @@ public class MemberHandler {
     }
 
     public ArrayList<Member> createMember(Scanner input) {
-        System.out.println("--------------- Create Member ---------------");
-        System.out.print("| Enter firstname: ");
+        System.out.println("┌────────────── Create Member ──────────────┐");
+        System.out.print("│ Enter firstname: ");
         String fName = input.next();
-        System.out.print("| Enter lastname: ");
+        System.out.print("│ Enter lastname: ");
         String lName = input.next();
-        System.out.print("| Enter age: ");
+        System.out.print("│ Enter age: ");
         int age = input.nextInt();
-        System.out.print("| Enter email: ");
+        System.out.print("│ Enter email: ");
         String email = input.next();
         input.nextLine();
-        System.out.print("| Enter address: ");
+        System.out.print("│ Enter address: ");
         String address = input.nextLine();
         String teamType = "None";
         String activityType = "";
-        System.out.print("| Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer: ");
+        System.out.print("│ Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer: ");
         int activityTypeChoice = input.nextInt();
-        System.out.println("---------------------------------------------");
+        System.out.println("└────────────────────────────────────────────");
         while (activityTypeChoice > 2) {
             System.out.println("Invalid number: " + activityTypeChoice);
             activityTypeChoice = input.nextInt();
@@ -93,13 +93,13 @@ public class MemberHandler {
 
     public ArrayList<Member> deleteMember(Scanner input) {
         if (members.size() >= 1) {
-            System.out.println("-------- Delete Member --------");
+            System.out.println("┌─────── Delete Member ───────┐");
             for (int i = 0; i < members.size(); i++) {
                 System.out.printf("| Nr. %-2d | %-7s %-10s |\n", (i + 1), members.get(i).fName, members.get(i).lName);
             }
-            System.out.println("-------------------------------");
-            System.out.println("|       Enter 0 to exit       |");
-            System.out.println("-------------------------------");
+            System.out.println("├─────────────────────────────┤");
+            System.out.println("│       Enter 0 to exit       │");
+            System.out.println("└─────────────────────────────┘");
             System.out.println("Enter corresponding number for removing: ");
             int removeChoice = input.nextInt();
             if (removeChoice != 0) {
@@ -112,10 +112,10 @@ public class MemberHandler {
     }
 
     public void editMember(Scanner input) {
-        System.out.println("------------------------ Edit member ------------------------");
+        System.out.println("┌─────────────────────── Edit member ───────────────────────┐");
         showMembers();
-        System.out.println("|                      Enter 0 to exit                      |");
-        System.out.println("-------------------------------------------------------------\n");
+        System.out.println("│                      Enter 0 to exit                      │");
+        System.out.println("└───────────────────────────────────────────────────────────┘\n");
 
         int picked = 1;
         int tempI = 1;
@@ -225,16 +225,16 @@ public class MemberHandler {
 
     public void showMembers() {
         for (Member s : members) {
-            System.out.printf("| Nr. %-2d | Name: %-8s | E-mail: %-23s |\n", members.indexOf(s) + 1, s.fName, s.email);
+            System.out.printf("│ Nr. %-2d │ Name: %-8s │ E-mail: %-23s │\n", members.indexOf(s) + 1, s.fName, s.email);
         }
-        System.out.println("|-----------------------------------------------------------|");
+        System.out.println("├────────┴────────────────┴─────────────────────────────────┤");
     }
 
     public void showSpecificMember(Scanner input) {
-        System.out.println("-------------------------- Members --------------------------");
+        System.out.println("┌───────────────────────── Members ─────────────────────────┐");
         showMembers();
-        System.out.println("|                      Enter 0 to exit                      |");
-        System.out.println("-------------------------------------------------------------\n");
+        System.out.println("│                      Enter 0 to exit                      │");
+        System.out.println("└───────────────────────────────────────────────────────────┘\n");
         int choice = 1;
         while (choice != 0) {
             System.out.print("Enter number for which member you want to see: ");
@@ -252,27 +252,27 @@ public class MemberHandler {
                 } else if (myArrears.equals("false")) {
                     myArrears = "No";
                 }
-                System.out.println("---------------------------------------------------------------------------------------");
-                System.out.printf("""                                                                                         
-                                | SWIMMING CLUB DOLPHIN                    |                    ,-.                   |
-                                | MEMBERSHIP CARD                          |                   /  (                   |
-                                |                                          |             _.--'!   '--._               |
-                                | Status        : %-24s |            ,'              ''.           |
-                                | Activity form : %-24s |           |!                   \\         |
-                                | Team          : %-24s |         _.'  O      ___       ! \\        |
-                                | First name    : %-24s |        (_.-^, __..-'  ''''--.   )        |
-                                | Last name     : %-24s |            /,'             _.' /         |
-                                | Age           : %-24d |                        .-''    |         |
-                                | E-mail        : %-24s |                       (..--^.  '\\        |
-                                | Address       : %-24s |                             | /          |
-                                | Arrears       : %-24s |                             '            |                                                              
+                System.out.printf("""
+                                ┌──────────────────────────────────────────┬──────────────────────────────────────────┐
+                                │ SWIMMING CLUB DOLPHIN                    │                    ,-.                   │
+                                │ MEMBERSHIP CARD                          │                   /  (                   │
+                                │                                          │             _.--'!   '--._               │
+                                │ Status        : %-24s │            ,'              ''.           │
+                                │ Activity form : %-24s │           |!                   \\         │
+                                │ Team          : %-24s │         _.'  O      ___       ! \\        │
+                                │ First name    : %-24s │        (_.-^, __..-'  ''''--.   )        │
+                                │ Last name     : %-24s │            /,'             _.' /         │
+                                │ Age           : %-24d │                        .-''    |         │
+                                │ E-mail        : %-24s │                       (..--^.  '\\        │
+                                │ Address       : %-24s │                             | /          │
+                                │ Arrears       : %-24s │                             '            │
                                 """,
                         myStatus, members.get(choice - 1).activityType, members.get(choice - 1).teamType,
                         members.get(choice - 1).fName, members.get(choice - 1).lName, members.get(choice - 1).age,
                         members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
-                System.out.println("---------------------------------------------------------------------------------------");
-                System.out.println("|                      Enter 0 to exit                                                |");
-                System.out.println("---------------------------------------------------------------------------------------\n");
+                System.out.println("├──────────────────────────────────────────┴──────────────────────────────────────────┤");
+                System.out.println("│                                   Enter 0 to exit                                   │");
+                System.out.println("└─────────────────────────────────────────────────────────────────────────────────────┘\n");
             } else if (choice >= members.size()){
                 System.out.println("\nNumber " + choice + " is not a valid option\n");
             }
