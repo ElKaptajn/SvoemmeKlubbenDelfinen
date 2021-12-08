@@ -23,6 +23,7 @@ public class Result {
                     | Enter 3 to edit an existing result                            |
                     | Enter 4 to make an existing member into a competition Member  |
                     | Enter 5 to show all results                                   |
+                    | Enter 6 to show all competition members                       |
                     -----------------------------------------------------------------""");
             answer = input.nextInt();
             switch (answer) {
@@ -41,7 +42,9 @@ public class Result {
                     memberHandler.writeToMemberFile(members);
                     break;
                 case 5:
-                    showCompetitionMembers(competitionMembers);
+                    showSpecificCompetitionMember(input, competitionMembers);
+                    break;
+                case 6:
                     break;
                 default:
                     if (answer == 0) {
@@ -55,15 +58,71 @@ public class Result {
 
 
     public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers) {
-        System.out.println("------------------------------- Competition Members -------------------------------");
         for (CompetitionMember s : competitionMembers) {
-            System.out.printf("|Nr. %-12d Name: %-17s E-mail: %-31s |\n", competitionMembers.indexOf(s) + 1, s.fName, s.email);
+            System.out.printf("|Nr. %-12d | Name: %-17s | E-mail: %-27s |\n", competitionMembers.indexOf(s) + 1, s.fName, s.email);
             for (int i = 0; i < s.disciplinType.length; i++) {
-                System.out.printf("|%-16s Best time: %-12s Date: %-33s |\n", s.disciplinType[i], s.trainingResult[i], s.date[i]);
+                System.out.printf("|%-16s | Best time: %-12s | Date: %-29s |\n", s.disciplinType[i], s.trainingResult[i], s.date[i]);
             }
             System.out.println("|---------------------------------------------------------------------------------|");
         }
-        System.out.println();
+    }
+
+
+    public void showSpecificCompetitionMember(Scanner input, ArrayList<CompetitionMember> competitionMembers) {
+        System.out.println("------------------------------- Competition Members -------------------------------");
+        showCompetitionMembers(competitionMembers);
+        System.out.println("|                                 Enter 0 to exit                                 |");
+        System.out.println("-----------------------------------------------------------------------------------\n");
+        int choice = 1;
+        while (choice != 0) {
+            System.out.print("Enter number for which member you want to see: ");
+            choice = input.nextInt();
+            if (choice != 0 && choice <= competitionMembers.size()) {
+                String myStatus = String.valueOf(competitionMembers.get(choice - 1).status);
+                String myArrears = String.valueOf(competitionMembers.get(choice - 1).arrears);
+                if (myStatus.equals("true")) {
+                    myStatus = "Active";
+                } else if (myStatus.equals("false")) {
+                    myStatus = "Passive";
+                }
+                if (myArrears.equals("true")) {
+                    myArrears = "Yes";
+                } else if (myArrears.equals("false")) {
+                    myArrears = "No";
+                }
+                System.out.println("-------------------------------------------------------------------------------------------");
+                System.out.printf("""                                                                                         
+                                | SWIMMING CLUB DOLPHIN                    |                      ,-.                     |
+                                | MEMBERSHIP CARD                          |                     /  (                     |
+                                |                                          |               _.--'!   '--._                 |
+                                | Status        : %-24s |              ,'              ''.             |
+                                | Activity form : %-24s |             |!                   \\           |
+                                | Team          : %-24s |           _.'  O      ___       ! \\          |
+                                | First name    : %-24s |          (_.-^, __..-'  ''''--.   )          |
+                                | Last name     : %-24s |              /,'             _.' /           |
+                                | Age           : %-24d |                          .-''    |           |
+                                | E-mail        : %-24s |                         (..--^.  '\\          |
+                                | Address       : %-24s |                               | /            |
+                                | Arrears       : %-24s |                               '              |
+                                | Disciplin type: %-24s | Training result : %-4s | Date : %-11s |
+                                | Disciplin type: %-24s | Training result : %-4s | Date : %-11s |
+                                | Disciplin type: %-24s | Training result : %-4s | Date : %-11s |
+                                | Disciplin type: %-24s | Training result : %-4s | Date : %-11s |
+                                """,
+                        myStatus, competitionMembers.get(choice - 1).activityType, competitionMembers.get(choice - 1).teamType,
+                        competitionMembers.get(choice - 1).fName, competitionMembers.get(choice - 1).lName, competitionMembers.get(choice - 1).age,
+                        competitionMembers.get(choice - 1).email, competitionMembers.get(choice - 1).address, myArrears,
+                        competitionMembers.get(choice - 1).disciplinType[0], competitionMembers.get(choice - 1).trainingResult[0], competitionMembers.get(choice - 1).date[0],
+                        competitionMembers.get(choice - 1).disciplinType[1], competitionMembers.get(choice - 1).trainingResult[1], competitionMembers.get(choice - 1).date[1],
+                        competitionMembers.get(choice - 1).disciplinType[2], competitionMembers.get(choice - 1).trainingResult[2], competitionMembers.get(choice - 1).date[2],
+                        competitionMembers.get(choice - 1).disciplinType[3], competitionMembers.get(choice - 1).trainingResult[3], competitionMembers.get(choice - 1).date[3]);
+                System.out.println("|-----------------------------------------------------------------------------------------|");
+                System.out.println("|                                     Enter 0 to exit                                     |");
+                System.out.println("------------------------------------------------------------------------------------------\n");
+            } else if (choice >= competitionMembers.size()){
+                System.out.println("\nNumber " + choice + " is not a valid option\n");
+            }
+        }
     }
 
     public void topFiveTeamType(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
