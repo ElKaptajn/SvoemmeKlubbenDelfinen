@@ -148,7 +148,7 @@ public class Result {
         }
         for (int i = 0; i < competitionMembers.size(); i++) {
             if (!competitionMembers.get(i).trainingResult[type].equals("00:00") && tempI != 6) {
-                if (competitionMembers.get(i).teamType.equals(teamT)) {
+                if (competitionMembers.get(i).teamType.equals(teamT) && competitionMembers.get(i).status) {
                     System.out.printf("| %d%s | Name: %-6s | time %5s | date %-10s |\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
                     System.out.println("-----------------------------------------------------");
                     tempI++;
