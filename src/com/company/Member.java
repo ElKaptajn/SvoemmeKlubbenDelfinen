@@ -7,19 +7,20 @@ public class Member {
     String fName;
     String lName;
     int age;
+    boolean gender;
     String email;
     String address;
     boolean arrears;
-    //arrearsType {junior, senior, pensioner, passiv}
 
     public Member(boolean status, String activityType, String teamType, String fName, String lName,
-                  int age, String email, String address, boolean arrears) {
+                  int age, Boolean gender, String email, String address, boolean arrears) {
         this.status = status;
         this.activityType = activityType;
         this.teamType = teamType;
         this.fName = fName;
         this.lName = lName;
         this.age = age;
+        this.gender = gender;
         this.email = email;
         this.address = address;
         this.arrears = arrears;
@@ -31,10 +32,14 @@ public class Member {
     @Override
     public String toString() {
         String myStatus;
+        String myGender;
         String myArrears;
         if (status) {
             myStatus = "Active";
         } else {myStatus = "Passive";}
+        if (gender) {
+            myGender = "Male";
+        } else {myGender = "Female";}
         if (arrears) {
             myArrears = "Yes";
         } else {myArrears = "No";}
@@ -44,6 +49,7 @@ public class Member {
                 "\nFirstname: " + fName +
                 "\nLastname: " + lName +
                 "\nAge: " + age +
+                "\nGender: " + myGender +
                 "\nE-mail: " + email +
                 "\nAddress: " + address +
                 "\nArrears: " + myArrears);

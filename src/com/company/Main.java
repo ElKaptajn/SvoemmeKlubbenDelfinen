@@ -55,12 +55,17 @@ public class Main {
             } else {
                 memberInfo[0] = "false";
             }
-            if (memberInfo[8].equals("Yes")){
-                memberInfo[8] = "true";
-            } else {
-                memberInfo[8] = "false";
+            if (memberInfo[6].equals("Male")) {
+                memberInfo[6] = "true";
+            } else if (memberInfo[6].equals("Female")) {
+                memberInfo[6] = "false";
             }
-            Member member = new Member(Boolean.parseBoolean(memberInfo[0]), memberInfo[1], memberInfo[2], memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), memberInfo[6], memberInfo[7], Boolean.parseBoolean(memberInfo[8]));
+            if (memberInfo[9].equals("Yes")){
+                memberInfo[9] = "true";
+            } else {
+                memberInfo[9] = "false";
+            }
+            Member member = new Member(Boolean.parseBoolean(memberInfo[0]), memberInfo[1], memberInfo[2], memberInfo[3], memberInfo[4], Integer.parseInt(memberInfo[5]), Boolean.parseBoolean(memberInfo[6]), memberInfo[7], memberInfo[8], Boolean.parseBoolean(memberInfo[9]));
             members.add(member);
         }
         readMember.close();
