@@ -31,10 +31,12 @@ public class Result {
                     topFiveTeamType(competitionMembers, input);
                     break;
                 case 2:
-                    System.out.println("ADD RESULT");
+                    addResult(input, competitionMembers);
+                    writeToCompetitionMemberList(competitionMembers);
                     break;
                 case 3:
-                    System.out.println("EDIT RESULT");
+                    editResult(input, competitionMembers);
+                    writeToCompetitionMemberList(competitionMembers);
                     break;
                 case 4:
                     makeMemberToCompetitionMember(input, members, competitionMembers);
@@ -56,6 +58,151 @@ public class Result {
         }
     }
 
+    public void addResult(Scanner input, ArrayList<CompetitionMember> competitionMembers) {
+        System.out.println("┌────────────────────────────── Competition Members ──────────────────────────────┐");
+        showCompetitionMembers(competitionMembers);
+        System.out.println("│                                 Enter 0 to exit                                 │");
+        System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘\n");
+        System.out.println("Enter the number of the member you want to add a result to: ");
+        int answerMember = input.nextInt();
+        CompetitionMember competitionMember = competitionMembers.get(answerMember - 1);
+        System.out.println("""
+                    ┌─ Which Swimming discipline do you want to add a new time to? ─┐
+                    │ Type 1 for Crawl                                              │
+                    │ Type 2 for Breaststroke                                       │
+                    │ Type 3 for Butterfly                                          │
+                    │ Type 4 for Backstroke                                         │
+                    └───────────────────────────────────────────────────────────────┘""");
+        String stringAnswer;
+        boolean timeTestAnswer;
+        int answer = input.nextInt();
+        switch (answer) {
+            case 1:
+                System.out.print("New best time for Crawl (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                timeTestAnswer = timeTester(competitionMember.trainingResult[0], stringAnswer);
+                if (!timeTestAnswer) {
+                    System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
+                } else {
+                    competitionMember.trainingResult[0] = stringAnswer;
+                    System.out.print("\nDate that the new record was set: ");
+                    stringAnswer = input.next();
+                    competitionMember.date[0] = stringAnswer;
+                }
+                break;
+            case 2:
+                System.out.print("New best time for Breaststroke (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                timeTestAnswer = timeTester(competitionMember.trainingResult[1], stringAnswer);
+                if (!timeTestAnswer) {
+                    System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[1]);
+                } else {
+                    competitionMember.trainingResult[1] = stringAnswer;
+                    System.out.print("\nDate that the new record was set: ");
+                    stringAnswer = input.next();
+                    competitionMember.date[1] = stringAnswer;
+                }
+                break;
+            case 3:
+                System.out.print("New best time for Butterfly (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                timeTestAnswer = timeTester(competitionMember.trainingResult[2], stringAnswer);
+                if (!timeTestAnswer) {
+                    System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[2]);
+                } else {
+                    competitionMember.trainingResult[2] = stringAnswer;
+                    System.out.print("\nDate that the new record was set: ");
+                    stringAnswer = input.next();
+                    competitionMember.date[2] = stringAnswer;
+                }
+                break;
+            case 4:
+                System.out.print("New best time for Backstroke (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                timeTestAnswer = timeTester(competitionMember.trainingResult[3], stringAnswer);
+                if (!timeTestAnswer) {
+                    System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[3]);
+                } else {
+                    competitionMember.trainingResult[3] = stringAnswer;
+                    System.out.print("\nDate that the new record was set: ");
+                    stringAnswer = input.next();
+                    competitionMember.date[3] = stringAnswer;
+                }
+                break;
+            default:
+                System.out.println("The number " + answer + " is not a valid option");
+        }
+    }
+
+    public void editResult(Scanner input, ArrayList<CompetitionMember> competitionMembers) {
+        System.out.println("┌────────────────────────────── Competition Members ──────────────────────────────┐");
+        showCompetitionMembers(competitionMembers);
+        System.out.println("│                                 Enter 0 to exit                                 │");
+        System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘\n");
+        System.out.println("Enter the number of the member you want to edit a result from: ");
+        int answerMember = input.nextInt();
+        CompetitionMember competitionMember = competitionMembers.get(answerMember - 1);
+        System.out.println("""
+                ┌─ Which Swimming discipline do you want to add a new time to? ─┐
+                │ Type 1 for Crawl                                              │
+                │ Type 2 for Breaststroke                                       │
+                │ Type 3 for Butterfly                                          │
+                │ Type 4 for Backstroke                                         │
+                └───────────────────────────────────────────────────────────────┘""");
+        String stringAnswer;
+        int answer = input.nextInt();
+        if (answer >= 1 && answer <= 3) {
+            System.out.print("New best time for " + competitionMember.disciplinType[answer - 1] + "(MUST be written in this format: xx:xx): ");
+            stringAnswer = input.next();
+            competitionMember.trainingResult[answer - 1] = stringAnswer;
+            System.out.print("\nDate that the new record was set: ");
+            stringAnswer = input.next();
+            competitionMember.date[answer - 1] = stringAnswer;
+        }else if(answer == 0){
+            System.out.println("Returning to Result Menu...");
+        }else{
+            System.out.println("The number " + answer + " is not a valid option");
+        }
+        /*
+        switch (answer) {
+            case 1:
+                System.out.print("New best time for Crawl (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                competitionMember.trainingResult[0] = stringAnswer;
+                System.out.print("\nDate that the new record was set: ");
+                stringAnswer = input.next();
+                competitionMember.date[0] = stringAnswer;
+                break;
+            case 2:
+                System.out.print("New best time for Breaststroke (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                competitionMember.trainingResult[1] = stringAnswer;
+                System.out.print("\nDate that the new record was set: ");
+                stringAnswer = input.next();
+                competitionMember.date[1] = stringAnswer;
+
+                break;
+            case 3:
+                System.out.print("New best time for Butterfly (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                competitionMember.trainingResult[2] = stringAnswer;
+                System.out.print("\nDate that the new record was set: ");
+                stringAnswer = input.next();
+                competitionMember.date[2] = stringAnswer;
+                break;
+            case 4:
+                System.out.print("New best time for Backstroke (MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                competitionMember.trainingResult[3] = stringAnswer;
+                System.out.print("\nDate that the new record was set: ");
+                stringAnswer = input.next();
+                competitionMember.date[3] = stringAnswer;
+                break;
+            default:
+                System.out.println("The number " + answer + " is not a valid option");
+        }
+         */
+    }
 
     public void showCompetitionMembers(ArrayList<CompetitionMember> competitionMembers) {
         for (CompetitionMember s : competitionMembers) {
@@ -234,14 +381,6 @@ public class Result {
         };
     }
 
-    public void addResult() {
-
-    }
-
-    public void editResult() {
-
-    }
-
     public void makeMemberToCompetitionMember(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) {
         System.out.println("┌──────────────── Competition Swimmer List ────────────────┐");
         for (int i = 0; i < members.size(); i++) {
@@ -292,7 +431,7 @@ public class Result {
                     stringAnswer = input.next();
                     timeTestAnswer = timeTester(competitionMember.trainingResult[0], stringAnswer);
                     if (!timeTestAnswer) {
-                        System.out.println("the time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
+                        System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
                     } else {
                         competitionMember.trainingResult[0] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
@@ -305,7 +444,7 @@ public class Result {
                     stringAnswer = input.next();
                     timeTestAnswer = timeTester(competitionMember.trainingResult[1], stringAnswer);
                     if (!timeTestAnswer) {
-                        System.out.println("the time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[1]);
+                        System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[1]);
                     } else {
                         competitionMember.trainingResult[1] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
@@ -318,7 +457,7 @@ public class Result {
                     stringAnswer = input.next();
                     timeTestAnswer = timeTester(competitionMember.trainingResult[2], stringAnswer);
                     if (!timeTestAnswer) {
-                        System.out.println("the time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[2]);
+                        System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[2]);
                     } else {
                         competitionMember.trainingResult[2] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
@@ -352,7 +491,7 @@ public class Result {
 
     //Tester hvilken tid der er lavest. Stringen skal være i formatet: xx:xx.
     public boolean timeTester(String oldTimeString, String newTimeString) {
-        if (oldTimeString == "00:00") {
+        if (oldTimeString.equals("00:00")) {
             return true;
         } else {
             String oldTimeMinString = oldTimeString.substring(0, oldTimeString.indexOf(":"));
