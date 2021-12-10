@@ -58,7 +58,7 @@ public class MemberHandler {
         String lName = input.next();
         System.out.print("│ Enter age: ");
         int age = input.nextInt();
-        System.out.println("│ Enter gender, 1 for male and 2 for female");
+        System.out.print("│ Enter gender, 1 for male and 2 for female: ");
         int g = input.nextInt();
         boolean gender;
         gender = g != 2;
