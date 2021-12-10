@@ -310,7 +310,7 @@ public class MemberHandler {
         for (int i = 0; i < members.size(); i++) {
             String s = String.valueOf(members.get(i));
             String[] strArr = s.split("\n");
-            for (int j = 0; j < 9; j++) {
+            for (int j = 0; j < 10; j++) {
                 String newLastMember = strArr[j].substring(strArr[j].indexOf(": ") + 2);
                 sArr[i] += newLastMember + ", ";
             }
