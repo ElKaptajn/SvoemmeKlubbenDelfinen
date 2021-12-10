@@ -354,11 +354,6 @@ public class Result {
             }
         }
         System.out.println("└───────────────────────────────────────────────────────────┘");
-       /* int counter = 1;
-        for (Member m : members) {
-            System.out.println("Nr." + counter + "\n" + m + "\n********************************");
-            counter++;
-        } */
         System.out.print("Pick a member from the list above, that you want to make into a competition member.\nThe members nr: ");
         int answerM = input.nextInt();
         Member changingMember = members.get(answerM - 1);
