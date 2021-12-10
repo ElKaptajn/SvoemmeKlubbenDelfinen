@@ -460,7 +460,11 @@ public class Result {
             tempCompetitionMember += competitionMembers.get(i).fName + ", ";
             tempCompetitionMember += competitionMembers.get(i).lName + ", ";
             tempCompetitionMember += competitionMembers.get(i).age + ", ";
-            tempCompetitionMember += competitionMembers.get(i).gender + ", ";
+            if (competitionMembers.get(i).gender) {
+                tempCompetitionMember += "Male, ";
+            } else {
+                tempCompetitionMember += "Female, ";
+            }
             tempCompetitionMember += competitionMembers.get(i).email + ", ";
             tempCompetitionMember += competitionMembers.get(i).address + ", ";
             if (competitionMembers.get(i).arrears) {

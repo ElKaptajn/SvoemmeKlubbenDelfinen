@@ -76,7 +76,7 @@ public class Menu {
                     │ Enter 0 for Logout        │
                     │ Enter 1 for Member Menu   │
                     │ Enter 2 for Result Menu   │
-                    │ Enter 2 for Economy Menu  │
+                    │ Enter 3 for Economy Menu  │
                     │ Enter 4 for Employee Menu │
                     └───────────────────────────┘""");
             answer = input.nextInt();
