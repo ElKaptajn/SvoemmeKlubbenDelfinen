@@ -467,7 +467,7 @@ public class Result {
             tempCompetitionMember += competitionMembers.get(i).age + ", ";
             if (competitionMembers.get(i).gender) {
                 tempCompetitionMember += "Male, ";
-            } else {
+            } else if (!competitionMembers.get(i).gender){
                 tempCompetitionMember += "Female, ";
             }
             tempCompetitionMember += competitionMembers.get(i).email + ", ";
