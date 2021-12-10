@@ -64,33 +64,45 @@ public class Result {
         System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘\n");
         System.out.println("Enter the number of the member you want to add a result to: ");
         int answerMember = input.nextInt();
-        CompetitionMember competitionMember = competitionMembers.get(answerMember - 1);
-        System.out.println("""
+        if(answerMember == 0){
+            System.out.println("Returning to Result Menu...");
+        }else {
+            CompetitionMember competitionMember = competitionMembers.get(answerMember - 1);
+            System.out.println("""
                     ┌─ Which Swimming discipline do you want to add a new time to? ─┐
                     │ Type 1 for Crawl                                              │
                     │ Type 2 for Breaststroke                                       │
                     │ Type 3 for Butterfly                                          │
                     │ Type 4 for Backstroke                                         │
                     └───────────────────────────────────────────────────────────────┘""");
-        String stringAnswer;
-        boolean timeTestAnswer;
-        int answer = input.nextInt();
-        if (answer >= 1 && answer <= 3) {
-            System.out.print("New best time for " + competitionMember.disciplinType[answer - 1] + "(MUST be written in this format: xx:xx): ");
-            stringAnswer = input.next();
-            timeTestAnswer = timeTester(competitionMember.trainingResult[answer - 1], stringAnswer);
-            if (!timeTestAnswer) {
-                System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
+            String stringAnswer;
+            boolean timeTestAnswer;
+            int answer = input.nextInt();
+            if (answer >= 1 && answer <= 3) {
+                System.out.print("New best time for " + competitionMember.disciplinType[answer - 1] + "(MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                if (stringAnswer.equals("0")) {
+                    System.out.println("Returning to Result Menu...");
+                }else {
+                    timeTestAnswer = timeTester(competitionMember.trainingResult[answer - 1], stringAnswer);
+                    if (!timeTestAnswer) {
+                        System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
+                    } else {
+                        competitionMember.trainingResult[answer - 1] = stringAnswer;
+                        System.out.print("\nDate that the new record was set: ");
+                        stringAnswer = input.next();
+                        if (stringAnswer.equals("0")) {
+                            System.out.println("Returning to Result Menu...");
+                        }else {
+                            competitionMember.date[answer - 1] = stringAnswer;
+                        }
+                    }
+                }
+            } else if (answer == 0) {
+                System.out.println("Returning to Result Menu...");
             } else {
-            competitionMember.trainingResult[answer - 1] = stringAnswer;
-            System.out.print("\nDate that the new record was set: ");
-            stringAnswer = input.next();
-            competitionMember.date[answer - 1] = stringAnswer;
+                System.out.println("The number " + answer + " is not a valid option");
             }
-        }else if(answer == 0){
-            System.out.println("Returning to Result Menu...");
-        }else{
-            System.out.println("The number " + answer + " is not a valid option");
         }
     }
 
@@ -101,27 +113,39 @@ public class Result {
         System.out.println("└─────────────────────────────────────────────────────────────────────────────────┘\n");
         System.out.println("Enter the number of the member you want to edit a result from: ");
         int answerMember = input.nextInt();
-        CompetitionMember competitionMember = competitionMembers.get(answerMember - 1);
-        System.out.println("""
-                ┌─ Which Swimming discipline do you want to add a new time to? ─┐
-                │ Type 1 for Crawl                                              │
-                │ Type 2 for Breaststroke                                       │
-                │ Type 3 for Butterfly                                          │
-                │ Type 4 for Backstroke                                         │
-                └───────────────────────────────────────────────────────────────┘""");
-        String stringAnswer;
-        int answer = input.nextInt();
-        if (answer >= 1 && answer <= 3) {
-            System.out.print("New best time for " + competitionMember.disciplinType[answer - 1] + "(MUST be written in this format: xx:xx): ");
-            stringAnswer = input.next();
-            competitionMember.trainingResult[answer - 1] = stringAnswer;
-            System.out.print("\nDate that the new record was set: ");
-            stringAnswer = input.next();
-            competitionMember.date[answer - 1] = stringAnswer;
-        }else if(answer == 0){
+        if(answerMember == 0){
             System.out.println("Returning to Result Menu...");
-        }else{
-            System.out.println("The number " + answer + " is not a valid option");
+        }else {
+            CompetitionMember competitionMember = competitionMembers.get(answerMember - 1);
+            System.out.println("""
+                    ┌─ Which Swimming discipline do you want to add a new time to? ─┐
+                    │ Type 1 for Crawl                                              │
+                    │ Type 2 for Breaststroke                                       │
+                    │ Type 3 for Butterfly                                          │
+                    │ Type 4 for Backstroke                                         │
+                    └───────────────────────────────────────────────────────────────┘""");
+            String stringAnswer;
+            int answer = input.nextInt();
+            if (answer >= 1 && answer <= 3) {
+                System.out.print("New best time for " + competitionMember.disciplinType[answer - 1] + "(MUST be written in this format: xx:xx): ");
+                stringAnswer = input.next();
+                if (stringAnswer.equals("0")) {
+                    System.out.println("Returning to Result Menu...");
+                } else {
+                    competitionMember.trainingResult[answer - 1] = stringAnswer;
+                    System.out.print("\nDate that the new record was set: ");
+                    stringAnswer = input.next();
+                    if (stringAnswer.equals("0")) {
+                        System.out.println("Returning to Result Menu...");
+                    } else {
+                        competitionMember.date[answer - 1] = stringAnswer;
+                    }
+                }
+            } else if (answer == 0) {
+                System.out.println("Returning to Result Menu...");
+            } else {
+                System.out.println("The number " + answer + " is not a valid option");
+            }
         }
     }
 
@@ -488,7 +512,6 @@ public class Result {
             tempCompetitionMember += competitionMembers.get(i).date[0] + " " + competitionMembers.get(i).date[1] + " "
                     + competitionMembers.get(i).date[2] + " " + competitionMembers.get(i).date[3];
 
-            System.out.println(tempCompetitionMember);
             writer.write(tempCompetitionMember + "\n");
 
             tempCompetitionMember = ""; // til at nulstille tempCompetitionMember, inden det starter på det næste member.
