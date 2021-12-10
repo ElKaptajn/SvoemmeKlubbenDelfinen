@@ -399,7 +399,7 @@ public class Result {
                 }else {
                     timeTestAnswer = timeTester(competitionMember.trainingResult[answer - 1], stringAnswer);
                     if (!timeTestAnswer) {
-                        System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[0]);
+                        System.out.println("The time " + stringAnswer + " is not faster than the existing record of " + competitionMember.trainingResult[answer -1]);
                     } else {
                         competitionMember.trainingResult[answer - 1] = stringAnswer;
                         System.out.print("\nDate that the new record was set: ");
@@ -408,6 +408,7 @@ public class Result {
                             System.out.println("Returning to Result Menu...");
                         }else {
                             competitionMember.date[answer - 1] = stringAnswer;
+                            competitionMembers.add(competitionMember);
                         }
                     }
                 }
@@ -416,6 +417,10 @@ public class Result {
             } else {
                 System.out.println("The number " + answer + " is not a valid option");
             }
+        }else if(addResultAnswer == 2){
+            competitionMembers.add(competitionMember);
+        }else{
+            System.out.println("The number " + addResultAnswer + " is not a valid option");
         }
     }
 
