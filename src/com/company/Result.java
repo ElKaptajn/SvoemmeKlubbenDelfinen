@@ -408,10 +408,10 @@ public class Result {
                             System.out.println("Returning to Result Menu...");
                         }else {
                             competitionMember.date[answer - 1] = stringAnswer;
-                            competitionMembers.add(competitionMember);
                         }
                     }
                 }
+                competitionMembers.add(competitionMember);
             } else if (answer == 0) {
                 System.out.println("Returning to Result Menu...");
             } else {
