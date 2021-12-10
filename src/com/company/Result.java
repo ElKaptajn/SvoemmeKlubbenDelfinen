@@ -10,7 +10,6 @@ import java.util.*;
  */
 
 public class Result {
-
     public void resultMenu(Scanner input, ArrayList<Member> members, ArrayList<CompetitionMember> competitionMembers) throws IOException {
         MemberHandler memberHandler = new MemberHandler();
         int answer = 1;
@@ -148,11 +147,17 @@ public class Result {
             choice = input.nextInt();
             if (choice != 0 && choice <= competitionMembers.size()) {
                 String myStatus = String.valueOf(competitionMembers.get(choice - 1).status);
+                String myGender = String.valueOf(competitionMembers.get(choice - 1).gender);
                 String myArrears = String.valueOf(competitionMembers.get(choice - 1).arrears);
                 if (myStatus.equals("true")) {
                     myStatus = "Active";
                 } else if (myStatus.equals("false")) {
                     myStatus = "Passive";
+                }
+                if (myGender.equals("true")) {
+                    myGender = "Male";
+                } else if (myGender.equals("false")) {
+                    myGender = "Female";
                 }
                 if (myArrears.equals("true")) {
                     myArrears = "Yes";
@@ -170,9 +175,10 @@ public class Result {
                                 │ First name    : %-24s │          (_.-^, __..-'  ''''--.   )          │
                                 │ Last name     : %-24s │              /,'             _.' /           │
                                 │ Age           : %-24d │                          .-''    |           │
-                                │ E-mail        : %-24s │                         (..--^.  '\\          │
-                                │ Address       : %-24s │                               | /            │
-                                │ Arrears       : %-24s │                               '              │
+                                │ Gender        : %-24s │                         (..--^.  '\\          │
+                                │ E-mail        : %-24s │                               | /            │
+                                │ Address       : %-24s │                               '              │
+                                │ Arrears       : %-24s │                                              │
                                 ├──────────────────────────────────────────┼─────────────────────────┬────────────────────┤
                                 │ Disciplin type: %-24s │ Training result : %-4s │ Date : %-11s │
                                 │ Disciplin type: %-24s │ Training result : %-4s │ Date : %-11s │
@@ -181,7 +187,7 @@ public class Result {
                                 """,
                         myStatus, competitionMembers.get(choice - 1).activityType, competitionMembers.get(choice - 1).teamType,
                         competitionMembers.get(choice - 1).fName, competitionMembers.get(choice - 1).lName, competitionMembers.get(choice - 1).age,
-                        competitionMembers.get(choice - 1).email, competitionMembers.get(choice - 1).address, myArrears,
+                        myGender, competitionMembers.get(choice - 1).email, competitionMembers.get(choice - 1).address, myArrears,
                         competitionMembers.get(choice - 1).disciplinType[0], competitionMembers.get(choice - 1).trainingResult[0], competitionMembers.get(choice - 1).date[0],
                         competitionMembers.get(choice - 1).disciplinType[1], competitionMembers.get(choice - 1).trainingResult[1], competitionMembers.get(choice - 1).date[1],
                         competitionMembers.get(choice - 1).disciplinType[2], competitionMembers.get(choice - 1).trainingResult[2], competitionMembers.get(choice - 1).date[2],
@@ -197,20 +203,29 @@ public class Result {
 
     public void topFiveTeamType(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
         int pickTeamType = 1;
+        System.out.println(competitionMembers.get(1).gender);
         while (pickTeamType != 0) {
             System.out.println("""
                     ┌───────────── Top 5 Menu ──────────────┐
                     │ Enter 0 for exit Team Type selection  │
-                    │ Enter 1 for Senior top 5 list         │
-                    │ Enter 2 for Junior top 5 list         │
+                    │ Enter 1 for Senior top 5 list (male)  │
+                    │ Enter 2 for Junior top 5 list (male)  │
+                    │ Enter 3 for Senior top 5 list (female)│
+                    │ Enter 4 for Junior top 5 list (female)│
                     └───────────────────────────────────────┘""");
             pickTeamType = input.nextInt();
             switch (pickTeamType) {
-                case 1: //Senior
-                    getTopFive(competitionMembers, input, "Senior");
+                case 1: //Senior Male
+                    getTopFive(competitionMembers, input, "Senior", true);
                     break;
-                case 2: //Junior
-                    getTopFive(competitionMembers, input, "Junior");
+                case 2: //Junior Male
+                    getTopFive(competitionMembers, input, "Junior", true);
+                    break;
+                case 3: //Senior Female
+                    getTopFive(competitionMembers, input, "Senior", false);
+                    break;
+                case 4: //Junior Female
+                    getTopFive(competitionMembers, input, "Junior", false);
                     break;
                 default:
                     if (pickTeamType == 0) {
@@ -220,10 +235,9 @@ public class Result {
                     }
             }
         }
-
     }
 
-    public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input, String teamT) {
+    public void getTopFive(ArrayList<CompetitionMember> competitionMembers, Scanner input, String teamT, boolean gen) {
         int pickTop5 = 1;
         while (pickTop5 != 0) {
             System.out.println("""
@@ -237,16 +251,16 @@ public class Result {
             pickTop5 = input.nextInt();
             switch (pickTop5) {
                 case 1: //Crawl
-                    topFiveSort(competitionMembers, 0, teamT);
+                    topFiveSort(competitionMembers, 0, teamT, gen);
                     break;
                 case 2: //Breaststroke
-                    topFiveSort(competitionMembers, 1, teamT);
+                    topFiveSort(competitionMembers, 1, teamT, gen);
                     break;
                 case 3: //Butterfly
-                    topFiveSort(competitionMembers, 2, teamT);
+                    topFiveSort(competitionMembers, 2, teamT, gen);
                     break;
                 case 4: //Backstroke
-                    topFiveSort(competitionMembers, 3, teamT);
+                    topFiveSort(competitionMembers, 3, teamT, gen);
                     break;
                 default:
                     if (pickTop5 == 0) {
@@ -258,13 +272,19 @@ public class Result {
         }
     }
 
-    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type, String teamT) {
+    public void topFiveSort(ArrayList<CompetitionMember> competitionMembers, int type, String teamT, boolean gen) {
         CompetitionMember[] competitionMemberArray = new CompetitionMember[competitionMembers.size()];
         CompetitionMember[] tempArray = new CompetitionMember[1];
         int tempI = 1;
-        String topFiveText = "┌────────── Top 5. for" + competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"; //Set text of top five and disciplin to find the length.
-        System.out.printf("┌────────── Top 5. for %s ", competitionMembers.get(0).disciplinType[type] + " " + "(" + teamT + ")"); //Print of text that say top five and what disciplin.
-        for (int i = 1; i < (53 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
+        String gender = "";
+        if (gen) {
+            gender = "Male";
+        } else {
+            gender = "Female";
+        }
+        String topFiveText = "┌────────── Top 5. for " + competitionMembers.get(0).disciplinType[type] + "(" + teamT + " - " + gender + ") "; //Set text of top five and disciplin to find the length.
+        System.out.printf("┌────────── Top 5. for %s (%s - %s) ", competitionMembers.get(0).disciplinType[type], teamT, gender); //Print of text that say top five and what disciplin.
+        for (int i = 1; i < (54 - topFiveText.length()); i++) { //Using for loop to print the end of top five text with "-"
             System.out.print("─");
         }
         System.out.println("┐");
@@ -284,7 +304,7 @@ public class Result {
         }
         for (int i = 0; i < competitionMembers.size(); i++) {
             if (!competitionMembers.get(i).trainingResult[type].equals("00:00") && tempI != 6) {
-                if (competitionMembers.get(i).teamType.equals(teamT) && competitionMembers.get(i).status) {
+                if (competitionMembers.get(i).teamType.equals(teamT) && competitionMembers.get(i).status && competitionMembers.get(i).gender == gen) {
                     System.out.printf("│ %d%s │ Name: %-8s │ time %5s │ date %-10s │\n", tempI, topFivePlace(tempI), competitionMembers.get(i).fName, competitionMembers.get(i).trainingResult[type], competitionMembers.get(i).date[type]);
                     System.out.println("└─────────────────────────────────────────────────────┘");
                     tempI++;
@@ -329,6 +349,7 @@ public class Result {
         competitionMember.fName = changingMember.fName;
         competitionMember.lName = changingMember.lName;
         competitionMember.age = changingMember.age;
+        competitionMember.gender = changingMember.gender;
         competitionMember.email = changingMember.email;
         competitionMember.address = changingMember.address;
         competitionMember.arrears = changingMember.arrears;
@@ -452,6 +473,7 @@ public class Result {
             tempCompetitionMember += competitionMembers.get(i).fName + ", ";
             tempCompetitionMember += competitionMembers.get(i).lName + ", ";
             tempCompetitionMember += competitionMembers.get(i).age + ", ";
+            tempCompetitionMember += competitionMembers.get(i).gender + ", ";
             tempCompetitionMember += competitionMembers.get(i).email + ", ";
             tempCompetitionMember += competitionMembers.get(i).address + ", ";
             if (competitionMembers.get(i).arrears) {
@@ -484,25 +506,30 @@ public class Result {
             } else {
                 splitArray[0] = "false";
             }
-            if (splitArray[8].equals("Yes")) {
-                splitArray[8] = "true";
+            if (splitArray[6].equals("Male")) {
+                splitArray[6] = "true";
             } else {
-                splitArray[8] = "false";
+                splitArray[6] = "false";
+            }
+            if (splitArray[9].equals("Yes")) {
+                splitArray[9] = "true";
+            } else {
+                splitArray[9] = "false";
             }
 
-            String disciplinTypeStringTemp = splitArray[9];
+            String disciplinTypeStringTemp = splitArray[10];
             String[] disciplinTypeArrayTemp = disciplinTypeStringTemp.split(" ");
             String[] disciplinTypeArray = {disciplinTypeArrayTemp[0], disciplinTypeArrayTemp[1], disciplinTypeArrayTemp[2], disciplinTypeArrayTemp[3]};
-            String trainingResultStringTemp = splitArray[10];
+            String trainingResultStringTemp = splitArray[11];
             String[] trainingResultArrayTemp = trainingResultStringTemp.split(" ");
             String[] trainingResultArray = {trainingResultArrayTemp[0], trainingResultArrayTemp[1], trainingResultArrayTemp[2], trainingResultArrayTemp[3]};
-            String dateStringTemp = splitArray[11];
+            String dateStringTemp = splitArray[12];
             String[] dateArrayTemp = dateStringTemp.split(" ");
             String[] dateArray = {dateArrayTemp[0], dateArrayTemp[1], dateArrayTemp[2], dateArrayTemp[3]};
 
             CompetitionMember tempCompetitionMember = new CompetitionMember(Boolean.parseBoolean(splitArray[0]), splitArray[1],
-                    splitArray[2], splitArray[3], splitArray[4], Integer.parseInt(splitArray[5]), splitArray[6], splitArray[7], Boolean.parseBoolean(splitArray[8]),
-                    disciplinTypeArray, trainingResultArray, dateArray);
+                    splitArray[2], splitArray[3], splitArray[4], Integer.parseInt(splitArray[5]), Boolean.parseBoolean(splitArray[6]),
+                    splitArray[7], splitArray[8], Boolean.parseBoolean(splitArray[9]), disciplinTypeArray, trainingResultArray, dateArray);
 
             competitionMembers.add(tempCompetitionMember);
         }

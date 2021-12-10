@@ -6,9 +6,9 @@ public class CompetitionMember extends Member {
     String[] date = {null, null, null, null};
 
     public CompetitionMember(boolean status, String activityType, String teamType, String fName, String lName,
-                             int age, String email, String address, boolean arrears, String[] disciplinType, String[] trainingResult, String[] date) {
+                             int age, boolean gender, String email, String address, boolean arrears, String[] disciplinType, String[] trainingResult, String[] date) {
         super(status, activityType, teamType, fName, lName,
-                age, email, address, arrears);
+                age, gender, email, address, arrears);
         this.disciplinType = disciplinType;
         this.trainingResult = trainingResult;
         this.date = date;

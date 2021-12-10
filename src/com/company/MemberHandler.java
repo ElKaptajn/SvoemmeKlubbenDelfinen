@@ -58,6 +58,10 @@ public class MemberHandler {
         String lName = input.next();
         System.out.print("│ Enter age: ");
         int age = input.nextInt();
+        System.out.println("│ Enter gender, 1 for male and 2 for female");
+        int g = input.nextInt();
+        boolean gender;
+        gender = g != 1;
         System.out.print("│ Enter email: ");
         String email = input.next();
         input.nextLine();
@@ -85,7 +89,7 @@ public class MemberHandler {
         boolean status = true;
         boolean arrears = false;
 
-        Member member = new Member(status, activityType, teamType, fName, lName, age, email, address, arrears);
+        Member member = new Member(status, activityType, teamType, fName, lName, age, gender, email, address, arrears);
         members.add(member);
 
         return members;
@@ -180,18 +184,18 @@ public class MemberHandler {
                         break;
                     case 6: // E-mail
                         System.out.println("Enter new email: ");
-                        strArrayMember[6] = input.next();
+                        strArrayMember[7] = input.next();
                         break;
                     case 7: // Address
                         System.out.println("Enter new address: ");
-                        strArrayMember[7] = input.nextLine();
+                        strArrayMember[8] = input.nextLine();
                         break;
                     case 8: // Arrears
                         System.out.println("Enter new arrears, '1' for true and '2' for false: ");
                         int arrearsChoice = input.nextInt();
                         boolean arrears;
                         arrears = arrearsChoice != 2;
-                        strArrayMember[8] = String.valueOf(arrears);
+                        strArrayMember[9] = String.valueOf(arrears);
                         break;
                     default:
                 }
@@ -208,14 +212,19 @@ public class MemberHandler {
                 } else if (strArrayMember[0].equals("Passive")) {
                     strArrayMember[0] = "false";
                 }
-                if (strArrayMember[8].equals("Yes")) {
-                    strArrayMember[8] = "true";
-                } else if (strArrayMember[8].equals("No")) {
-                    strArrayMember[8] = "false";
+                if (strArrayMember[6].equals("Male")) {
+                    strArrayMember[6] = "true";
+                } else if (strArrayMember[6].equals("Female")) {
+                    strArrayMember[6] = "false";
+                }
+                if (strArrayMember[9].equals("Yes")) {
+                    strArrayMember[9] = "true";
+                } else if (strArrayMember[9].equals("No")) {
+                    strArrayMember[9] = "false";
                 }
 
                 Member member = new Member(Boolean.parseBoolean(strArrayMember[0]), strArrayMember[1], strArrayMember[2], strArrayMember[3], strArrayMember[4],
-                        Integer.parseInt(strArrayMember[5]), strArrayMember[6], strArrayMember[7], Boolean.parseBoolean(strArrayMember[8]));
+                        Integer.parseInt(strArrayMember[5]), Boolean.parseBoolean(strArrayMember[6]), strArrayMember[7], strArrayMember[8], Boolean.parseBoolean(strArrayMember[9]));
                 members.set(picked - 1, member);
             } else if (picked >= members.size()){
                 System.out.println("Number " + picked + " is not a valid option\n");
@@ -241,11 +250,17 @@ public class MemberHandler {
             choice = input.nextInt();
             if (choice != 0 && choice <= members.size()) {
                 String myStatus = String.valueOf(members.get(choice - 1).status);
+                String myGender = String.valueOf(members.get(choice - 1).gender);
                 String myArrears = String.valueOf(members.get(choice - 1).arrears);
                 if (myStatus.equals("true")) {
                     myStatus = "Active";
                 } else if (myStatus.equals("false")) {
                     myStatus = "Passive";
+                }
+                if (myGender.equals("true")) {
+                    myGender = "Male";
+                } else if (myGender.equals("false")) {
+                    myGender = "Female";
                 }
                 if (myArrears.equals("true")) {
                     myArrears = "Yes";
@@ -263,13 +278,14 @@ public class MemberHandler {
                                 │ First name    : %-24s │        (_.-^, __..-'  ''''--.   )        │
                                 │ Last name     : %-24s │            /,'             _.' /         │
                                 │ Age           : %-24d │                        .-''    |         │
-                                │ E-mail        : %-24s │                       (..--^.  '\\        │
-                                │ Address       : %-24s │                             | /          │
-                                │ Arrears       : %-24s │                             '            │
+                                │ Gender        : %-24s │                       (..--^.  '\\        │
+                                │ E-mail        : %-24s │                             | /          │
+                                │ Address       : %-24s │                             '            │
+                                │ Arrears       : %-24s │                                          │
                                 """,
                         myStatus, members.get(choice - 1).activityType, members.get(choice - 1).teamType,
                         members.get(choice - 1).fName, members.get(choice - 1).lName, members.get(choice - 1).age,
-                        members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
+                        myGender, members.get(choice - 1).email, members.get(choice - 1).address, myArrears);
                 System.out.println("├──────────────────────────────────────────┴──────────────────────────────────────────┤");
                 System.out.println("│                                   Enter 0 to exit                                   │");
                 System.out.println("└─────────────────────────────────────────────────────────────────────────────────────┘\n");
