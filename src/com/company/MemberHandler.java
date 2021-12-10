@@ -61,7 +61,7 @@ public class MemberHandler {
         System.out.println("│ Enter gender, 1 for male and 2 for female");
         int g = input.nextInt();
         boolean gender;
-        gender = g != 1;
+        gender = g != 2;
         System.out.print("│ Enter email: ");
         String email = input.next();
         input.nextLine();
