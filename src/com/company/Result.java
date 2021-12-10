@@ -227,7 +227,6 @@ public class Result {
 
     public void topFiveTeamType(ArrayList<CompetitionMember> competitionMembers, Scanner input) {
         int pickTeamType = 1;
-        System.out.println(competitionMembers.get(1).gender);
         while (pickTeamType != 0) {
             System.out.println("""
                     ┌───────────── Top 5 Menu ──────────────┐
