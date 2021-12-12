@@ -69,7 +69,7 @@ public class MemberHandler {
         String address = input.nextLine();
         String teamType = "None";
         String activityType = "";
-        System.out.print("│ Enter activity form, \"1\" for Motionist, \"2\" for Competition Swimmer: ");
+        System.out.print("│ Enter Activity form: \n│ \"1\" for Motionist \n│ \"2\" for Competition Swimmer \n│ Enter number: ");
         int activityTypeChoice = input.nextInt();
         System.out.println("└────────────────────────────────────────────");
         while (activityTypeChoice > 2) {
