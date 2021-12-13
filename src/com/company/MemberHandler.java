@@ -138,7 +138,7 @@ public class MemberHandler {
                     strArrayMember = sArr[picked - 1].split("\n");
                 }
                 for (int i = 0; i < strArrayMember.length; i++) {
-                    if (i != 2) {
+                    if (i != 2 && i != 6) {
                         System.out.println("Nr. " + (tempI) + ": " + strArrayMember[i]);
                         tempI++;
                     }
@@ -181,15 +181,15 @@ public class MemberHandler {
                         System.out.println("Enter new age: ");
                         strArrayMember[5] = String.valueOf(input.nextInt());
                         break;
-                    case 7: // E-mail
+                    case 6: // E-mail
                         System.out.println("Enter new email: ");
                         strArrayMember[7] = input.next();
                         break;
-                    case 8: // Address
+                    case 7: // Address
                         System.out.println("Enter new address: ");
                         strArrayMember[8] = input.nextLine();
                         break;
-                    case 9: // Arrears
+                    case 8: // Arrears
                         System.out.println("Enter new arrears, '1' for true and '2' for false: ");
                         int arrearsChoice = input.nextInt();
                         boolean arrears;
@@ -228,6 +228,7 @@ public class MemberHandler {
             } else if (picked >= members.size()){
                 System.out.println("Number " + picked + " is not a valid option\n");
             }
+            break;
         }
     }
 
