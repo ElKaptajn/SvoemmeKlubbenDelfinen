@@ -160,7 +160,7 @@ public class MemberHandler {
                         System.out.println("Enter new activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
                         int activityTypeChoice = input.nextInt();
                         while (activityTypeChoice > 2) {
-                            System.out.println("Invalid number: " + activityTypeChoice);
+                            System.out.println("│ Invalid number: " + activityTypeChoice);
                             activityTypeChoice = input.nextInt();
                         }
                         if (activityTypeChoice == 1) {
@@ -181,15 +181,15 @@ public class MemberHandler {
                         System.out.println("Enter new age: ");
                         strArrayMember[5] = String.valueOf(input.nextInt());
                         break;
-                    case 6: // E-mail
+                    case 7: // E-mail
                         System.out.println("Enter new email: ");
                         strArrayMember[7] = input.next();
                         break;
-                    case 7: // Address
+                    case 8: // Address
                         System.out.println("Enter new address: ");
                         strArrayMember[8] = input.nextLine();
                         break;
-                    case 8: // Arrears
+                    case 9: // Arrears
                         System.out.println("Enter new arrears, '1' for true and '2' for false: ");
                         int arrearsChoice = input.nextInt();
                         boolean arrears;
