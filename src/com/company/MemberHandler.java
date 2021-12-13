@@ -50,7 +50,7 @@ public class MemberHandler {
         }
     }
 
-    public ArrayList<Member> createMember(Scanner input) {
+    public void createMember(Scanner input) {
         System.out.println("┌────────────── Create Member ──────────────┐");
         System.out.print("│ Enter firstname: ");
         String fName = input.next();
@@ -71,11 +71,12 @@ public class MemberHandler {
         String activityType = "";
         System.out.print("│ Enter Activity form: \n│ \"1\" for Motionist \n│ \"2\" for Competition Swimmer \n│ Enter number: ");
         int activityTypeChoice = input.nextInt();
-        System.out.println("└────────────────────────────────────────────");
         while (activityTypeChoice > 2) {
-            System.out.println("Invalid number: " + activityTypeChoice);
+            System.out.println("│\n│ Invalid number: " + activityTypeChoice);
+            System.out.print("│ Enter Activity form: \n│ \"1\" for Motionist \n│ \"2\" for Competition Swimmer \n│ Enter number: ");
             activityTypeChoice = input.nextInt();
         }
+        System.out.println("└────────────────────────────────────────────");
         if (activityTypeChoice == 1) {
             activityType = "Motionist";
         } else if (activityTypeChoice == 2) {
@@ -91,8 +92,6 @@ public class MemberHandler {
 
         Member member = new Member(status, activityType, teamType, fName, lName, age, gender, email, address, arrears);
         members.add(member);
-
-        return members;
     }
 
     public ArrayList<Member> deleteMember(Scanner input) {
