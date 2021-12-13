@@ -133,7 +133,7 @@ public class MemberHandler {
             if (picked != 0 && picked <= members.size()) {
                 String s = String.valueOf(members.get(picked - 1));
                 String[] strArr = s.split("\n");
-                for (int j = 0; j < 9; j++) {
+                for (int j = 0; j < 10; j++) {
                     sArr[picked - 1] += strArr[j] + "\n";
                     strArrayMember = sArr[picked - 1].split("\n");
                 }
