@@ -118,8 +118,7 @@ public class MemberHandler {
         System.out.println("┌─────────────────────── Edit member ───────────────────────┐");
         showMembers();
         System.out.println("│                      Enter 0 to exit                      │");
-        System.out.println("└───────────────────────────────────────────────────────────┘\n");
-
+        System.out.println("├───────────────────────────────────────────────────────────┘");
         int picked = 1;
         int tempI = 1;
 
@@ -127,9 +126,10 @@ public class MemberHandler {
         String[] sArr = new String[members.size()];
         Arrays.fill(sArr, "");
         while (picked != 0) {
-            System.out.print("Enter number for which member you want to change info about: ");
+            System.out.print("│\n│ Enter number for which member you want to change info about: ");
             picked = input.nextInt();
-            System.out.println();
+            System.out.println("│");
+            System.out.println("├─────────────────────────────────────────────────────────────────");
             if (picked != 0 && picked <= members.size()) {
                 String s = String.valueOf(members.get(picked - 1));
                 String[] strArr = s.split("\n");
@@ -139,25 +139,25 @@ public class MemberHandler {
                 }
                 for (int i = 0; i < strArrayMember.length; i++) {
                     if (i != 2 && i != 6) {
-                        System.out.println("Nr. " + (tempI) + ": " + strArrayMember[i]);
+                        System.out.println("│ Nr. " + (tempI) + ": " + strArrayMember[i]);
                         tempI++;
                     }
                     String newLastMember = strArrayMember[i].substring(strArrayMember[i].indexOf(": ") + 2);
                     strArrayMember[i] = newLastMember;
                 }
-                System.out.println("Enter number for which info you want to change: ");
+                System.out.print("│\n│ Enter number for which info you want to change: ");
                 int pickInfoF = input.nextInt();
                 input.nextLine();
                 switch (pickInfoF) {
                     case 1: // Status
-                        System.out.println("Enter new status, '1' for active and '2' for passive: ");
+                        System.out.print("│ Enter new status, '1' for active and '2' for passive: ");
                         int statusChoice = input.nextInt();
                         boolean status;
                         status = statusChoice != 2;
                         strArrayMember[0] = String.valueOf(status);
                         break;
                     case 2: // Activity form
-                        System.out.println("Enter new activity form, \"1\" for Motionist, \"2\" for Competition Swimmer");
+                        System.out.print("│ Enter Activity form: \n│ \"1\" for Motionist \n│ \"2\" for Competition Swimmer \n│ Enter number: ");
                         int activityTypeChoice = input.nextInt();
                         while (activityTypeChoice > 2) {
                             System.out.println("│ Invalid number: " + activityTypeChoice);
@@ -170,27 +170,27 @@ public class MemberHandler {
                         }
                         break;
                     case 3: // Firstname
-                        System.out.println("Enter new first name: ");
+                        System.out.print("│ Enter new first name: ");
                         strArrayMember[3] = input.next();
                         break;
                     case 4: // Lastname
-                        System.out.println("Enter new last name: ");
+                        System.out.print("│ Enter new last name: ");
                         strArrayMember[4] = input.next();
                         break;
                     case 5: // Age
-                        System.out.println("Enter new age: ");
+                        System.out.print("│ Enter new age: ");
                         strArrayMember[5] = String.valueOf(input.nextInt());
                         break;
                     case 6: // E-mail
-                        System.out.println("Enter new email: ");
+                        System.out.print("│ Enter new email: ");
                         strArrayMember[7] = input.next();
                         break;
                     case 7: // Address
-                        System.out.println("Enter new address: ");
+                        System.out.print("│ Enter new address: ");
                         strArrayMember[8] = input.nextLine();
                         break;
                     case 8: // Arrears
-                        System.out.println("Enter new arrears, '1' for true and '2' for false: ");
+                        System.out.print("│ Enter new arrears, '1' for true and '2' for false: ");
                         int arrearsChoice = input.nextInt();
                         boolean arrears;
                         arrears = arrearsChoice != 2;
@@ -198,6 +198,7 @@ public class MemberHandler {
                         break;
                     default:
                 }
+                System.out.println("└─────────────────────────────────────────────────────────────────");
                 if ((Integer.parseInt(strArrayMember[5]) < 18) && (strArrayMember[1].equals("Competition Swimmer"))) {
                     strArrayMember[2] = "Junior";
                 } else if ((Integer.parseInt(strArrayMember[5]) >= 18) && ((Integer.parseInt(strArrayMember[5])) < 60) && (strArrayMember[1].equals("Competition Swimmer"))) {
