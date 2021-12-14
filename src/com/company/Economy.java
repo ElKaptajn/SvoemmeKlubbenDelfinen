@@ -32,7 +32,9 @@ public class Economy {
                     if (answer == 0) {
                         break;
                     } else {
-                        System.out.println("Number " + answer + " is not a valid option");
+                        System.out.println("┌────────────────────────────────────────────┐");
+                        System.out.println("│ Number " + answer + " is not a valid option");
+                        System.out.println("└────────────────────────────────────────────┘");
                     }
             }
         }
@@ -44,7 +46,7 @@ public class Economy {
         int arrearsSum = 0;
         int numberOfMembersInArrears = 0;
 
-        System.out.println("\nInfo about members:\n");
+        System.out.println("\n┌───────── Info about members ──────────┐");
         for (int i = 0; i < members.size(); i++) {
             int individuelArrears = 0;
 
@@ -63,12 +65,14 @@ public class Economy {
                 arrearsSum += subscription;
                 individuelArrears = subscription;
 
-                System.out.printf("Firstname: %25s\nLastname: %26s\nEmail: %29s\nArrears: %23d DKK\n\n", members.get(i).fName, members.get(i).lName, members.get(i).email, individuelArrears);
+                System.out.printf("│ Firstname: %25s  │\n│ Lastname: %26s  │\n│ Email: %29s  │\n│ Arrears: %23d DKK  │\n", members.get(i).fName, members.get(i).lName, members.get(i).email, individuelArrears);
+                System.out.println("├───────────────────────────────────────┤");
             }
-
         }
-        System.out.println("Total number of members in arrears: " + numberOfMembersInArrears + "\n");
-        System.out.println("Total amount in arrears: " + arrearsSum + " DKK\n");
+        System.out.println("├─────────────── Arrears ───────────────┤\n│\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│ Total number of members in arrears: " + numberOfMembersInArrears + " │\n│\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("│ Total amount in arrears: " + arrearsSum + " DKK     │\n│\t\t\t\t\t\t\t\t\t\t│");
+        System.out.println("└───────────────────────────────────────┘\n");
     }
 
     public static void income() throws FileNotFoundException {
@@ -84,7 +88,6 @@ public class Economy {
                 memberInfo[0] = "false";
             }
             boolean statusT = Boolean.parseBoolean(memberInfo[0]);
-            String teamTypeT = memberInfo[2];
             int ageT = Integer.parseInt(memberInfo[5]);
 
             int subscription = 0;
@@ -99,22 +102,11 @@ public class Economy {
             income += subscription;
 
         }
-        System.out.println("\nExpected income: " + income + " DKK\n");
+        System.out.printf("""
+                ╭—————————————— Income ——————————————╮
+                │ Expected income  │ %11d DKK │
+                ╰————————————————————————————————————╯
+                                
+                """, income);
     }
-
-    /*
-    public static void editMemberInArrears(Scanner input) {
-        private ArrayList<Member> members = new ArrayList<>();
-
-        String[] strArrayMember = new String[9];
-        String[] sArr = new String[members.size()];
-        Arrays.fill(sArr, "");
-
-        System.out.println("Enter new arrears, '1' for true and '2' for false: ");
-        int arrearsChoice = input.nextInt();
-        boolean arrears;
-        arrears = arrearsChoice != 1;
-        strArrayMember[8] = String.valueOf(arrears);
-    }
-*/
 }
