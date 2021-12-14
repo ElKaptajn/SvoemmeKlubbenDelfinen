@@ -103,7 +103,7 @@ public class Economy {
 
         }
         System.out.printf("""
-                ╭—————————————— Income ——————————————╮
+                ╭—————————— Income (Year) ———————————╮
                 │ Expected income  │ %11d DKK │
                 ╰————————————————————————————————————╯
                                 
